@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>萱儿英语暑期课程 · 学习追踪</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary: #6C63FF;
+      --primary-light: #EEEDff;
+      --secondary: #FF6B9D;
+      --accent: #FFD93D;
+      --green: #4CAF82;
+      --orange: #FF8C42;
+      --bg: #F8F7FF;
+      --card: #FFFFFF;
+      --text: #2D2D3A;
+      --muted: #8E8EA0;
+      --border: #E8E6FF;
+      --shadow: 0 4px 24px rgba(108,99,255,0.10);
+      --radius: 16px;
+    }
+    body { font-family: "PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; background: var(--bg); color: var(--text); }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg,#6C63FF 0%,#9B8FF0 50%,#FF6B9D 100%);
+      color:#fff; padding:36px 24px 24px; text-align:center; position:relative; overflow:hidden;
+    }
+    .hero::before {
+      content:""; position:absolute; inset:0;
+      background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/svg%3E") repeat;
+    }
+    .hero-emoji { font-size:48px; display:block; margin-bottom:8px; position:relative; }
+    .hero h1 { font-size:26px; font-weight:700; position:relative; }
+    .hero p  { margin-top:6px; font-size:14px; opacity:.85; position:relative; }
+    .hero-tags { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:12px; position:relative; }
+    .hero-tag { background:rgba(255,255,255,.22); backdrop-filter:blur(6px); border-radius:20px; padding:4px 12px; font-size:12px; font-weight:500; }
+
+    /* 跳转导航 */
+    .jump-nav {
+      position:sticky; top:0; z-index:100;
+      background:#fff; border-bottom:2px solid var(--border);
+      padding:10px 16px; display:flex; gap:8px; overflow-x:auto; scrollbar-width:none;
+    }
+    .jump-nav::-webkit-scrollbar { display:none; }
+    .jump-btn {
+      flex-shrink:0; background:var(--primary-light); color:var(--primary);
+      border:1.5px solid var(--border); border-radius:20px;
+      padding:6px 14px; font-size:13px; font-weight:600; cursor:pointer;
+      transition:all .2s; white-space:nowrap; text-decoration:none; display:inline-block;
+    }
+    .jump-btn:hover, .jump-btn.active { background:var(--primary); color:#fff; border-color:var(--primary); }
+    .jump-btn.highlight { background:linear-gradient(135deg,var(--primary),var(--secondary)); color:#fff; border:none; }
+
+    /* 布局 */
+    .container { max-width:900px; margin:0 auto; padding:0 16px 60px; }
+    .section-title {
+      font-size:17px; font-weight:700; color:var(--primary);
+      margin:32px 0 12px; display:flex; align-items:center; gap:8px;
+    }
+    .section-title::after { content:""; flex:1; height:2px; background:linear-gradient(90deg,var(--border),transparent); border-radius:2px; }
+    .card { background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px 20px; border:1px solid var(--border); }
+
+    /* 进度 */
+    .progress-bar-wrap { background:var(--border); border-radius:99px; height:12px; overflow:hidden; margin-top:6px; }
+    .progress-bar { height:100%; border-radius:99px; background:linear-gradient(90deg,var(--primary),var(--secondary)); }
+    .progress-label { font-size:13px; color:var(--muted); margin-top:6px; display:flex; justify-content:space-between; }
+
+    /* 课次卡片 */
+    .lesson-grid { display:flex; flex-direction:column; gap:20px; }
+    .lesson-card { border-radius:var(--radius); border:1px solid var(--border); overflow:hidden; box-shadow:0 2px 12px rgba(108,99,255,.07); }
+    .lesson-header { display:flex; align-items:center; gap:12px; padding:14px 20px; color:#fff; }
+    .lesson-header.done   { background:linear-gradient(135deg,#4CAF82,#45C7A0); }
+    .lesson-header.future { background:linear-gradient(135deg,#B0B0C8,#C8C8DA); }
+    .lesson-num { font-size:20px; font-weight:800; width:42px; height:42px; border-radius:10px; background:rgba(255,255,255,.25); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .lesson-meta h3 { font-size:16px; font-weight:700; }
+    .lesson-meta p  { font-size:12px; opacity:.85; margin-top:2px; }
+    .lesson-badge { margin-left:auto; background:rgba(255,255,255,.25); border-radius:20px; padding:4px 12px; font-size:12px; font-weight:600; white-space:nowrap; }
+    .lesson-body { padding:16px 20px; background:#fff; }
+    .ls-block { margin-bottom:16px; }
+    .ls-block:last-child { margin-bottom:0; }
+    .ls-title { font-size:11px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; margin-bottom:8px; }
+    .tag-wrap { display:flex; flex-wrap:wrap; gap:6px; }
+    .tag { border-radius:8px; padding:5px 12px; font-size:13px; font-weight:500; }
+    .tag-purple { background:var(--primary-light); color:var(--primary); }
+    .tag-green  { background:#E8F8F0; color:#2E8B57; }
+    .weak-box { background:#FFF0F5; border-left:4px solid var(--secondary); border-radius:0 10px 10px 0; padding:10px 14px; font-size:13px; color:#8B2252; }
+    .highlight-box { background:linear-gradient(135deg,#FFF9E0,#FFF3CC); border-left:4px solid var(--accent); border-radius:0 10px 10px 0; padding:10px 14px; font-size:13px; color:#7A6000; }
+
+    /* 知识点卡片 */
+    .kp-card { background:#FAFAFE; border-radius:12px; border:1px solid var(--border); overflow:hidden; margin-bottom:10px; }
+    .kp-card:last-child { margin-bottom:0; }
+    .kp-header { background:linear-gradient(135deg,var(--primary-light),#EAE6FF); color:var(--primary); font-weight:700; font-size:13px; padding:9px 14px; border-bottom:1px solid var(--border); }
+    .kp-body { padding:12px 14px; font-size:13px; line-height:1.8; }
+    .kp-body p { margin-bottom:4px; }
+    .kp-body ul { padding-left:16px; }
+    .kp-example { background:linear-gradient(135deg,#F0EEFF,#EAE6FF); border-radius:8px; padding:8px 12px; margin-top:8px; font-size:13px; color:#4A3FA0; line-height:1.8; }
+    .kp-tip { background:#FFFAEB; border-left:3px solid var(--accent); border-radius:0 8px 8px 0; padding:7px 12px; margin-top:8px; font-size:12px; color:#7A6000; }
+
+    /* 随堂练习 */
+    .quiz-container { display:flex; flex-direction:column; gap:12px; }
+    .quiz-item { background:#FAFAFE; border:1.5px solid var(--border); border-radius:12px; padding:14px 16px; }
+    .quiz-item.submitted { opacity:.8; }
+    .quiz-q { font-size:14px; font-weight:600; color:var(--text); margin-bottom:10px; line-height:1.6; }
+    .quiz-choices { display:flex; flex-direction:column; gap:7px; }
+    .quiz-choice {
+      display:flex; align-items:center; gap:8px; font-size:13px; cursor:pointer;
+      padding:8px 12px; border-radius:8px; border:1.5px solid var(--border);
+      background:#fff; transition:all .15s; user-select:none;
+    }
+    .quiz-choice:hover { border-color:var(--primary); background:var(--primary-light); }
+    .quiz-choice.sel-choice { border-color:var(--primary); background:var(--primary-light); }
+    .quiz-choice input[type=radio] { accent-color:var(--primary); }
+    .quiz-fill {
+      width:100%; border:1.5px solid var(--border); border-radius:8px;
+      padding:8px 12px; font-size:13px; margin-top:6px; outline:none;
+      transition:border-color .15s; font-family:inherit;
+    }
+    .quiz-fill:focus { border-color:var(--primary); }
+    .quiz-fill[readonly] { background:#F4F4F8; color:var(--muted); }
+    .quiz-submit-btn {
+      background:linear-gradient(135deg,var(--primary),var(--secondary)); color:#fff;
+      border:none; border-radius:20px; padding:10px 24px; font-size:14px; font-weight:600;
+      cursor:pointer; transition:opacity .2s;
+    }
+    .quiz-submit-btn:hover { opacity:.88; }
+    .quiz-submit-btn:disabled { opacity:.45; cursor:default; }
+    .quiz-status-msg { margin-top:10px; font-size:13px; font-weight:600; padding:10px 14px; border-radius:10px; display:none; }
+    .msg-success { background:#E8F8F0; color:#1E6E42; }
+    .msg-error   { background:#FFF0F5; color:#8B2252; }
+    .msg-loading { background:#F0F0FF; color:var(--primary); }
+
+    /* 学生历史记录 */
+    .history-wrap { margin-top:14px; border-top:1px dashed var(--border); padding-top:12px; }
+    .history-title { font-size:12px; font-weight:700; color:var(--muted); margin-bottom:8px; }
+    .history-item {
+      background:#FAFAFE; border:1px solid var(--border); border-radius:10px;
+      padding:10px 14px; margin-bottom:8px; font-size:13px;
+    }
+    .history-item:last-child { margin-bottom:0; }
+    .history-time { font-size:11px; color:var(--muted); margin-bottom:6px; }
+    .history-ans-row { display:flex; gap:8px; margin-bottom:3px; align-items:baseline; }
+    .history-q { color:var(--muted); font-weight:600; width:28px; flex-shrink:0; }
+    .history-v { color:var(--text); }
+
+    /* 语法卡片 */
+    .grammar-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; }
+    .grammar-card { background:#FAFAFE; border-radius:12px; border:1px solid var(--border); padding:14px 16px; position:relative; overflow:hidden; }
+    .grammar-card::before { content:""; position:absolute; top:0; left:0; width:4px; height:100%; }
+    .grammar-card.gp-prep::before  { background:var(--secondary); }
+    .grammar-card.gp-clause::before{ background:var(--orange); }
+    .grammar-card.gp-vocab::before { background:var(--green); }
+    .grammar-card.gp-intro::before { background:var(--primary); }
+    .grammar-title { font-size:14px; font-weight:700; margin-bottom:6px; }
+    .grammar-desc  { font-size:13px; color:var(--muted); line-height:1.6; }
+    .grammar-status { display:inline-block; margin-top:8px; font-size:11px; font-weight:600; padding:3px 10px; border-radius:20px; }
+    .gs-done { background:#E8F8F0; color:var(--green); }
+    .gs-weak { background:#FFF0F5; color:var(--secondary); }
+
+    /* 教师端面板 */
+    #teacher-panel { display:none; }
+    #teacher-panel.visible { display:block; }
+    .teacher-banner {
+      background:linear-gradient(135deg,#2D2D3A,#4A3FA0);
+      color:#fff; padding:14px 20px; font-size:15px; font-weight:700;
+      display:flex; align-items:center; gap:10px;
+    }
+    .teacher-banner .t-sub { font-size:12px; opacity:.65; font-weight:400; margin-left:auto; }
+    .t-section { max-width:960px; margin:0 auto; padding:20px 16px 40px; }
+    .t-toolbar { display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap; align-items:center; }
+    .t-btn { border:none; border-radius:20px; padding:8px 18px; font-size:13px; font-weight:600; cursor:pointer; }
+    .t-btn-primary { background:var(--primary); color:#fff; }
+    .t-btn-danger  { background:#FFF0F5; color:var(--secondary); border:1.5px solid #FFD0DF; }
+    .t-lesson-section { margin-bottom:28px; }
+    .t-lesson-label { font-size:15px; font-weight:700; color:var(--primary); margin-bottom:10px; padding-bottom:6px; border-bottom:2px solid var(--border); }
+    .t-table-wrap { overflow-x:auto; border-radius:12px; border:1px solid var(--border); }
+    table { width:100%; border-collapse:collapse; font-size:13px; background:#fff; }
+    th { background:var(--primary-light); color:var(--primary); font-weight:700; padding:10px 14px; text-align:left; border-bottom:1px solid var(--border); white-space:nowrap; }
+    td { padding:9px 14px; border-bottom:1px solid #F0F0F8; vertical-align:top; }
+    tr:last-child td { border-bottom:none; }
+    tr:hover td { background:#FAFAFE; }
+    .t-correct { color:var(--green); font-weight:600; }
+    .t-wrong   { color:var(--secondary); font-weight:600; }
+    .t-empty-row td { color:var(--muted); font-style:italic; text-align:center; padding:20px; }
+    .score-pill { display:inline-block; border-radius:20px; padding:2px 10px; font-size:12px; font-weight:700; }
+    .score-hi { background:#E8F8F0; color:var(--green); }
+    .score-mid{ background:#FFFAEB; color:#B88B00; }
+    .score-lo { background:#FFF0F5; color:var(--secondary); }
+
+    /* footer */
+    .footer { text-align:center; padding:28px 16px; font-size:13px; color:var(--muted); border-top:1px solid var(--border); margin-top:40px; }
+
+    html { scroll-behavior:smooth; }
+    .scroll-anchor { scroll-margin-top:60px; }
+    @media(max-width:600px){
+      .hero h1 { font-size:20px; }
+      .grammar-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-emoji">📖</span>
+  <h1>萱儿英语暑期课程</h1>
+  <p>胡雨萱 · 沪教版牛津英语 · 新初三</p>
+  <div class="hero-tags">
+    <span class="hero-tag">📅 一周三次</span>
+    <span class="hero-tag">⏱ 120分钟/课</span>
+    <span class="hero-tag">🎯 冲刺中考</span>
+    <span class="hero-tag">🗣 70% 英文授课</span>
+  </div>
+</div>
+
+<!-- 快速跳转导航 -->
+<nav class="jump-nav" id="jumpNav">
+  <a class="jump-btn highlight" href="#lessons">📚 直达课次详情</a>
+  <a class="jump-btn" href="#lesson-1">第1课</a>
+  <a class="jump-btn" href="#lesson-2">第2课</a>
+  <a class="jump-btn" href="#lesson-3">第3课</a>
+  <a class="jump-btn" href="#progress">📊 进度</a>
+  <a class="jump-btn" href="#grammar">📐 语法点</a>
+  <a class="jump-btn" href="#goals">🎯 学习目标</a>
+</nav>
+
+<div class="container">
+
+  <!-- 进度 -->
+  <div id="progress" class="scroll-anchor section-title">📊 课程总进度</div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+      <span style="font-weight:700;font-size:15px;">已完成课次</span>
+      <span style="font-weight:800;font-size:20px;color:var(--primary);">2 <span style="font-size:14px;color:var(--muted);font-weight:400;">/ 预计 30+ 课</span></span>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar" style="width:6.7%"></div></div>
+    <div class="progress-label"><span>课程开始 7.11</span><span>已上 2 课 🎉</span></div>
+  </div>
+
+  <!-- 课次详情 -->
+  <div id="lessons" class="scroll-anchor section-title">📚 课次详情</div>
+  <div class="lesson-grid">
+
+    <!-- 第1课 -->
+    <div id="lesson-1" class="lesson-card scroll-anchor">
+      <div class="lesson-header done">
+        <div class="lesson-num">1</div>
+        <div class="lesson-meta"><h3>摸底课</h3><p>7月11日 · 周一</p></div>
+        <div class="lesson-badge">✅ 已完成</div>
+      </div>
+      <div class="lesson-body">
+        <div class="ls-block">
+          <div class="ls-title">📋 课堂内容</div>
+          <div class="tag-wrap">
+            <span class="tag tag-purple">中考模拟语法题</span>
+            <span class="tag tag-purple">确定学习目标</span>
+            <span class="tag tag-purple">学生现状评估</span>
+          </div>
+        </div>
+        <div class="ls-block">
+          <div class="ls-title">⚠️ 本课薄弱点</div>
+          <div class="weak-box">介词混淆（in/on/at）、从句引导词选择（that / which / who）</div>
+        </div>
+        <div class="ls-block">
+          <div class="ls-title">⭐️ 课堂亮点</div>
+          <div class="highlight-box">语感好，语法填空有基础，学习态度认真积极。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 第2课 -->
+    <div id="lesson-2" class="lesson-card scroll-anchor">
+      <div class="lesson-header done">
+        <div class="lesson-num">2</div>
+        <div class="lesson-meta"><h3>词汇课</h3><p>7月12日 · 周二</p></div>
+        <div class="lesson-badge">✅ 已完成</div>
+      </div>
+      <div class="lesson-body">
+
+        <div class="ls-block">
+          <div class="ls-title">📋 课堂内容</div>
+          <div class="tag-wrap">
+            <span class="tag tag-green">期末作文错误讲解</span>
+            <span class="tag tag-green">九上 Unit 1 单词跟读</span>
+            <span class="tag tag-green">写作常见错误梳理</span>
+          </div>
+        </div>
+
+        <!-- 知识点 -->
+        <div class="ls-block">
+          <div class="ls-title">📖 复习要点 — 时态标志词 &amp; 词汇辨析</div>
+
+          <div class="kp-card">
+            <div class="kp-header">① recently — 现在完成时的标志词</div>
+            <div class="kp-body">
+              <p><strong>recently（最近）</strong>出现在句子里，通常是现在完成时的信号！</p>
+              <ul>
+                <li>现在完成时结构：<strong>have / has + 过去分词</strong></li>
+                <li>常见时态标志词：recently / just / already / yet / ever / never / since / for</li>
+              </ul>
+              <div class="kp-example">
+                ✅ I <u>have recently</u> started learning guitar.<br>
+                ✅ She <u>has just finished</u> her homework.<br>
+                ❌ <s>I recent started learning guitar.</s>
+              </div>
+              <div class="kp-tip">💡 口诀：看到 recently / just / already / yet → 优先考虑现在完成时！</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">② "主题" = main topic</div>
+            <div class="kp-body">
+              <ul>
+                <li><strong>main topic</strong> — 日常话题的主题、讨论中心</li>
+                <li><strong>theme</strong> — 文学／艺术主题（较正式）<br><span style="color:#8E8EA0;font-size:12px;">e.g. the theme of a novel</span></li>
+              </ul>
+              <div class="kp-example">
+                ✅ What is the <u>main topic</u> of this passage?<br>
+                ✅ The <u>theme</u> of the poem is loneliness.
+              </div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">③ next week 前不加时间介词</div>
+            <div class="kp-body">
+              <p>next / last / this / every 开头的时间短语，<strong>前面不加 in / on / at</strong>！</p>
+              <div class="kp-example">
+                ✅ I will travel <u>next week</u>.&nbsp;&nbsp;❌ <s>in next week</s><br>
+                ✅ She called me <u>last night</u>.&nbsp;&nbsp;❌ <s>on last night</s>
+              </div>
+              <div class="kp-tip">💡 next / last / this / every + 时间词 → 直接用，不加介词！</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">④ classic vs. classical</div>
+            <div class="kp-body">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px;">
+                <div style="background:#F0EEFF;border-radius:10px;padding:12px;">
+                  <div style="font-weight:700;color:var(--primary);margin-bottom:6px;">classic（短）</div>
+                  <div style="font-size:13px;line-height:1.8;">日常经典 · 经典单品 · 典型事例<br><span style="color:#8E8EA0;">a classic car / classic style</span></div>
+                </div>
+                <div style="background:#FFF0F5;border-radius:10px;padding:12px;">
+                  <div style="font-weight:700;color:var(--secondary);margin-bottom:6px;">classical（长）</div>
+                  <div style="font-size:13px;line-height:1.8;">专属古代 · 古典专业领域<br><span style="color:#8E8EA0;">classical music / classical art</span></div>
+                </div>
+              </div>
+              <div class="kp-tip">💡 单词<strong>短</strong> = classic（日常经典）；单词<strong>长</strong> = classical（古典专业）</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">⑤ judge — 多义词</div>
+            <div class="kp-body">
+              <ul>
+                <li><strong>judge (v.)</strong> 判断、评价<br><span style="color:#8E8EA0;font-size:12px;">Don't judge a book by its cover.（不要以貌取人）</span></li>
+                <li><strong>judge (n.)</strong> 法官；比赛评委<br><span style="color:#8E8EA0;font-size:12px;">The judge made the final decision.</span></li>
+              </ul>
+              <div class="kp-tip">💡 judge 动词＋名词两种词性都要掌握！</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 随堂练习 -->
+        <div class="ls-block">
+          <div class="ls-title">✏️ 随堂练习</div>
+          <div class="quiz-container" id="quiz-l2">
+
+            <div class="quiz-item" data-qid="l2q1" data-type="choice" data-answer="B">
+              <div class="quiz-q">Q1. She ___ just ___ her homework. 选出正确的动词形式：</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l2q1" value="A"><span>A. is ... finishing</span></label>
+                <label class="quiz-choice"><input type="radio" name="l2q1" value="B"><span>B. has ... finished</span></label>
+                <label class="quiz-choice"><input type="radio" name="l2q1" value="C"><span>C. was ... finishing</span></label>
+                <label class="quiz-choice"><input type="radio" name="l2q1" value="D"><span>D. did ... finish</span></label>
+              </div>
+            </div>
+
+            <div class="quiz-item" data-qid="l2q2" data-type="choice" data-answer="C">
+              <div class="quiz-q">Q2. I will see you ___. （我下周见你。）</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l2q2" value="A"><span>A. in next week</span></label>
+                <label class="quiz-choice"><input type="radio" name="l2q2" value="B"><span>B. on next week</span></label>
+                <label class="quiz-choice"><input type="radio" name="l2q2" value="C"><span>C. next week</span></label>
+                <label class="quiz-choice"><input type="radio" name="l2q2" value="D"><span>D. at next week</span></label>
+              </div>
+            </div>
+
+            <div class="quiz-item" data-qid="l2q3" data-type="choice" data-answer="A">
+              <div class="quiz-q">Q3. Beethoven's symphonies are examples of ___ music.</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l2q3" value="A"><span>A. classical</span></label>
+                <label class="quiz-choice"><input type="radio" name="l2q3" value="B"><span>B. classic</span></label>
+              </div>
+            </div>
+
+            <div class="quiz-item" data-qid="l2q4" data-type="choice" data-answer="B">
+              <div class="quiz-q">Q4. That coat is a ___ design — timeless and stylish.</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l2q4" value="A"><span>A. classical</span></label>
+                <label class="quiz-choice"><input type="radio" name="l2q4" value="B"><span>B. classic</span></label>
+              </div>
+            </div>
+
+            <div class="quiz-item" data-qid="l2q5" data-type="fill" data-answer="have recently moved" data-accept="have recently moved|has recently moved">
+              <div class="quiz-q">Q5. 用括号内词的正确形式填空：<br>They ___ ___ ___ to a new city.（recently, move）</div>
+              <input class="quiz-fill" id="fill-l2q5" placeholder="请在此输入答案" autocomplete="off">
+            </div>
+
+            <div class="quiz-item" data-qid="l2q6" data-type="fill" data-answer="judge" data-accept="judge">
+              <div class="quiz-q">Q6. 翻译成英文（填一个词）：<br>Don't ___ people by their appearance.（评判）</div>
+              <input class="quiz-fill" id="fill-l2q6" placeholder="请在此输入答案" autocomplete="off">
+            </div>
+
+            <div class="quiz-item" data-qid="l2q7" data-type="fill" data-answer="main topic" data-accept="main topic">
+              <div class="quiz-q">Q7. 翻译成英文（填两个词）：<br>What is the ___ ___ of this passage?（主题）</div>
+              <input class="quiz-fill" id="fill-l2q7" placeholder="请在此输入答案" autocomplete="off">
+            </div>
+
+            <div style="margin-top:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+              <button class="quiz-submit-btn" id="submit-l2" onclick="submitQuiz('l2')">📝 提交答案</button>
+              <span style="font-size:12px;color:var(--muted);" id="submit-hint-l2"></span>
+            </div>
+            <div class="quiz-status-msg" id="status-l2"></div>
+
+            <!-- 学生自己的历史记录 -->
+            <div class="history-wrap" id="history-l2" style="display:none;">
+              <div class="history-title">📋 我的作答记录</div>
+              <div id="history-list-l2"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ls-block">
+          <div class="ls-title">⭐️ 课堂亮点</div>
+          <div class="highlight-box">⭐️ 能举一反三！主动提问，思维活跃，学习主动性高。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 第3课（待更新） -->
+    <div id="lesson-3" class="lesson-card scroll-anchor">
+      <div class="lesson-header future">
+        <div class="lesson-num">3</div>
+        <div class="lesson-meta"><h3>待更新</h3><p>即将上课</p></div>
+        <div class="lesson-badge">🔜 待上课</div>
+      </div>
+      <div class="lesson-body" style="color:var(--muted);font-size:14px;text-align:center;padding:24px;">
+        课后老师将更新本节课的内容、复习要点与随堂练习 🌱
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 语法点 -->
+  <div id="grammar" class="scroll-anchor section-title">📐 已涉及语法点</div>
+  <div class="grammar-grid">
+    <div class="grammar-card gp-prep">
+      <div class="grammar-title">⚠️ 介词用法</div>
+      <div class="grammar-desc">in / on / at 时间地点介词；next/last/this/every 前无需介词。</div>
+      <span class="grammar-status gs-weak">需重点练习</span>
+    </div>
+    <div class="grammar-card gp-clause">
+      <div class="grammar-title">⚠️ 从句结构</div>
+      <div class="grammar-desc">定语从句关系词（that / which / who / whose）选择规则。</div>
+      <span class="grammar-status gs-weak">需重点练习</span>
+    </div>
+    <div class="grammar-card gp-vocab">
+      <div class="grammar-title">✅ 九上 Unit 1 词汇</div>
+      <div class="grammar-desc">完成跟读，每日打卡 20 词；掌握 classic / classical / judge 等易混词。</div>
+      <span class="grammar-status gs-done">进行中</span>
+    </div>
+    <div class="grammar-card gp-intro">
+      <div class="grammar-title">📋 现在完成时</div>
+      <div class="grammar-desc">recently / just / already / yet 等标志词；结构 have/has + 过去分词。</div>
+      <span class="grammar-status gs-done">已梳理</span>
+    </div>
+  </div>
+
+  <!-- 学习目标 -->
+  <div id="goals" class="scroll-anchor section-title">🎯 暑期核心目标</div>
+  <div class="card">
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+      <li style="display:flex;align-items:center;gap:12px;background:#FAFAFE;border-radius:12px;padding:12px 16px;border:1px solid var(--border);font-size:15px;"><div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>养成良好的英语学习习惯</li>
+      <li style="display:flex;align-items:center;gap:12px;background:#FAFAFE;border-radius:12px;padding:12px 16px;border:1px solid var(--border);font-size:15px;"><div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>记忆背诵九上全册单词</li>
+      <li style="display:flex;align-items:center;gap:12px;background:#FAFAFE;border-radius:12px;padding:12px 16px;border:1px solid var(--border);font-size:15px;"><div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>掌握英语句子语法结构</li>
+      <li style="display:flex;align-items:center;gap:12px;background:#FAFAFE;border-radius:12px;padding:12px 16px;border:1px solid var(--border);font-size:15px;"><div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div>总结并运用阅读方法</li>
+      <li style="display:flex;align-items:center;gap:12px;background:#FAFAFE;border-radius:12px;padding:12px 16px;border:1px solid var(--border);font-size:15px;"><div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">5</div>学习并实践写作结构模板</li>
+      <li style="display:flex;align-items:center;gap:12px;background:#FAFAFE;border-radius:12px;padding:12px 16px;border:1px solid var(--border);font-size:15px;"><div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">6</div>加强听力与口语（70% 英文授课）</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- 教师端面板 -->
+<div id="teacher-panel">
+  <div class="teacher-banner">
+    🔐 教师查阅模式
+    <span class="t-sub" id="t-refresh-time"></span>
+  </div>
+  <div class="t-section">
+    <div class="t-toolbar">
+      <button class="t-btn t-btn-primary" onclick="loadTeacherData()">🔄 刷新数据</button>
+      <button class="t-btn t-btn-danger"  onclick="clearAllData()">🗑 清空全部记录</button>
+      <span style="font-size:12px;color:var(--muted);margin-left:4px;" id="t-count"></span>
+    </div>
+    <div id="t-content">
+      <div style="color:var(--muted);font-size:14px;">加载中…</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>本页面由老师课后更新 · 内容仅供萱儿本人及家长参考</p>
+  <p style="margin-top:6px;">最后更新：2025年7月20日</p>
+</div>
+
+<script>
+/* ══════════════════════════════════════
+   Supabase 配置
+══════════════════════════════════════ */
+var SB_URL = 'https://clpzexrqmdwouqviqxcm.supabase.co';
+var SB_KEY = 'sb_publishable_mwUA7bTbvHl96TmKq7wiaA_x1oBWPp1';
+
+function sbFetch(path, opts) {
+  return fetch(SB_URL + path, Object.assign({
+    headers: {
+      'apikey': SB_KEY,
+      'Authorization': 'Bearer ' + SB_KEY,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=representation'
+    }
+  }, opts || {}));
+}
+
+/* ══════════════════════════════════════
+   题目元数据（正确答案，供教师端对比）
+══════════════════════════════════════ */
+var QUIZ_META = {
+  l2q1: { label:'Q1 现在完成时', correct:'B', accepts:['B'], type:'choice',
+           opts:{ A:'is...finishing', B:'has...finished', C:'was...finishing', D:'did...finish' } },
+  l2q2: { label:'Q2 next week',  correct:'C', accepts:['C'], type:'choice',
+           opts:{ A:'in next week', B:'on next week', C:'next week', D:'at next week' } },
+  l2q3: { label:'Q3 classical/classic', correct:'A', accepts:['A'], type:'choice',
+           opts:{ A:'classical', B:'classic' } },
+  l2q4: { label:'Q4 classic/classical', correct:'B', accepts:['B'], type:'choice',
+           opts:{ A:'classical', B:'classic' } },
+  l2q5: { label:'Q5 填空(完成时)', correct:'have recently moved',
+           accepts:['have recently moved','has recently moved'], type:'fill' },
+  l2q6: { label:'Q6 填空(judge)', correct:'judge', accepts:['judge'], type:'fill' },
+  l2q7: { label:'Q7 填空(main topic)', correct:'main topic', accepts:['main topic'], type:'fill' }
+};
+
+/* ══════════════════════════════════════
+   学生端：提交答案到 Supabase
+══════════════════════════════════════ */
+function submitQuiz(lessonId) {
+  var container = document.getElementById('quiz-' + lessonId);
+  var items     = container.querySelectorAll('.quiz-item');
+  var answers   = {};
+
+  items.forEach(function(item) {
+    var qid  = item.dataset.qid;
+    var type = item.dataset.type;
+    if (type === 'choice') {
+      var sel = item.querySelector('input[type=radio]:checked');
+      answers[qid] = sel ? sel.value : '';
+    } else {
+      var el = document.getElementById('fill-' + qid);
+      answers[qid] = el ? el.value.trim() : '';
+    }
+  });
+
+  // UI：提交中
+  var btn    = document.getElementById('submit-' + lessonId);
+  var status = document.getElementById('status-' + lessonId);
+  btn.disabled = true;
+  showStatus(status, 'loading', '⏳ 提交中，请稍候…');
+
+  sbFetch('/rest/v1/submissions', {
+    method: 'POST',
+    body: JSON.stringify({
+      student_name: '萱儿',
+      lesson_id:    lessonId,
+      answers:      answers
+    })
+  })
+  .then(function(res) {
+    if (!res.ok) return res.text().then(function(t){ throw new Error(t); });
+    return res.json();
+  })
+  .then(function(data) {
+    // 锁定题目
+    lockQuiz(container, answers);
+    showStatus(status, 'success', '✅ 已提交！老师会查看你的答案～');
+    btn.textContent = '✅ 已提交';
+
+    // 保存本地记录
+    var rec = { id: data[0] && data[0].id, time: new Date().toLocaleString('zh-CN'), answers: answers };
+    var key = 'my-records-' + lessonId;
+    var list = JSON.parse(localStorage.getItem(key) || '[]');
+    list.unshift(rec);
+    if (list.length > 10) list = list.slice(0, 10);
+    localStorage.setItem(key, JSON.stringify(list));
+    renderStudentHistory(lessonId, list);
+  })
+  .catch(function(err) {
+    btn.disabled = false;
+    showStatus(status, 'error', '❌ 提交失败，请检查网络后重试。（' + err.message + '）');
+  });
+}
+
+function lockQuiz(container, answers) {
+  container.querySelectorAll('.quiz-item').forEach(function(item) {
+    var qid  = item.dataset.qid;
+    var type = item.dataset.type;
+    item.classList.add('submitted');
+    if (type === 'choice') {
+      item.querySelectorAll('.quiz-choice').forEach(function(lbl) {
+        lbl.style.pointerEvents = 'none';
+        if (lbl.querySelector('input').value === (answers[qid]||''))
+          lbl.classList.add('sel-choice');
+      });
+    } else {
+      var el = document.getElementById('fill-' + qid);
+      if (el) el.readOnly = true;
+    }
+  });
+}
+
+/* ══════════════════════════════════════
+   学生端：显示历史记录
+══════════════════════════════════════ */
+function renderStudentHistory(lessonId, list) {
+  var wrap = document.getElementById('history-' + lessonId);
+  var inner = document.getElementById('history-list-' + lessonId);
+  if (!wrap || !inner || list.length === 0) return;
+  wrap.style.display = 'block';
+  inner.innerHTML = list.map(function(rec) {
+    var rows = Object.keys(rec.answers).map(function(qid) {
+      var meta = QUIZ_META[qid];
+      var val  = rec.answers[qid] || '（未作答）';
+      return '<div class="history-ans-row"><span class="history-q">' + qid.replace('l2','Q').replace('q','') + '</span>'
+           + '<span class="history-v">' + escHtml(val) + '</span></div>';
+    }).join('');
+    return '<div class="history-item"><div class="history-time">🕐 ' + escHtml(rec.time) + '</div>' + rows + '</div>';
+  }).join('');
+}
+
+/* ══════════════════════════════════════
+   页面加载：恢复本地记录
+══════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', function() {
+  ['l2'].forEach(function(lid) {
+    var key  = 'my-records-' + lid;
+    var list = JSON.parse(localStorage.getItem(key) || '[]');
+    if (list.length > 0) {
+      var last = list[0];
+      var container = document.getElementById('quiz-' + lid);
+      if (container) {
+        lockQuiz(container, last.answers);
+        var btn = document.getElementById('submit-' + lid);
+        if (btn) { btn.disabled = true; btn.textContent = '✅ 已提交'; }
+        var status = document.getElementById('status-' + lid);
+        showStatus(status, 'success', '✅ 已提交！老师会查看你的答案～');
+        renderStudentHistory(lid, list);
+      }
+    }
+  });
+
+  // 教师端入口
+  if (window.location.search.indexOf('teacher=1') !== -1) {
+    var pw = prompt('请输入教师密码：');
+    if (pw === 'xuaner2025') {
+      document.getElementById('teacher-panel').classList.add('visible');
+      loadTeacherData();
+    } else if (pw !== null) {
+      alert('密码错误。');
+    }
+  }
+});
+
+/* ══════════════════════════════════════
+   教师端：从 Supabase 拉取所有提交
+══════════════════════════════════════ */
+function loadTeacherData() {
+  var content = document.getElementById('t-content');
+  content.innerHTML = '<div style="color:var(--muted);font-size:14px;padding:12px 0;">加载中…</div>';
+
+  sbFetch('/rest/v1/submissions?select=*&order=submitted_at.desc')
+  .then(function(res) { return res.json(); })
+  .then(function(rows) {
+    document.getElementById('t-refresh-time').textContent =
+      '最后刷新：' + new Date().toLocaleString('zh-CN');
+    document.getElementById('t-count').textContent = '共 ' + rows.length + ' 条提交';
+    renderTeacherTable(rows);
+  })
+  .catch(function(err) {
+    content.innerHTML = '<div style="color:var(--secondary);padding:12px 0;">加载失败：' + escHtml(err.message) + '</div>';
+  });
+}
+
+function renderTeacherTable(rows) {
+  if (rows.length === 0) {
+    document.getElementById('t-content').innerHTML =
+      '<div style="color:var(--muted);font-size:14px;padding:12px 0;">暂无提交记录。</div>';
+    return;
+  }
+
+  // 按 lesson_id 分组
+  var groups = {};
+  rows.forEach(function(r) {
+    var lid = r.lesson_id || 'unknown';
+    if (!groups[lid]) groups[lid] = [];
+    groups[lid].push(r);
+  });
+
+  var html = '';
+  Object.keys(groups).sort().forEach(function(lid) {
+    var meta = getQuizMetaForLesson(lid);
+    var qids = Object.keys(meta);
+    html += '<div class="t-lesson-section">';
+    html += '<div class="t-lesson-label">📚 ' + lessonLabel(lid) + ' — 随堂练习（共 ' + groups[lid].length + ' 次提交）</div>';
+    html += '<div class="t-table-wrap"><table>';
+    // 表头
+    html += '<thead><tr><th>#</th><th>提交时间</th><th>学生</th>';
+    qids.forEach(function(qid){ html += '<th>' + escHtml(meta[qid].label) + '</th>'; });
+    html += '<th>得分</th></tr></thead><tbody>';
+    // 数据行
+    groups[lid].forEach(function(row, idx) {
+      var ans = row.answers || {};
+      var correct = 0;
+      html += '<tr>';
+      html += '<td style="color:var(--muted);">' + (idx+1) + '</td>';
+      html += '<td style="white-space:nowrap;">' + fmtTime(row.submitted_at) + '</td>';
+      html += '<td>' + escHtml(row.student_name || '—') + '</td>';
+      qids.forEach(function(qid) {
+        var m      = meta[qid];
+        var userV  = (ans[qid] || '').trim();
+        var isOk   = m.accepts.some(function(a){ return a.toLowerCase() === userV.toLowerCase(); });
+        if (isOk) correct++;
+        var icon   = userV === '' ? '—' : (isOk ? '✅ ' : '❌ ');
+        var hint   = (!isOk && userV !== '') ? ' <span style="font-size:11px;color:var(--muted);">→ ' + escHtml(m.correct) + '</span>' : '';
+        html += '<td class="' + (userV===''?'':isOk?'t-correct':'t-wrong') + '">'
+              + icon + escHtml(userV || '（空）') + hint + '</td>';
+      });
+      var pct  = qids.length > 0 ? Math.round(correct/qids.length*100) : 0;
+      var cls  = pct >= 80 ? 'score-hi' : pct >= 60 ? 'score-mid' : 'score-lo';
+      html += '<td><span class="score-pill ' + cls + '">' + correct + '/' + qids.length + '</span></td>';
+      html += '</tr>';
+    });
+    html += '</tbody></table></div></div>';
+  });
+
+  document.getElementById('t-content').innerHTML = html;
+}
+
+function getQuizMetaForLesson(lid) {
+  // 扩展：后续课次可在此添加
+  if (lid === 'l2') return QUIZ_META;
+  return {};
+}
+function lessonLabel(lid) {
+  var map = { l2:'第2课 词汇课', l3:'第3课', l4:'第4课' };
+  return map[lid] || lid;
+}
+
+function clearAllData() {
+  if (!confirm('确认清空 Supabase 中所有提交记录？此操作不可恢复！')) return;
+  sbFetch('/rest/v1/submissions?id=gt.0', { method:'DELETE' })
+  .then(function() {
+    loadTeacherData();
+    alert('已清空。');
+  })
+  .catch(function(e){ alert('清空失败：' + e.message); });
+}
+
+/* ══════════════════════════════════════
+   工具函数
+══════════════════════════════════════ */
+function showStatus(el, type, msg) {
+  el.textContent = msg;
+  el.className   = 'quiz-status-msg ' + (type==='success'?'msg-success':type==='error'?'msg-error':'msg-loading');
+  el.style.display = 'block';
+}
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function fmtTime(iso) {
+  if (!iso) return '—';
+  return new Date(iso).toLocaleString('zh-CN', { timeZone:'Asia/Shanghai' });
+}
+
+/* 导航高亮 */
+var navLinks = document.querySelectorAll('.jump-btn[href^="#"]');
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting)
+      navLinks.forEach(function(a){
+        a.classList.toggle('active', a.getAttribute('href')==='#'+entry.target.id);
+      });
+  });
+}, { threshold:0.3, rootMargin:'-60px 0px 0px 0px' });
+['lesson-1','lesson-2','lesson-3','progress','grammar','goals'].forEach(function(id){
+  var el = document.getElementById(id); if(el) observer.observe(el);
+});
+</script>
+</body>
+</html>
