@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>教师端 · 萱儿英语作业查阅</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --primary:#6C63FF;--primary-light:#EEEDff;--secondary:#FF6B9D;
+      --green:#4CAF82;--orange:#FF8C42;--accent:#FFD93D;
+      --bg:#F0F0FF;--card:#FFF;--text:#2D2D3A;--muted:#8E8EA0;
+      --border:#E8E6FF;--shadow:0 4px 24px rgba(108,99,255,.10);--radius:14px;
+    }
+    body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+    /* ── 登录页 ── */
+    #login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
+    .login-card{background:var(--card);border-radius:20px;box-shadow:var(--shadow);padding:40px 36px;width:100%;max-width:400px;text-align:center}
+    .login-icon{font-size:52px;margin-bottom:12px}
+    .login-card h1{font-size:22px;font-weight:700;color:var(--text);margin-bottom:6px}
+    .login-card p{font-size:14px;color:var(--muted);margin-bottom:28px}
+    .login-input{width:100%;border:1.5px solid var(--border);border-radius:10px;padding:12px 16px;font-size:15px;outline:none;transition:border-color .2s;font-family:inherit;text-align:center;letter-spacing:2px}
+    .login-input:focus{border-color:var(--primary)}
+    .login-btn{margin-top:14px;width:100%;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;border:none;border-radius:20px;padding:12px;font-size:15px;font-weight:700;cursor:pointer;transition:opacity .2s}
+    .login-btn:hover{opacity:.88}
+    .login-err{margin-top:10px;color:var(--secondary);font-size:13px;display:none}
+
+    /* ── 主面板 ── */
+    #main-panel{display:none}
+    .top-bar{background:linear-gradient(135deg,#2D2D3A,#4A3FA0);color:#fff;padding:14px 24px;display:flex;align-items:center;gap:12px}
+    .top-bar h1{font-size:18px;font-weight:700}
+    .top-bar .sub{font-size:12px;opacity:.6;margin-left:4px}
+    .top-bar .spacer{flex:1}
+    .top-bar .refresh-btn{background:rgba(255,255,255,.15);border:none;color:#fff;border-radius:20px;padding:6px 16px;font-size:13px;font-weight:600;cursor:pointer}
+    .top-bar .refresh-btn:hover{background:rgba(255,255,255,.25)}
+
+    .content{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
+
+    /* ── 汇总卡片 ── */
+    .summary-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:24px}
+    .s-card{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);padding:16px 20px}
+    .s-card .s-num{font-size:28px;font-weight:800;color:var(--primary)}
+    .s-card .s-label{font-size:12px;color:var(--muted);margin-top:4px}
+
+    /* ── 课次区块 ── */
+    .lesson-section{margin-bottom:32px}
+    .lesson-label{font-size:16px;font-weight:700;color:var(--primary);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:8px}
+    .lesson-label .cnt{font-size:13px;font-weight:400;color:var(--muted);margin-left:4px}
+
+    /* ── 提交卡片（每次提交一张）── */
+    .sub-card{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);box-shadow:0 2px 12px rgba(108,99,255,.06);margin-bottom:12px;overflow:hidden}
+    .sub-card-header{display:flex;align-items:center;gap:12px;padding:12px 18px;background:#FAFAFE;border-bottom:1px solid var(--border)}
+    .sub-idx{width:28px;height:28px;border-radius:50%;background:var(--primary-light);color:var(--primary);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .sub-name{font-size:14px;font-weight:700}
+    .sub-time{font-size:12px;color:var(--muted);margin-left:4px}
+    .score-pill{margin-left:auto;border-radius:20px;padding:3px 14px;font-size:13px;font-weight:700}
+    .sp-hi{background:#E8F8F0;color:var(--green)}
+    .sp-mid{background:#FFFAEB;color:#B88B00}
+    .sp-lo{background:#FFF0F5;color:var(--secondary)}
+
+    .sub-card-body{padding:14px 18px;display:flex;flex-direction:column;gap:8px}
+    .q-row{display:flex;gap:10px;align-items:baseline;font-size:13px;padding:7px 10px;border-radius:8px}
+    .q-row.ok{background:#F0FBF5}
+    .q-row.ng{background:#FFF5F8}
+    .q-label{flex-shrink:0;width:100px;font-weight:600;color:var(--muted);font-size:12px}
+    .q-ans{flex:1;font-weight:600}
+    .q-ans.correct{color:var(--green)}
+    .q-ans.wrong{color:var(--secondary)}
+    .q-correct-hint{font-size:11px;color:var(--muted);margin-left:6px}
+
+    /* ── 空态 / 加载 ── */
+    .empty{text-align:center;padding:60px 20px;color:var(--muted);font-size:15px}
+    .loading{text-align:center;padding:60px 20px;color:var(--primary);font-size:15px}
+
+    /* ── 工具栏 ── */
+    .toolbar{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;align-items:center}
+    .t-btn{border:none;border-radius:20px;padding:8px 20px;font-size:13px;font-weight:600;cursor:pointer}
+    .t-btn-danger{background:#FFF0F5;color:var(--secondary);border:1.5px solid #FFD0DF}
+    .t-count{font-size:13px;color:var(--muted)}
+
+    @media(max-width:600px){.top-bar h1{font-size:15px}.summary-row{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+
+<!-- ══ 登录页 ══ -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-icon">🔐</div>
+    <h1>教师查阅入口</h1>
+    <p>萱儿英语暑期课程 · 作业管理</p>
+    <input class="login-input" type="password" id="pw-input" placeholder="请输入教师密码"
+           onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="login-btn" onclick="doLogin()">进入教师端 →</button>
+    <div class="login-err" id="login-err">密码错误，请重试</div>
+  </div>
+</div>
+
+<!-- ══ 主面板 ══ -->
+<div id="main-panel">
+  <div class="top-bar">
+    <h1>🎓 教师查阅 <span class="sub">· 萱儿英语暑期课程</span></h1>
+    <div class="spacer"></div>
+    <span id="refresh-time" style="font-size:12px;opacity:.6;margin-right:8px;"></span>
+    <button class="refresh-btn" onclick="loadData()">🔄 刷新</button>
+  </div>
+
+  <div class="content">
+    <div class="summary-row" id="summary-row">
+      <div class="s-card"><div class="s-num" id="s-total">—</div><div class="s-label">总提交次数</div></div>
+      <div class="s-card"><div class="s-num" id="s-avgpct">—</div><div class="s-label">平均正确率</div></div>
+      <div class="s-card"><div class="s-num" id="s-latest">—</div><div class="s-label">最近提交时间</div></div>
+    </div>
+
+    <div class="toolbar">
+      <button class="t-btn t-btn-danger" onclick="clearAll()">🗑 清空全部记录</button>
+      <span class="t-count" id="t-count"></span>
+    </div>
+
+    <div id="records-wrap">
+      <div class="loading">加载中…</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ══ Supabase ══ */
+var SB_URL='https://clpzexrqmdwouqviqxcm.supabase.co';
+var SB_KEY='sb_publishable_mwUA7bTbvHl96TmKq7wiaA_x1oBWPp1';
+var TEACHER_PW='xuaner2025';
+
+function sbFetch(path,opts){
+  return fetch(SB_URL+path,Object.assign({headers:{
+    'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,
+    'Content-Type':'application/json'
+  }},opts||{}));
+}
+
+/* ══ 题目元数据 ══ */
+var QUIZ_META={
+  l2:{
+    l2q1:{label:'Q1 现在完成时',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'is...finishing',B:'has...finished',C:'was...finishing',D:'did...finish'}},
+    l2q2:{label:'Q2 next week',correct:'C',accepts:['C'],type:'choice',
+      opts:{A:'in next week',B:'on next week',C:'next week',D:'at next week'}},
+    l2q3:{label:'Q3 classical/classic',correct:'A',accepts:['A'],type:'choice',
+      opts:{A:'classical',B:'classic'}},
+    l2q4:{label:'Q4 classic/classical',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'classical',B:'classic'}},
+    l2q5:{label:'Q5 填空(完成时)',correct:'have recently moved',
+      accepts:['have recently moved','has recently moved'],type:'fill'},
+    l2q6:{label:'Q6 填空(judge)',correct:'judge',accepts:['judge'],type:'fill'},
+    l2q7:{label:'Q7 填空(main topic)',correct:'main topic',accepts:['main topic'],type:'fill'}
+  },
+  l3:{
+    l3q1:{label:'Q1 成分:状语',correct:'C',accepts:['C'],type:'choice',
+      opts:{A:'定语',B:'补语',C:'状语',D:'表语'}},
+    l3q2:{label:'Q2 成分:定语',correct:'D',accepts:['D'],type:'choice',
+      opts:{A:'状语',B:'表语',C:'补语',D:'定语'}},
+    l3q3:{label:'Q3 成分:表语',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'宾语',B:'表语',C:'定语',D:'状语'}},
+    l3q4:{label:'Q4 成分:宾语',correct:'A',accepts:['A'],type:'choice',
+      opts:{A:'宾语',B:'主语',C:'表语',D:'定语'}},
+    l3q5:{label:'Q5 翻译理解',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'残疾人总是努力工作',B:'残疾人总是过着艰难的生活',C:'残疾人从不放弃生活',D:'残疾人的生活很幸福'}},
+    l3q6:{label:'Q6 seem用法',correct:'A',accepts:['A'],type:'choice',
+      opts:{A:'She seems tired today.',B:'She seems to tiredly today.',C:'She seems tiredly today.',D:'She seems very tiredly today.'}},
+    l3q7:{label:'Q7 find宾补',correct:'C',accepts:['C'],type:'choice',
+      opts:{A:'boringly',B:'to bore',C:'boring',D:'bored'}},
+    l3q8:{label:'Q8 have sth done',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'had her bike fixing',B:'had her bike fixed',C:'had fixed her bike',D:'had her bike to fix'}},
+    l3q9:{label:'Q9 out of curiosity',correct:'D',accepts:['D'],type:'choice',
+      opts:{A:'for curiosity',B:'with curiosity',C:'by curiosity',D:'out of curiosity'}},
+    l3q10:{label:'Q10 turn out+形容词',correct:'A',accepts:['A'],type:'choice',
+      opts:{A:'easier',B:'easily',C:'more easily',D:'easy'}},
+    l3q11:{label:'Q11 拼写:benefit',correct:'benefit',accepts:['benefit','benefits'],type:'fill'},
+    l3q12:{label:'Q12 拼写:congratulations',correct:'congratulations',accepts:['congratulations','congratulation'],type:'fill'},
+    l3q13:{label:'Q13 out of kindness',correct:'out of kindness',accepts:['out of kindness'],type:'fill'},
+    l3q14:{label:'Q14 find...interesting',correct:'interesting',accepts:['interesting'],type:'fill'},
+    l3q15:{label:'Q15 have sth done',correct:'repaired',accepts:['repaired'],type:'fill'},
+  }
+};
+
+function getLessonMeta(lid){return QUIZ_META[lid]||{};}
+function lessonName(lid){var m={l2:'第2课 · 词汇课',l3:'第3课 · 句子成分课',l4:'第4课'};return m[lid]||lid;}
+
+/* ══ 登录 ══ */
+function doLogin(){
+  var pw=document.getElementById('pw-input').value;
+  if(pw===TEACHER_PW){
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('main-panel').style.display='block';
+    loadData();
+  } else {
+    document.getElementById('login-err').style.display='block';
+    document.getElementById('pw-input').value='';
+    document.getElementById('pw-input').focus();
+  }
+}
+document.addEventListener('DOMContentLoaded',function(){
+  document.getElementById('pw-input').focus();
+});
+
+/* ══ 加载数据 ══ */
+function loadData(){
+  document.getElementById('records-wrap').innerHTML='<div class="loading">加载中…</div>';
+  document.getElementById('refresh-time').textContent='';
+
+  sbFetch('/rest/v1/submissions?select=*&order=submitted_at.desc')
+  .then(function(r){return r.json();})
+  .then(function(rows){
+    document.getElementById('refresh-time').textContent='刷新于 '+new Date().toLocaleString('zh-CN',{timeZone:'Asia/Shanghai'});
+    renderSummary(rows);
+    renderRecords(rows);
+    document.getElementById('t-count').textContent='共 '+rows.length+' 条记录';
+  })
+  .catch(function(e){
+    document.getElementById('records-wrap').innerHTML='<div class="empty">加载失败：'+escHtml(e.message)+'</div>';
+  });
+}
+
+/* ══ 汇总数据 ══ */
+function renderSummary(rows){
+  document.getElementById('s-total').textContent=rows.length;
+  if(rows.length===0){
+    document.getElementById('s-avgpct').textContent='—';
+    document.getElementById('s-latest').textContent='—';
+    return;
+  }
+  // 平均正确率
+  var totalPct=0,counted=0;
+  rows.forEach(function(r){
+    var meta=getLessonMeta(r.lesson_id);
+    var qids=Object.keys(meta);
+    if(qids.length===0)return;
+    var correct=calcCorrect(r.answers||{},meta);
+    totalPct+=correct/qids.length*100;
+    counted++;
+  });
+  document.getElementById('s-avgpct').textContent=counted>0?Math.round(totalPct/counted)+'%':'—';
+  // 最近提交
+  var latest=rows[0].submitted_at;
+  document.getElementById('s-latest').textContent=latest?fmtTime(latest).split(' ')[1]||'—':'—';
+}
+
+/* ══ 渲染记录 ══ */
+function renderRecords(rows){
+  if(rows.length===0){
+    document.getElementById('records-wrap').innerHTML='<div class="empty">暂无提交记录<br><span style="font-size:13px;margin-top:8px;display:block;">学生提交练习后会出现在这里</span></div>';
+    return;
+  }
+  // 按 lesson_id 分组
+  var groups={};
+  rows.forEach(function(r){
+    var lid=r.lesson_id||'other';
+    if(!groups[lid])groups[lid]=[];
+    groups[lid].push(r);
+  });
+  var html='';
+  Object.keys(groups).sort().forEach(function(lid){
+    var list=groups[lid];
+    var meta=getLessonMeta(lid);
+    var qids=Object.keys(meta);
+    html+='<div class="lesson-section">';
+    html+='<div class="lesson-label">📚 '+escHtml(lessonName(lid))+'<span class="cnt">（共 '+list.length+' 次提交）</span></div>';
+    list.forEach(function(row,idx){
+      var ans=row.answers||{};
+      var correct=calcCorrect(ans,meta);
+      var total=qids.length;
+      var pct=total>0?Math.round(correct/total*100):0;
+      var spClass=pct>=80?'sp-hi':pct>=60?'sp-mid':'sp-lo';
+      html+='<div class="sub-card">';
+      html+='<div class="sub-card-header">';
+      html+='<div class="sub-idx">'+(idx+1)+'</div>';
+      html+='<span class="sub-name">'+escHtml(row.student_name||'学生')+'</span>';
+      html+='<span class="sub-time">'+fmtTime(row.submitted_at)+'</span>';
+      html+='<span class="score-pill '+spClass+'">'+correct+'/'+total+' · '+pct+'%</span>';
+      html+='</div>';
+      html+='<div class="sub-card-body">';
+      qids.forEach(function(qid){
+        var m=meta[qid];
+        var userVal=(ans[qid]||'').trim();
+        var isOk=m.accepts.some(function(a){return a.toLowerCase()===userVal.toLowerCase();});
+        var displayVal=userVal===''?'（未作答）':userVal;
+        var hint=(!isOk&&userVal!=='')?' → 正确：'+m.correct:'';
+        html+='<div class="q-row '+(userVal===''?'':isOk?'ok':'ng')+'">';
+        html+='<span class="q-label">'+escHtml(m.label)+'</span>';
+        html+='<span class="q-ans '+(userVal===''?'':isOk?'correct':'wrong')+'">';
+        html+=(userVal===''?'':isOk?'✅ ':'❌ ')+escHtml(displayVal);
+        html+='</span>';
+        if(hint)html+='<span class="q-correct-hint">'+escHtml(hint)+'</span>';
+        html+='</div>';
+      });
+      html+='</div></div>';
+    });
+    html+='</div>';
+  });
+  document.getElementById('records-wrap').innerHTML=html;
+}
+
+function calcCorrect(ans,meta){
+  var c=0;
+  Object.keys(meta).forEach(function(qid){
+    var m=meta[qid];
+    var v=(ans[qid]||'').trim().toLowerCase();
+    if(m.accepts.some(function(a){return a.toLowerCase()===v;}))c++;
+  });
+  return c;
+}
+
+/* ══ 清空 ══ */
+function clearAll(){
+  if(!confirm('确认清空 Supabase 中所有提交记录？此操作不可恢复！'))return;
+  sbFetch('/rest/v1/submissions?id=gt.0',{method:'DELETE'})
+  .then(function(){loadData();})
+  .catch(function(e){alert('清空失败：'+e.message);});
+}
+
+/* ══ 工具 ══ */
+function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function fmtTime(iso){
+  if(!iso)return'—';
+  try{return new Date(iso).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai'});}catch(e){return iso;}
+}
+</script>
+</body>
+</html>
