@@ -179,11 +179,39 @@ var QUIZ_META={
     l3q13:{label:'Q13 out of kindness',correct:'out of kindness',accepts:['out of kindness'],type:'fill'},
     l3q14:{label:'Q14 find...interesting',correct:'interesting',accepts:['interesting'],type:'fill'},
     l3q15:{label:'Q15 have sth done',correct:'repaired',accepts:['repaired'],type:'fill'},
+  },
+  l4:{
+    l4q1:{label:'Q1 count数数',correct:'A',accepts:['A'],type:'choice',
+      opts:{A:'count',B:'matter',C:'count on',D:'count in'}},
+    l4q2:{label:'Q2 count on依靠',correct:'C',accepts:['C'],type:'choice',
+      opts:{A:'count',B:'matter',C:'count on',D:'count in'}},
+    l4q3:{label:'Q3 count in算进来',correct:'D',accepts:['D'],type:'choice',
+      opts:{A:'Count, on',B:'Matter, in',C:'Count, for',D:'Count, in'}},
+    l4q4:{label:'Q4 count有影响',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'counts on',B:'counts',C:'matters on',D:'counts in'}},
+    l4q5:{label:'Q5 matter不要紧',correct:'A',accepts:['A'],type:'choice',
+      opts:{A:'matter',B:'count',C:'count on',D:'matter on'}},
+    l4q6:{label:'Q6 matter名词',correct:'D',accepts:['D'],type:'choice',
+      opts:{A:'count',B:'problem',C:'thing',D:'matter'}},
+    l4q7:{label:'Q7 to be honest',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'Honest speaking',B:'To be honest',C:'Be honest',D:'To honest'}},
+    l4q8:{label:'Q8 同位语从句',correct:'A',accepts:['A'],type:'choice',
+      opts:{A:'同位语从句',B:'定语从句',C:'宾语从句',D:'主语从句'}},
+    l4q9:{label:'Q9 定语从句',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'同位语从句',B:'定语从句',C:'宾语从句',D:'状语从句'}},
+    l4q10:{label:'Q10 虚心使人进步',correct:'C',accepts:['C'],type:'choice',
+      opts:{A:'虚心使人落后，骄傲使人进步',B:'谦虚和骄傲都能让人进步',C:'虚心使人进步，骄傲使人落后',D:'人要谦虚才能成功'}},
+    l4q11:{label:'Q11 非谓语伴随',correct:'A',accepts:['A'],type:'choice',
+      opts:{A:'reading a book',B:'read a book',C:'to reading a book',D:'having read a book'}},
+    l4q12:{label:'Q12 count on填空',correct:'count on',accepts:['count on','counton','count  on'],type:'fill'},
+    l4q13:{label:'Q13 matter填空',correct:'matter',accepts:['matter','matters'],type:'fill'},
+    l4q14:{label:'Q14 honestly speaking',correct:'honestly speaking',accepts:['honestly speaking','honestlyspeaking'],type:'fill'},
+    l4q15:{label:'Q15 holding填空',correct:'holding',accepts:['holding','holding a'],type:'fill'}
   }
 };
 
 function getLessonMeta(lid){return QUIZ_META[lid]||{};}
-function lessonName(lid){var m={l2:'第2课 · 词汇课',l3:'第3课 · 句子成分课',l4:'第4课'};return m[lid]||lid;}
+function lessonName(lid){var m={l2:'第2课 · 词汇课',l3:'第3课 · 句子成分课',l4:'第4课 · 多义词辨析&从句进阶',l5:'第5课'};return m[lid]||lid;}
 
 /* ══ 登录 ══ */
 function doLogin(){
