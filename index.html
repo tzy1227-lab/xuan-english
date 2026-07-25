@@ -1276,6 +1276,23 @@
 
 <script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>
 <script>
+/* ══ 全局错误捕获（排查用，显示在页面顶部）══ */
+window.onerror=function(msg,src,line,col,err){
+  var d=document.createElement('div');
+  d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:99999;background:#c0392b;color:#fff;padding:10px 16px;font-size:13px;font-family:monospace;white-space:pre-wrap;word-break:break-all;';
+  d.textContent='❌ JS错误: '+msg+'\n行:'+line+' 列:'+col+'\n'+(err&&err.stack?err.stack:'');
+  document.body.appendChild(d);
+  return false;
+};
+window.addEventListener('unhandledrejection',function(e){
+  var d=document.createElement('div');
+  d.style.cssText='position:fixed;top:0;left:0;right:0;z-index:99999;background:#d35400;color:#fff;padding:10px 16px;font-size:13px;font-family:monospace;';
+  d.textContent='❌ Promise错误: '+(e.reason&&e.reason.message?e.reason.message:e.reason);
+  document.body.appendChild(d);
+});
+console.log('脚本开始加载...');
+console.log('lamejs类型:',typeof lamejs);
+console.log('crypto.subtle:',typeof crypto, typeof crypto.subtle);
 /* ══ Supabase ══ */
 var SB_URL = 'https://clpzexrqmdwouqviqxcm.supabase.co';
 var SB_KEY = 'sb_publishable_mwUA7bTbvHl96TmKq7wiaA_x1oBWPp1';
@@ -1520,7 +1537,7 @@ function showStatus(el,type,msg){
   el.className='quiz-status-msg '+(type==='success'?'msg-success':type==='error'?'msg-error':'msg-loading');
   el.style.display='block';
 }
-function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function escHtml(s){return String(s).replace(/&/g,'&').replace(/</g,'<').replace(/>/g,'>');}
 
 /* ══ 口语跟读：标准发音 + 录音 + 讯飞评测 ══ */
 var XF_APPID='6c3426c2';
@@ -1577,42 +1594,52 @@ function toggleRecord(lesson,idx){
   var tip=document.getElementById('rec-tip-'+key);
   var pb=document.getElementById('playback-'+key);
   var sc=document.getElementById('score-'+key);
-  if(!btn)return;
+  if(!btn){console.error('录音按钮不存在: rec-'+key);return;}
   if(recState[key]){stopRecording(key);return;}
-  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){
-    tip.textContent='⚠️ 当前环境不支持录音：浏览器无 mediaDevices（需 https 或 localhost 环境，本地双击打开的 file 协议不支持）。可先部署到 GitHub Pages 再测，或用本地服务器打开。';tip.style.color='var(--secondary)';tip.style.display='block';return;
-  }
-  if(window.isSecureContext===false){
-    tip.textContent='⚠️ 录音需安全环境（https/localhost）。本地 file:// 打开不支持，请部署到 GitHub Pages 后测试，或用本地服务器（python3 -m http.server）打开。';tip.style.color='var(--secondary)';tip.style.display='block';return;
-  }
-  if(sc)sc.classList.remove('show');
-  tip.style.display='block';
-  navigator.mediaDevices.getUserMedia({audio:{channelCount:1,sampleRate:16000}}).then(function(stream){
-    recState[key]=true;btn.classList.add('recording');btn.textContent='⏹ 停止录音';
-    tip.textContent='🔴 录音中…停止后自动评分';tip.style.color='var(--secondary)';
-    pcmStore[key]=[];
-    recStreams[key]=stream;
-    var ac=new(window.AudioContext||window.webkitAudioContext)();
-    audioCtxs[key]=ac;
-    var src=ac.createMediaStreamSource(stream);
-    var proc=ac.createScriptProcessor(4096,1,1);
-    procNodes[key]=proc;
-    var inRate=ac.sampleRate;
-    proc.onaudioprocess=function(e){
-      var input=e.inputBuffer.getChannelData(0);
-      var ratio=inRate/16000;
-      var len=Math.floor(input.length/ratio);
-      var int16=new Int16Array(len);
-      for(var j=0;j<len;j++){
-        var s=Math.max(-1,Math.min(1,input[Math.floor(j*ratio)]));
-        int16[j]=s<0?s*0x8000:s*0x7FFF;
+  if(tip){tip.style.display='block';tip.style.color='var(--primary)';tip.textContent='🔍 正在启动录音…';}
+  try{
+    if(!navigator.mediaDevices){
+      if(tip){tip.textContent='⚠️ 当前浏览器不支持录音（无 mediaDevices）。请用 Chrome 或 Safari 打开。';tip.style.color='var(--secondary)';}
+      return;
+    }
+    if(!navigator.mediaDevices.getUserMedia){
+      if(tip){tip.textContent='⚠️ 当前浏览器不支持录音（无 getUserMedia）。请用 Chrome 或 Safari 打开。';tip.style.color='var(--secondary)';}
+      return;
+    }
+    if(sc)sc.classList.remove('show');
+    if(tip){tip.textContent='🎤 请在弹窗中允许麦克风权限…';tip.style.color='var(--primary)';}
+    navigator.mediaDevices.getUserMedia({audio:{channelCount:1,sampleRate:16000},video:false}).then(function(stream){
+      recState[key]=true;
+      btn.classList.add('recording');btn.textContent='⏹ 停止录音';
+      if(tip){tip.textContent='🔴 录音中…读完后点停止自动评分';tip.style.color='var(--secondary)';}
+      pcmStore[key]=[];recStreams[key]=stream;
+      var ac=new(window.AudioContext||window.webkitAudioContext)();
+      audioCtxs[key]=ac;
+      var src=ac.createMediaStreamSource(stream);
+      var proc=ac.createScriptProcessor(4096,1,1);
+      procNodes[key]=proc;
+      var inRate=ac.sampleRate;
+      proc.onaudioprocess=function(e){
+        var input=e.inputBuffer.getChannelData(0);
+        var ratio=inRate/16000;
+        var len=Math.floor(input.length/ratio);
+        var int16=new Int16Array(len);
+        for(var j=0;j<len;j++){
+          var s=Math.max(-1,Math.min(1,input[Math.floor(j*ratio)]));
+          int16[j]=s<0?s*0x8000:s*0x7FFF;
+        }
+        pcmStore[key].push(int16);
+      };
+      src.connect(proc);proc.connect(ac.destination);
+    }).catch(function(err){
+      if(tip){
+        tip.textContent='⚠️ 麦克风获取失败：'+err.name+'（'+(err.message||'')+'）。请检查浏览器设置允许麦克风权限后重试。';
+        tip.style.color='var(--secondary)';
       }
-      pcmStore[key].push(int16);
-    };
-    src.connect(proc);proc.connect(ac.destination);
-  }).catch(function(){
-    tip.textContent='⚠️ 无法访问麦克风，请允许麦克风权限';tip.style.color='var(--secondary)';
-  });
+    });
+  }catch(ex){
+    if(tip){tip.textContent='⚠️ 录音启动异常：'+ex.name+'（'+(ex.message||'')+'）';tip.style.color='var(--secondary)';}
+  }
 }
 
 function stopRecording(key){
@@ -1692,7 +1719,7 @@ async function startEvaluate(key,mp3Data){
   };
   function sendNext(){
     if(offset>=mp3Bytes.length){
-      if(!sentEnd){sentEnd=true;ws.send(JSON.stringify({header:{app_id:XF_APPID,status:2},payload:{data:{status:2,audio:''}}]));}
+      if(!sentEnd){sentEnd=true;ws.send(JSON.stringify({header:{app_id:XF_APPID,status:2},payload:{data:{status:2,audio:''}}}));}
       return;
     }
     var chunk=mp3Bytes.subarray(offset,Math.min(offset+frameSize,mp3Bytes.length));
