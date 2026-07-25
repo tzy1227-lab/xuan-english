@@ -61,14 +61,18 @@
     /* 课次卡片 */
     .lesson-grid{display:flex;flex-direction:column;gap:20px}
     .lesson-card{border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;box-shadow:0 2px 12px rgba(108,99,255,.07)}
-    .lesson-header{display:flex;align-items:center;gap:12px;padding:14px 20px;color:#fff}
+    .lesson-header{display:flex;align-items:center;gap:12px;padding:14px 20px;color:#fff;cursor:pointer;transition:filter .2s}
+    .lesson-header:hover{filter:brightness(1.08)}
     .lesson-header.done{background:linear-gradient(135deg,#4CAF82,#45C7A0)}
     .lesson-header.future{background:linear-gradient(135deg,#B0B0C8,#C8C8DA)}
     .lesson-num{font-size:20px;font-weight:800;width:42px;height:42px;border-radius:10px;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0}
     .lesson-meta h3{font-size:16px;font-weight:700}
     .lesson-meta p{font-size:12px;opacity:.85;margin-top:2px}
     .lesson-badge{margin-left:auto;background:rgba(255,255,255,.25);border-radius:20px;padding:4px 12px;font-size:12px;font-weight:600;white-space:nowrap}
-    .lesson-body{padding:16px 20px;background:#fff}
+    .lesson-arrow{font-size:14px;opacity:.7;transition:transform .3s;flex-shrink:0;margin-left:8px}
+    .lesson-card.expanded .lesson-arrow{transform:rotate(90deg)}
+    .lesson-body{padding:16px 20px;background:#fff;max-height:0;overflow:hidden;transition:max-height .4s ease;padding-top:0;padding-bottom:0}
+    .lesson-card.expanded .lesson-body{max-height:99999px;padding:16px 20px}
     .ls-block{margin-bottom:16px}
     .ls-block:last-child{margin-bottom:0}
     .ls-title{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
@@ -183,11 +187,11 @@
 
 <nav class="jump-nav">
   <a class="jump-btn highlight" href="#lessons">📚 直达课次详情</a>
-  <a class="jump-btn" href="#lesson-1">第1课</a>
-  <a class="jump-btn" href="#lesson-2">第2课</a>
-  <a class="jump-btn" href="#lesson-3">第3课</a>
-  <a class="jump-btn" href="#lesson-4">第4课</a>
-  <a class="jump-btn" href="#lesson-5">第5课</a>
+  <a class="jump-btn" onclick="expandLessonById('lesson-1');location.href='#lesson-1'">第1课</a>
+  <a class="jump-btn" onclick="expandLessonById('lesson-2');location.href='#lesson-2'">第2课</a>
+  <a class="jump-btn" onclick="expandLessonById('lesson-3');location.href='#lesson-3'">第3课</a>
+  <a class="jump-btn" onclick="expandLessonById('lesson-4');location.href='#lesson-4'">第4课</a>
+  <a class="jump-btn" onclick="expandLessonById('lesson-5');location.href='#lesson-5'">第5课</a>
   <a class="jump-btn" href="#progress">📊 进度</a>
   <a class="jump-btn" href="#grammar">📐 语法点</a>
   <a class="jump-btn" href="#goals">🎯 目标</a>
@@ -210,10 +214,10 @@
 
     <!-- 第1课 -->
     <div id="lesson-1" class="lesson-card scroll-anchor">
-      <div class="lesson-header done">
+      <div class="lesson-header done" onclick="toggleLesson(this)">
         <div class="lesson-num">1</div>
         <div class="lesson-meta"><h3>摸底课</h3><p>7月11日 · 周一</p></div>
-        <div class="lesson-badge">✅ 已完成</div>
+        <div class="lesson-badge">✅ 已完成</div><div class="lesson-arrow">▶</div>
       </div>
       <div class="lesson-body">
         <div class="ls-block">
@@ -237,10 +241,10 @@
 
     <!-- 第2课 -->
     <div id="lesson-2" class="lesson-card scroll-anchor">
-      <div class="lesson-header done">
+      <div class="lesson-header done" onclick="toggleLesson(this)">
         <div class="lesson-num">2</div>
         <div class="lesson-meta"><h3>词汇课</h3><p>7月12日 · 周二</p></div>
-        <div class="lesson-badge">✅ 已完成</div>
+        <div class="lesson-badge">✅ 已完成</div><div class="lesson-arrow">▶</div>
       </div>
       <div class="lesson-body">
 
@@ -412,10 +416,10 @@
 
     <!-- 第3课 -->
     <div id="lesson-3" class="lesson-card scroll-anchor">
-      <div class="lesson-header done">
+      <div class="lesson-header done" onclick="toggleLesson(this)">
         <div class="lesson-num">3</div>
         <div class="lesson-meta"><h3>句子成分课</h3><p>7月20日 · 周日</p></div>
-        <div class="lesson-badge">✅ 已完成</div>
+        <div class="lesson-badge">✅ 已完成</div><div class="lesson-arrow">▶</div>
       </div>
       <div class="lesson-body">
 
@@ -700,10 +704,10 @@
 
     <!-- 第4课 -->
     <div id="lesson-4" class="lesson-card scroll-anchor">
-      <div class="lesson-header done">
+      <div class="lesson-header done" onclick="toggleLesson(this)">
         <div class="lesson-num">4</div>
         <div class="lesson-meta"><h3>多义词辨析 &amp; 从句进阶</h3><p>7月22日 · 周二</p></div>
-        <div class="lesson-badge">✅ 已完成</div>
+        <div class="lesson-badge">✅ 已完成</div><div class="lesson-arrow">▶</div>
       </div>
       <div class="lesson-body">
 
@@ -982,10 +986,10 @@
 
     <!-- 第5课 -->
     <div id="lesson-5" class="lesson-card scroll-anchor">
-      <div class="lesson-header done">
+      <div class="lesson-header done" onclick="toggleLesson(this)">
         <div class="lesson-num">5</div>
         <div class="lesson-meta"><h3>单词测试 &amp; 影子跟读</h3><p>7月23日 · 周三</p></div>
-        <div class="lesson-badge">✅ 已完成</div>
+        <div class="lesson-badge">✅ 已完成</div><div class="lesson-arrow">▶</div>
       </div>
       <div class="lesson-body">
 
@@ -1539,6 +1543,17 @@ function showStatus(el,type,msg){
 }
 function escHtml(s){return String(s).replace(/&/g,'&').replace(/</g,'<').replace(/>/g,'>');}
 
+/* 课次折叠展开 */
+function toggleLesson(headerEl){
+  var card=headerEl.closest(".lesson-card");
+  if(!card)return;
+  card.classList.toggle("expanded");
+}
+function expandLessonById(id){
+  var el=document.getElementById(id);
+  if(el){var card=el.closest(".lesson-card")||el;card.classList.add("expanded");}
+}
+
 /* ══ 口语跟读：标准发音 + 录音 + 讯飞评测 ══ */
 var XF_APPID='6c3426c2';
 var XF_APIKEY='9446ea50043fc774b6d9eb79';
@@ -1744,7 +1759,17 @@ async function startEvaluate(key,mp3Data){
       }
     }catch(e){}
   };
-  ws.onerror=function(){if(tip){tip.textContent='⚠️ 连接评测服务失败，请检查网络';tip.style.color='var(--secondary)';}};
+  ws.onerror=function(ev){
+    var errMsg='未知错误';
+    if(ev&&ev.message){errMsg=ev.message;}
+    if(tip){tip.textContent='⚠️ 连接评测服务失败：'+errMsg+'。可能原因：①鉴权失败(检查APIKey/Secret) ②网络限制 ③讯飞服务未开通。请截图控制台报错反馈老师。';tip.style.color='var(--secondary)';}
+  };
+  ws.onclose=function(ev){
+    if(tip&&tip.textContent.indexOf('⚠️')===0&&tip.textContent.indexOf('评分完成')===-1){
+      tip.textContent='⚠️ 连接已关闭(code:'+ev.code+')。如未显示评分，可能是鉴权失败或音频格式问题，请反馈老师。';
+      tip.style.color='var(--secondary)';
+    }
+  };
 }
 
 function showScore(key,res){
