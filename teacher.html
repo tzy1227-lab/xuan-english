@@ -207,11 +207,35 @@ var QUIZ_META={
     l4q13:{label:'Q13 matter填空',correct:'matter',accepts:['matter','matters'],type:'fill'},
     l4q14:{label:'Q14 honestly speaking',correct:'honestly speaking',accepts:['honestly speaking','honestlyspeaking'],type:'fill'},
     l4q15:{label:'Q15 holding填空',correct:'holding',accepts:['holding','holding a'],type:'fill'}
+  },
+  l5:{
+    l5q1:{label:'Q1 拼写:instruct',correct:'instruct',accepts:['instruct','instructs'],type:'fill'},
+    l5q2:{label:'Q2 recently现在完成时',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'read',B:'have read',C:'am reading',D:'was reading'}},
+    l5q3:{label:'Q3 classic典型(加难度)',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'classical',B:'classic',C:'classically',D:'class'}},
+    l5q4:{label:'Q4 count有影响(加难度)',correct:'D',accepts:['D'],type:'choice',
+      opts:{A:'counts on',B:'counts in',C:'matters on',D:'counts'}},
+    l5q5:{label:'Q5 matter主语从句(加难度)',correct:'A',accepts:['A'],type:'choice',
+      opts:{A:'What matters most is your health.',B:'What count most is your health.',C:'What mattering most is your health.',D:'What is mattering most is your health.'}},
+    l5q6:{label:'Q6 同位语从句(加难度)',correct:'A',accepts:['A'],type:'choice',
+      opts:{A:'同位语从句',B:'定语从句',C:'宾语从句',D:'表语从句'}},
+    l5q7:{label:'Q7 turn out to be(加难度)',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'turned out being a trap',B:'turned out to be a trap',C:'turned out a trap',D:'turned out being trap'}},
+    l5q8:{label:'Q8 have sth done(加难度)',correct:'C',accepts:['C'],type:'choice',
+      opts:{A:'finish',B:'finishing',C:'finished',D:'to finish'}},
+    l5q9:{label:'Q9 judge祈使句(加难度)',correct:'D',accepts:['D'],type:'choice',
+      opts:{A:"Don't judge to people by appearance.",B:"Don't judge people by their appearance, will you?",C:"Don't judging people by appearance.",D:"Don't judge people by their appearance."}},
+    l5q10:{label:'Q10 excited分词(加难度)',correct:'excited',accepts:['excited'],type:'fill'},
+    l5q11:{label:'Q11 out of respect(加难度)',correct:'out of respect',accepts:['out of respect'],type:'fill'},
+    l5q12:{label:'Q12 lag behind(加难度)',correct:'lag behind',accepts:['lag behind','lagbehind'],type:'fill'},
+    l5q13:{label:'Q13 turn out that(辨析)',correct:'A',accepts:['A'],type:'choice',
+      opts:{A:'It turned out that he was right.',B:'It turned out that he being right.',C:'It turned out he being right.',D:'It turned out to being right.'}}
   }
 };
 
 function getLessonMeta(lid){return QUIZ_META[lid]||{};}
-function lessonName(lid){var m={l2:'第2课 · 词汇课',l3:'第3课 · 句子成分课',l4:'第4课 · 多义词辨析&从句进阶',l5:'第5课'};return m[lid]||lid;}
+function lessonName(lid){var m={l2:'第2课 · 词汇课',l3:'第3课 · 句子成分课',l4:'第4课 · 多义词辨析&从句进阶',l5:'第5课 · 单词测试&影子跟读',l6:'第6课'};return m[lid]||lid;}
 
 /* ══ 登录 ══ */
 function doLogin(){

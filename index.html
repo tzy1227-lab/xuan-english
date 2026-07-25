@@ -21,6 +21,26 @@
     .hero p{margin-top:6px;font-size:14px;opacity:.85;position:relative}
     .hero-tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px;position:relative}
     .hero-tag{background:rgba(255,255,255,.22);backdrop-filter:blur(6px);border-radius:20px;padding:4px 12px;font-size:12px;font-weight:500}
+    /* 书写提醒横幅 */
+    .writing-banner{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#FFF3E0,#FFE0B2);border-bottom:2px solid #FFB74D;padding:12px 20px}
+    .wb-icon{font-size:26px;flex-shrink:0}
+    .wb-text{display:flex;flex-direction:column;gap:2px}
+    .wb-text strong{font-size:14px;color:#B85C00}
+    .wb-text span{font-size:13px;color:#8B5A2B;line-height:1.5}
+    /* 口语跟读录音 */
+    .speak-item{background:#FAFAFE;border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:12px}
+    .speak-item:last-child{margin-bottom:0}
+    .speak-text{font-size:15px;font-weight:600;color:var(--text);line-height:1.6;margin-bottom:4px}
+    .speak-translation{font-size:12px;color:var(--muted);margin-bottom:10px}
+    .speak-controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+    .speak-btn{border:none;border-radius:20px;padding:7px 16px;font-size:13px;font-weight:600;cursor:pointer;transition:opacity .2s}
+    .speak-btn:hover{opacity:.85}
+    .speak-play{background:var(--primary-light);color:var(--primary);border:1.5px solid var(--border)}
+    .speak-rec{background:#FFF0F5;color:var(--secondary);border:1.5px solid #FFD0DF}
+    .speak-rec.recording{background:var(--secondary);color:#fff;animation:pulse 1.2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+    .speak-playback{width:100%;margin-top:6px;display:none}
+    .speak-tip{font-size:11px;color:var(--muted);margin-top:4px}
     /* 导航 */
     .jump-nav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:2px solid var(--border);padding:10px 16px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
     .jump-nav::-webkit-scrollbar{display:none}
@@ -32,6 +52,8 @@
     .section-title{font-size:17px;font-weight:700;color:var(--primary);margin:32px 0 12px;display:flex;align-items:center;gap:8px}
     .section-title::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--border),transparent);border-radius:2px}
     .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;border:1px solid var(--border)}
+    /* 作业展示框 */
+    .hw-box{background:#F0F8FF;border-left:4px solid #4A90D9;border-radius:0 10px 10px 0;padding:12px 16px;font-size:13px;color:#1A4A77;line-height:1.8}
     /* 进度 */
     .progress-bar-wrap{background:var(--border);border-radius:99px;height:12px;overflow:hidden;margin-top:6px}
     .progress-bar{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--primary),var(--secondary))}
@@ -108,6 +130,14 @@
     .h-v{color:var(--text)}
     .h-ok{color:var(--green);font-weight:600}
     .h-ng{color:var(--secondary);font-weight:600}
+    /* 评分结果 */
+    .speak-score{margin-top:8px;display:none;border-radius:10px;padding:12px 14px;background:linear-gradient(135deg,#F0FBF5,#E8F8F0);border:1.5px solid var(--green)}
+    .speak-score.show{display:block}
+    .score-total{font-size:20px;font-weight:800;color:var(--green);margin-bottom:6px}
+    .score-detail{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+    .score-item{background:#fff;border-radius:8px;padding:5px 10px;font-size:12px}
+    .score-item span{color:var(--muted);margin-right:4px}
+    .score-item b{color:var(--text)}
     /* 语法卡片 */
     .grammar-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
     .grammar-card{background:#FAFAFE;border-radius:12px;border:1px solid var(--border);padding:14px 16px;position:relative;overflow:hidden}
@@ -135,10 +165,19 @@
   <h1>英语暑期课程</h1>
   <p>沪教版牛津英语 · 新初三</p>
   <div class="hero-tags">
-    <span class="hero-tag">📅 一周三次</span>
+    <span class="hero-tag">📅 一周五次</span>
     <span class="hero-tag">⏱ 120分钟/课</span>
     <span class="hero-tag">🎯 冲刺中考</span>
     <span class="hero-tag">🗣 70% 英文授课</span>
+  </div>
+</div>
+
+<!-- 书写提醒横幅 -->
+<div class="writing-banner">
+  <span class="wb-icon">✍️</span>
+  <div class="wb-text">
+    <strong>书写注意</strong>
+    <span>目前书写偏斜体，要写正一点。这个暑假书写时都要注意这个情况！</span>
   </div>
 </div>
 
@@ -148,6 +187,7 @@
   <a class="jump-btn" href="#lesson-2">第2课</a>
   <a class="jump-btn" href="#lesson-3">第3课</a>
   <a class="jump-btn" href="#lesson-4">第4课</a>
+  <a class="jump-btn" href="#lesson-5">第5课</a>
   <a class="jump-btn" href="#progress">📊 进度</a>
   <a class="jump-btn" href="#grammar">📐 语法点</a>
   <a class="jump-btn" href="#goals">🎯 目标</a>
@@ -159,10 +199,10 @@
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
       <span style="font-weight:700;font-size:15px;">已完成课次</span>
-      <span style="font-weight:800;font-size:20px;color:var(--primary);">3 <span style="font-size:14px;color:var(--muted);font-weight:400;">/ 预计 30+ 课</span></span>
+      <span style="font-weight:800;font-size:20px;color:var(--primary);">5 <span style="font-size:14px;color:var(--muted);font-weight:400;">/ 预计 30+ 课</span></span>
     </div>
-    <div class="progress-bar-wrap"><div class="progress-bar" style="width:13.3%"></div></div>
-    <div class="progress-label"><span>课程开始 7.11</span><span>已上 4 课 🎉</span></div>
+    <div class="progress-bar-wrap"><div class="progress-bar" style="width:16.7%"></div></div>
+    <div class="progress-label"><span>课程开始 7.11</span><span>已上 5 课 🎉</span></div>
   </div>
 
   <div id="lessons" class="scroll-anchor section-title">📚 课次详情</div>
@@ -940,6 +980,271 @@
       </div>
     </div>
 
+    <!-- 第5课 -->
+    <div id="lesson-5" class="lesson-card scroll-anchor">
+      <div class="lesson-header done">
+        <div class="lesson-num">5</div>
+        <div class="lesson-meta"><h3>单词测试 &amp; 影子跟读</h3><p>7月23日 · 周三</p></div>
+        <div class="lesson-badge">✅ 已完成</div>
+      </div>
+      <div class="lesson-body">
+
+        <div class="ls-block">
+          <div class="ls-title">📋 课堂内容</div>
+          <div class="tag-wrap">
+            <span class="tag tag-purple">单词测试</span>
+            <span class="tag tag-green">影子跟读练习</span>
+            <span class="tag tag-green">instruct 词汇精讲</span>
+          </div>
+        </div>
+
+        <!-- 课后作业（展示模块，下节课讲评） -->
+        <div class="ls-block">
+          <div class="ls-title">📝 课后作业（下节课讲评测试）</div>
+          <div class="hw-box">
+            <div style="margin-bottom:6px;font-weight:600;">📌 本课作业：</div>
+            <div style="margin-bottom:4px;">1. 完成一套综合卷子（老师已发）</div>
+            <div>2. 每日背诵 20 个新单词，持续累积</div>
+          </div>
+        </div>
+
+        <!-- 复习要点：turn out 用法（Q7/Q13考点补充） -->
+        <div class="ls-block">
+          <div class="ls-title">📖 复习要点 — turn out 的用法</div>
+          <div class="kp-card">
+            <div class="kp-header">turn out 后面加什么？</div>
+            <div class="kp-body">
+              <p>turn out 意为"结果是、证明是"，是系动词用法，后面可以接三种形式：</p>
+              <ul>
+                <li><strong>turn out + 形容词</strong> — The exam <u>turned out</u> easy.（考试结果很简单）</li>
+                <li><strong>turn out + to be + 名词/形容词</strong> — It <u>turned out to be</u> a trap.（结果是个陷阱）</li>
+                <li><strong>turn out + that 从句</strong> — It <u>turned out</u> that he was right.（结果他是对的）</li>
+              </ul>
+              <div class="kp-example">
+                ✅ The party turned out <u>to be</u> wonderful.<br>
+                ❌ The party turned out <s>being</s> wonderful.（turn out 后不接 doing）<br>
+                ❌ The party turned out <s>a wonderful</s>.（直接加名词需用 to be）
+              </div>
+              <div class="kp-tip">💡 口诀：turn out + 形容词最常见；加名词/短语用 to be；不接 doing/being。</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 随堂练习 -->
+        <div class="ls-block">
+          <div class="ls-title">✏️ 随堂练习（共13题 + 口语跟读）</div>
+          <div class="quiz-container" id="quiz-l5">
+
+            <!-- Q1 填空 · instruct -->
+            <div class="quiz-item" data-qid="l5q1" data-type="fill" data-answer="instruct" data-accept="instruct|instructs">
+              <div class="quiz-q">Q1. 看中文写英文（单词拼写）：<br>教授 / 指示 → ___</div>
+              <input class="quiz-fill" id="fill-l5q1" placeholder="请在此输入答案" autocomplete="off">
+              <div class="quiz-feedback" id="fb-l5q1"></div>
+            </div>
+
+            <!-- Q2 选择 · recently现在完成时（第2课） -->
+            <div class="quiz-item" data-qid="l5q2" data-type="choice" data-answer="B">
+              <div class="quiz-q">Q2. I ___ ___ three books recently.（我最近已经读了三本书。）</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l5q2" value="A"><span>A. read</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q2" value="B"><span>B. have read</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q2" value="C"><span>C. am reading</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q2" value="D"><span>D. was reading</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l5q2"></div>
+            </div>
+
+            <!-- Q3 选择 · classic/classical（第2课，加难度） -->
+            <div class="quiz-item" data-qid="l5q3" data-type="choice" data-answer="B">
+              <div class="quiz-q">Q3. This is a ___ mistake that many beginners make.（这是一个典型的错误）</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l5q3" value="A"><span>A. classical</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q3" value="B"><span>B. classic</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q3" value="C"><span>C. classically</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q3" value="D"><span>D. class</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l5q3"></div>
+            </div>
+
+            <!-- Q4 选择 · count（第4课，加难度） -->
+            <div class="quiz-item" data-qid="l5q4" data-type="choice" data-answer="D">
+              <div class="quiz-q">Q4. In this team, every member's contribution ___, no matter how small.</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l5q4" value="A"><span>A. counts on</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q4" value="B"><span>B. counts in</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q4" value="C"><span>C. matters on</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q4" value="D"><span>D. counts</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l5q4"></div>
+            </div>
+
+            <!-- Q5 选择 · matter（第4课，加难度） -->
+            <div class="quiz-item" data-qid="l5q5" data-type="choice" data-answer="A">
+              <div class="quiz-q">Q5. 选出表达正确的句子：</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l5q5" value="A"><span>A. What matters most is your health.</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q5" value="B"><span>B. What count most is your health.</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q5" value="C"><span>C. What mattering most is your health.</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q5" value="D"><span>D. What is mattering most is your health.</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l5q5"></div>
+            </div>
+
+            <!-- Q6 选择 · 从句辨析（第4课，加难度） -->
+            <div class="quiz-item" data-qid="l5q6" data-type="choice" data-answer="A">
+              <div class="quiz-q">Q6. 判断从句类型：<br>The fact <u>that he lied</u> surprised everyone.</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l5q6" value="A"><span>A. 同位语从句</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q6" value="B"><span>B. 定语从句</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q6" value="C"><span>C. 宾语从句</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q6" value="D"><span>D. 表语从句</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l5q6"></div>
+            </div>
+
+            <!-- Q7 选择 · 系动词（第3课，加难度） -->
+            <div class="quiz-item" data-qid="l5q7" data-type="choice" data-answer="B">
+              <div class="quiz-q">Q7. 选出正确句子：</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l5q7" value="A"><span>A. It turned out being a trap.</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q7" value="B"><span>B. It turned out to be a trap.</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q7" value="C"><span>C. It turned out a trap.</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q7" value="D"><span>D. It turned out being trap.</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l5q7"></div>
+            </div>
+
+            <!-- Q8 选择 · have结构（第3课，加难度） -->
+            <div class="quiz-item" data-qid="l5q8" data-type="choice" data-answer="C">
+              <div class="quiz-q">Q8. The boss had the report ___ before Friday.（老板让人在周五前完成报告）</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l5q8" value="A"><span>A. finish</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q8" value="B"><span>B. finishing</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q8" value="C"><span>C. finished</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q8" value="D"><span>D. to finish</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l5q8"></div>
+            </div>
+
+            <!-- Q9 选择 · judge（第2课，加难度） -->
+            <div class="quiz-item" data-qid="l5q9" data-type="choice" data-answer="D">
+              <div class="quiz-q">Q9. 选出正确句子：</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l5q9" value="A"><span>A. Don't judge to people by appearance.</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q9" value="B"><span>B. Don't judge people by their appearance, will you?</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q9" value="C"><span>C. Don't judging people by appearance.</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q9" value="D"><span>D. Don't judge people by their appearance.</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l5q9"></div>
+            </div>
+
+            <!-- Q10 填空 · 非谓语（第4课，加难度） -->
+            <div class="quiz-item" data-qid="l5q10" data-type="fill" data-answer="excited" data-accept="excited">
+              <div class="quiz-q">Q10. 用括号内词的正确形式填空（表状态）：<br>___ about the news, she called everyone she knew.（excite）</div>
+              <input class="quiz-fill" id="fill-l5q10" placeholder="请在此输入答案" autocomplete="off">
+              <div class="quiz-feedback" id="fb-l5q10"></div>
+            </div>
+
+            <!-- Q11 填空 · out of（第3课，加难度，提示 respect） -->
+            <div class="quiz-item" data-qid="l5q11" data-type="fill" data-answer="out of respect" data-accept="out of respect">
+              <div class="quiz-q">Q11. 填入正确短语（出于尊重，"尊重"英文是 respect）：<br>He stood up ___ ___ ___ for the old man.</div>
+              <input class="quiz-fill" id="fill-l5q11" placeholder="请在此输入答案" autocomplete="off">
+              <div class="quiz-feedback" id="fb-l5q11"></div>
+            </div>
+
+            <!-- Q12 填空 · whereas句子（第4课） -->
+            <div class="quiz-item" data-qid="l5q12" data-type="fill" data-answer="lag behind" data-accept="lag behind|lagbehind">
+              <div class="quiz-q">Q12. 根据课堂句子填空：<br>Modesty helps one go forward, whereas conceit makes one ___ ___.（落后）</div>
+              <input class="quiz-fill" id="fill-l5q12" placeholder="请在此输入答案" autocomplete="off">
+              <div class="quiz-feedback" id="fb-l5q12"></div>
+            </div>
+
+            <!-- Q13 选择 · turn out 辨析（复习要点配套，加难度） -->
+            <div class="quiz-item" data-qid="l5q13" data-type="choice" data-answer="A">
+              <div class="quiz-q">Q13. 选出正确句子（turn out 用法辨析）：</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l5q13" value="A"><span>A. It turned out that he was right.</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q13" value="B"><span>B. It turned out that he being right.</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q13" value="C"><span>C. It turned out he being right.</span></label>
+                <label class="quiz-choice"><input type="radio" name="l5q13" value="D"><span>D. It turned out to being right.</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l5q13"></div>
+            </div>
+
+            <div style="margin-top:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+              <button class="quiz-submit-btn" id="submit-l5" onclick="submitQuiz('l5')">📝 提交答案</button>
+              <button class="quiz-reset-btn" id="reset-l5" onclick="resetQuiz('l5')" style="display:none;">🔄 重新作答</button>
+            </div>
+            <div class="quiz-status-msg" id="status-l5"></div>
+            <div class="history-wrap" id="history-l5">
+              <div class="history-title">📋 我的历史作答</div>
+              <div id="history-list-l5"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 口语跟读（短文朗读） -->
+        <div class="ls-block">
+          <div class="ls-title">🗣 短文朗读练习</div>
+          <div class="speak-tip" style="margin-bottom:10px;">下面是一篇连贯的小故事，分4段。建议先通读全文，再逐段点「🔊 标准发音」跟读，录完回放对比。</div>
+
+          <div class="speak-item">
+            <div class="speak-text">I will never forget the day that changed my life. When I was twelve, I failed an important exam. My teacher told me that failure is just a step on the road to success.</div>
+            <div class="speak-translation">我永远不会忘记改变我人生的那一天。十二岁时，我考试失利。老师告诉我，失败只是通往成功路上的一步。（定语从句 · 状语从句 · 宾语从句）</div>
+            <div class="speak-controls">
+              <button class="speak-btn speak-play" onclick="playSpeak(0)">🔊 标准发音</button>
+              <button class="speak-btn speak-rec" id="rec-5-0" onclick="toggleRecord(5,0)">🎙️ 开始录音</button>
+            </div>
+            <audio id="std-audio-5-0" src="audio/speak-5-0.mp3" preload="auto" controls style="width:100%;margin-top:6px;"></audio>
+              <audio class="speak-playback" id="playback-5-0" controls></audio>
+            <div class="speak-tip" id="rec-tip-5-0"></div>
+            <div class="speak-score" id="score-5-0"></div>
+          </div>
+
+          <div class="speak-item">
+            <div class="speak-text">What surprised me most was her kindness. She gave me a book that she had read as a child. The book was about a girl who never gave up, no matter how hard things got.</div>
+            <div class="speak-translation">最让我惊讶的是她的善意。她给了我一本她小时候读过的书。那本书讲的是一个无论多难都不放弃的女孩。（主语从句 · 定语从句 · 让步状语从句）</div>
+            <div class="speak-controls">
+              <button class="speak-btn speak-play" onclick="playSpeak(1)">🔊 标准发音</button>
+              <button class="speak-btn speak-rec" id="rec-5-1" onclick="toggleRecord(5,1)">🎙️ 开始录音</button>
+            </div>
+            <audio id="std-audio-5-1" src="audio/speak-5-1.mp3" preload="auto" controls style="width:100%;margin-top:6px;"></audio>
+              <audio class="speak-playback" id="playback-5-1" controls></audio>
+            <div class="speak-tip" id="rec-tip-5-1"></div>
+            <div class="speak-score" id="score-5-1"></div>
+          </div>
+
+          <div class="speak-item">
+            <div class="speak-text">I still remember the words that she wrote on the first page. She said that the girl in the story had become a great scientist. It turned out that the story was based on a real person.</div>
+            <div class="speak-translation">我仍然记得她写在第一页的话。她说故事里的女孩后来成了一位伟大的科学家。结果证明，这个故事是根据真实人物改编的。（定语从句 · 宾语从句 · turn out that 从句）</div>
+            <div class="speak-controls">
+              <button class="speak-btn speak-play" onclick="playSpeak(2)">🔊 标准发音</button>
+              <button class="speak-btn speak-rec" id="rec-5-2" onclick="toggleRecord(5,2)">🎙️ 开始录音</button>
+            </div>
+            <audio id="std-audio-5-2" src="audio/speak-5-2.mp3" preload="auto" controls style="width:100%;margin-top:6px;"></audio>
+              <audio class="speak-playback" id="playback-5-2" controls></audio>
+            <div class="speak-tip" id="rec-tip-5-2"></div>
+            <div class="speak-score" id="score-5-2"></div>
+          </div>
+
+          <div class="speak-item">
+            <div class="speak-text">From then on, I believed that hard work always pays off. Whenever I feel like giving up, I think of the girl who never quit. What matters most is not where you start, but how far you are willing to go.</div>
+            <div class="speak-translation">从那以后，我相信努力总会有回报。每当我想放弃时，我就会想起那个从不放弃的女孩。最重要的不是你从哪里开始，而是你愿意走多远。（宾语从句 · 状语从句 · 定语从句 · matter 主语从句）</div>
+            <div class="speak-controls">
+              <button class="speak-btn speak-play" onclick="playSpeak(3)">🔊 标准发音</button>
+              <button class="speak-btn speak-rec" id="rec-5-3" onclick="toggleRecord(5,3)">🎙️ 开始录音</button>
+            </div>
+            <audio id="std-audio-5-3" src="audio/speak-5-3.mp3" preload="auto" controls style="width:100%;margin-top:6px;"></audio>
+              <audio class="speak-playback" id="playback-5-3" controls></audio>
+            <div class="speak-tip" id="rec-tip-5-3"></div>
+            <div class="speak-score" id="score-5-3"></div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
   </div>
 
   <div id="grammar" class="scroll-anchor section-title">📐 已涉及语法点</div>
@@ -966,9 +1271,10 @@
 
 <div class="footer">
   <p>本页面由老师课后更新 · 内容仅供本人及家长参考</p>
-  <p style="margin-top:6px;">最后更新：2025年7月22日</p>
+  <p style="margin-top:6px;">最后更新：2025年7月23日</p>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>
 <script>
 /* ══ Supabase ══ */
 var SB_URL = 'https://clpzexrqmdwouqviqxcm.supabase.co';
@@ -1055,7 +1361,33 @@ var QUIZ_META = {
   l4q14:{label:'Q14',correct:'honestly speaking',accepts:['honestly speaking','honestlyspeaking'],type:'fill',
     exp:{ok:'✅ 正确！honestly speaking = 老实说，固定短语，与 to be honest 同义。',ng:'❌ 错误。"老实说" = honestly speaking（固定短语）。'}},
   l4q15:{label:'Q15',correct:'holding',accepts:['holding','holding a'],type:'fill',
-    exp:{ok:'✅ 正确！holding（现在分词）表主动伴随状态，男孩主动抱着蛋糕。',ng:'❌ 错误。伴随状态用现在分词（主动），hold → holding。'}}
+    exp:{ok:'✅ 正确！holding（现在分词）表主动伴随状态，男孩主动抱着蛋糕。',ng:'❌ 错误。伴随状态用现在分词（主动），hold → holding。'}},
+  l5q1:{label:'Q1',correct:'instruct',accepts:['instruct','instructs'],type:'fill',
+    exp:{ok:'✅ 正确！instruct = 教授/指示，注意拼写 in-struct。',ng:'❌ 错误。"教授/指示" = instruct（注意拼写：in-struct）。'}},
+  l5q2:{label:'Q2',correct:'B',accepts:['B'],type:'choice',
+    exp:{ok:'✅ 正确！recently 是现在完成时标志词，结构 have + 过去分词 read。',ng:'❌ 错误。recently 是现在完成时标志词，应用 have read（have + 过去分词）。'}},
+  l5q3:{label:'Q3',correct:'B',accepts:['B'],type:'choice',
+    exp:{ok:'✅ 正确！classic 表示"典型的"，a classic mistake = 典型错误，日常用法。',ng:'❌ 错误。"典型的"用 classic（日常经典/典型），classical 专属古典领域。'}},
+  l5q4:{label:'Q4',correct:'D',accepts:['D'],type:'choice',
+    exp:{ok:'✅ 正确！counts 不及物，意为"有影响/算数"，every member\'s contribution counts = 每个成员的贡献都算数。',ng:'❌ 错误。此处 count 表示"有影响"（不及物），正确答案 D: counts。'}},
+  l5q5:{label:'Q5',correct:'A',accepts:['A'],type:'choice',
+    exp:{ok:'✅ 正确！What matters most = 最重要的是，matter 作动词，主语从句谓语用单数 matters。',ng:'❌ 错误。主语从句 What（单数）+ matters（三单），matter 不用于进行时，正确答案 A。'}},
+  l5q6:{label:'Q6',correct:'A',accepts:['A'],type:'choice',
+    exp:{ok:'✅ 正确！he lied 结构完整（lied 不及物），that 不作成分，是同位语从句，解释 fact 的内容。',ng:'❌ 错误。从句 he lied 结构完整，that 不作成分，是同位语从句，正确答案 A。'}},
+  l5q7:{label:'Q7',correct:'B',accepts:['B'],type:'choice',
+    exp:{ok:'✅ 正确！turn out to be + 名词 = 结果是…，turn out 后接 to be 再加名词。',ng:'❌ 错误。turn out 后接名词时需用 turn out to be，正确答案 B。'}},
+  l5q8:{label:'Q8',correct:'C',accepts:['C'],type:'choice',
+    exp:{ok:'✅ 正确！have sth done = 让人完成某事（被动），report 被完成用 finished。',ng:'❌ 错误。have sth done（被动），报告被完成 = finished，正确答案 C。'}},
+  l5q9:{label:'Q9',correct:'D',accepts:['D'],type:'choice',
+    exp:{ok:'✅ 正确！Don\'t judge people by their appearance. 祈使句否定，judge 用原形。',ng:'❌ 错误。祈使句否定用 Don\'t + 动词原形，正确答案 D。'}},
+  l5q10:{label:'Q10',correct:'excited',accepts:['excited'],type:'fill',
+    exp:{ok:'✅ 正确！excited（过去分词）作状语表状态，"她很兴奋"主动感受用 -ed。',ng:'❌ 错误。表人的感受用过去分词 excited（兴奋的），exciting 表令人兴奋的（物）。'}},
+  l5q11:{label:'Q11',correct:'out of respect',accepts:['out of respect'],type:'fill',
+    exp:{ok:'✅ 正确！out of respect = 出于尊重，out of + 名词表动机。',ng:'❌ 错误。"出于尊重" = out of respect（固定搭配）。'}},
+  l5q12:{label:'Q12',correct:'lag behind',accepts:['lag behind','lagbehind'],type:'fill',
+    exp:{ok:'✅ 正确！lag behind = 落后，固定搭配。',ng:'❌ 错误。"落后" = lag behind（固定搭配）。'}},
+  l5q13:{label:'Q13',correct:'A',accepts:['A'],type:'choice',
+    exp:{ok:'✅ 正确！turn out + that 从句，that 后接完整句子 he was right。',ng:'❌ 错误。turn out + that 从句，that 后接完整句子，正确答案 A。'}}
 };
 
 /* ══ 提交 ══ */
@@ -1143,7 +1475,7 @@ function renderHistory(lessonId,list){
 
 /* ══ 页面加载恢复 ══ */
 document.addEventListener('DOMContentLoaded',function(){
-  ['l2','l3','l4'].forEach(function(lid){
+  ['l2','l3','l4','l5'].forEach(function(lid){
     var list=JSON.parse(localStorage.getItem('my-records-'+lid)||'[]');
     if(list.length===0)return;
     var last=list[0];
@@ -1190,6 +1522,221 @@ function showStatus(el,type,msg){
 }
 function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
+/* ══ 口语跟读：标准发音 + 录音 + 讯飞评测 ══ */
+var XF_APPID='6c3426c2';
+var XF_APIKEY='9446ea50043fc774b6d9eb79';
+var XF_APISECRET='bed420afc61c4200e6c6fd643c017329';
+var XF_HOST='cn-east-1.ws-api.xf-yun.com';
+var XF_PATH='/v1/private/s8e098720';
+var SPEAK_TEXTS={
+  '5-0':'I will never forget the day that changed my life. When I was twelve, I failed an important exam. My teacher told me that failure is just a step on the road to success.',
+  '5-1':'What surprised me most was her kindness. She gave me a book that she had read as a child. The book was about a girl who never gave up, no matter how hard things got.',
+  '5-2':'I still remember the words that she wrote on the first page. She said that the girl in the story had become a great scientist. It turned out that the story was based on a real person.',
+  '5-3':'From then on, I believed that hard work always pays off. Whenever I feel like giving up, I think of the girl who never quit. What matters most is not where you start, but how far you are willing to go.'
+};
+var recState={};var audioCtxs={};var procNodes={};var pcmStore={};var recStreams={};
+
+function playSpeak(idx){
+  var audio=document.getElementById('std-audio-5-'+idx);
+  var tip=document.getElementById('rec-tip-5-'+idx);
+  if(!audio){
+    if(tip){tip.textContent='⚠️ 找不到音频元素 std-audio-5-'+idx;tip.style.color='var(--secondary)';tip.style.display='block';}
+    return;
+  }
+  audio.volume=1;
+  audio.muted=false;
+  try{audio.currentTime=0;}catch(e){}
+  if(tip){tip.textContent='▶️ 播放中…';tip.style.color='var(--primary)';tip.style.display='block';}
+  var p=audio.play();
+  if(p&&typeof p.then==='function'){
+    p.then(function(){
+      if(tip){tip.textContent='🔊 正在播放标准音';tip.style.color='var(--green)';}
+    }).catch(function(e){
+      if(tip){tip.textContent='⚠️ 播放失败：'+e.name+'（'+(e.message||'')+'）路径：'+audio.src;tip.style.color='var(--secondary)';}
+    });
+  }else{
+    if(tip){tip.textContent='🔊 正在播放标准音';tip.style.color='var(--green)';}
+  }
+}
+
+async function buildXfWsUrl(){
+  var date=new Date().toUTCString();
+  var sigOrigin='host: '+XF_HOST+'\ndate: '+date+'\nGET '+XF_PATH+' HTTP/1.1';
+  var enc=new TextEncoder();
+  var key=await crypto.subtle.importKey('raw',enc.encode(XF_APISECRET),{name:'HMAC',hash:'SHA-256'},false,['sign']);
+  var sig=await crypto.subtle.sign('HMAC',key,enc.encode(sigOrigin));
+  var sigB64=btoa(String.fromCharCode.apply(null,new Uint8Array(sig)));
+  var authOrigin='api_key="'+XF_APIKEY+'", algorithm="hmac-sha256", headers="host date request-line", signature="'+sigB64+'"';
+  var auth=btoa(authOrigin);
+  return 'wss://'+XF_HOST+XF_PATH+'?host='+encodeURIComponent(XF_HOST)+'&date='+encodeURIComponent(date)+'&authorization='+encodeURIComponent(auth);
+}
+
+function toggleRecord(lesson,idx){
+  var key=lesson+'-'+idx;
+  var btn=document.getElementById('rec-'+key);
+  var tip=document.getElementById('rec-tip-'+key);
+  var pb=document.getElementById('playback-'+key);
+  var sc=document.getElementById('score-'+key);
+  if(!btn)return;
+  if(recState[key]){stopRecording(key);return;}
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){
+    tip.textContent='⚠️ 当前环境不支持录音：浏览器无 mediaDevices（需 https 或 localhost 环境，本地双击打开的 file 协议不支持）。可先部署到 GitHub Pages 再测，或用本地服务器打开。';tip.style.color='var(--secondary)';tip.style.display='block';return;
+  }
+  if(window.isSecureContext===false){
+    tip.textContent='⚠️ 录音需安全环境（https/localhost）。本地 file:// 打开不支持，请部署到 GitHub Pages 后测试，或用本地服务器（python3 -m http.server）打开。';tip.style.color='var(--secondary)';tip.style.display='block';return;
+  }
+  if(sc)sc.classList.remove('show');
+  tip.style.display='block';
+  navigator.mediaDevices.getUserMedia({audio:{channelCount:1,sampleRate:16000}}).then(function(stream){
+    recState[key]=true;btn.classList.add('recording');btn.textContent='⏹ 停止录音';
+    tip.textContent='🔴 录音中…停止后自动评分';tip.style.color='var(--secondary)';
+    pcmStore[key]=[];
+    recStreams[key]=stream;
+    var ac=new(window.AudioContext||window.webkitAudioContext)();
+    audioCtxs[key]=ac;
+    var src=ac.createMediaStreamSource(stream);
+    var proc=ac.createScriptProcessor(4096,1,1);
+    procNodes[key]=proc;
+    var inRate=ac.sampleRate;
+    proc.onaudioprocess=function(e){
+      var input=e.inputBuffer.getChannelData(0);
+      var ratio=inRate/16000;
+      var len=Math.floor(input.length/ratio);
+      var int16=new Int16Array(len);
+      for(var j=0;j<len;j++){
+        var s=Math.max(-1,Math.min(1,input[Math.floor(j*ratio)]));
+        int16[j]=s<0?s*0x8000:s*0x7FFF;
+      }
+      pcmStore[key].push(int16);
+    };
+    src.connect(proc);proc.connect(ac.destination);
+  }).catch(function(){
+    tip.textContent='⚠️ 无法访问麦克风，请允许麦克风权限';tip.style.color='var(--secondary)';
+  });
+}
+
+function stopRecording(key){
+  recState[key]=false;
+  var btn=document.getElementById('rec-'+key);
+  var tip=document.getElementById('rec-tip-'+key);
+  var pb=document.getElementById('playback-'+key);
+  if(btn){btn.classList.remove('recording');btn.textContent='🎙️ 重新录音';}
+  if(tip){tip.textContent='⏳ 正在评分，请稍候…';tip.style.color='var(--primary)';}
+  if(procNodes[key]){try{procNodes[key].disconnect();}catch(e){}procNodes[key]=null;}
+  if(audioCtxs[key]){try{audioCtxs[key].close();}catch(e){}audioCtxs[key]=null;}
+  if(recStreams[key]){recStreams[key].getTracks().forEach(function(t){t.stop();});}
+  var chunks=pcmStore[key]||[];
+  if(chunks.length===0){if(tip){tip.textContent='⚠️ 录音太短，请重新录制';tip.style.color='var(--secondary)';}return;}
+  var totalLen=0;chunks.forEach(function(c){totalLen+=c.length;});
+  var pcm=new Int16Array(totalLen);var off=0;
+  chunks.forEach(function(c){pcm.set(c,off);off+=c.length;});
+  if(pb){var wavBlob=pcmToWav(pcm,16000);pb.src=URL.createObjectURL(wavBlob);pb.style.display='block';}
+  var mp3Data=encodeMp3(pcm);
+  startEvaluate(key,mp3Data);
+}
+
+function encodeMp3(pcm){
+  if(typeof lamejs==='undefined')return null;
+  var enc=new lamejs.Mp3Encoder(1,16000,64);
+  var block=1152;var data=[];
+  for(var i=0;i<pcm.length;i+=block){
+    var chunk=pcm.subarray(i,i+block);
+    var buf=enc.encodeBuffer(chunk);
+    if(buf.length>0)data.push(new Uint8Array(buf));
+  }
+  var end=enc.flush();if(end.length>0)data.push(new Uint8Array(end));
+  return data;
+}
+
+function pcmToWav(pcm,sampleRate){
+  var buf=new ArrayBuffer(44+pcm.length*2);
+  var view=new DataView(buf);
+  var ws=function(off,s){for(var i=0;i<s.length;i++)view.setUint8(off+i,s.charCodeAt(i));};
+  ws(0,'RIFF');view.setUint32(4,36+pcm.length*2,true);ws(8,'WAVE');
+  ws(12,'fmt ');view.setUint32(16,16,true);view.setUint16(20,1,true);view.setUint16(22,1,true);
+  view.setUint32(24,sampleRate,true);view.setUint32(28,sampleRate*2,true);view.setUint16(32,2,true);view.setUint16(34,16,true);
+  ws(36,'data');view.setUint32(40,pcm.length*2,true);
+  var off=44;for(var i=0;i<pcm.length;i++,off+=2)view.setInt16(off,pcm[i],true);
+  return new Blob([buf],{type:'audio/wav'});
+}
+
+function b64FromBytes(bytes){
+  var binary='';var len=bytes.length;var ch=8192;
+  for(var i=0;i<len;i+=ch){binary+=String.fromCharCode.apply(null,bytes.subarray(i,Math.min(i+ch,len)));}
+  return btoa(binary);
+}
+
+async function startEvaluate(key,mp3Data){
+  var tip=document.getElementById('rec-tip-'+key);
+  var sc=document.getElementById('score-'+key);
+  if(!mp3Data||mp3Data.length===0){if(tip){tip.textContent='⚠️ 音频处理失败，请重试';tip.style.color='var(--secondary)';}return;}
+  var refText=SPEAK_TEXTS[key]||'';
+  if(!refText){if(tip){tip.textContent='⚠️ 未找到参考文本';tip.style.color='var(--secondary)';}return;}
+  var wsUrl;
+  try{wsUrl=await buildXfWsUrl();}catch(e){if(tip){tip.textContent='⚠️ 鉴权失败：'+e.message;tip.style.color='var(--secondary)';}return;}
+  var ws=new WebSocket(wsUrl);
+  ws.binaryType='arraybuffer';
+  var allMp3=[];mp3Data.forEach(function(d){for(var i=0;i<d.length;i++)allMp3.push(d[i]);});
+  var mp3Bytes=new Uint8Array(allMp3);
+  var frameSize=1280;var offset=0;var sentEnd=false;
+  ws.onopen=function(){
+    var first=mp3Bytes.subarray(0,Math.min(frameSize,mp3Bytes.length));
+    ws.send(JSON.stringify({
+      header:{app_id:XF_APPID,status:0},
+      parameter:{st:{lang:'en',core:'para',refText:refText,scale:100,precision:0,
+        result:{encoding:'utf8',compress:'raw',format:'json'}}},
+      payload:{data:{encoding:'lame',sample_rate:16000,channels:1,bit_depth:16,status:0,audio:b64FromBytes(first)}}
+    }));
+    offset=first.length;
+    sendNext();
+  };
+  function sendNext(){
+    if(offset>=mp3Bytes.length){
+      if(!sentEnd){sentEnd=true;ws.send(JSON.stringify({header:{app_id:XF_APPID,status:2},payload:{data:{status:2,audio:''}}]));}
+      return;
+    }
+    var chunk=mp3Bytes.subarray(offset,Math.min(offset+frameSize,mp3Bytes.length));
+    ws.send(JSON.stringify({
+      header:{app_id:XF_APPID,status:1},
+      payload:{data:{encoding:'lame',sample_rate:16000,channels:1,bit_depth:16,status:1,audio:b64FromBytes(chunk)}}
+    }));
+    offset+=chunk.length;
+    setTimeout(sendNext,40);
+  }
+  ws.onmessage=function(ev){
+    try{
+      var data=JSON.parse(ev.data);
+      if(data.header&&data.header.code!==0){
+        if(tip){tip.textContent='⚠️ 评测错误('+data.header.code+')：'+(data.header.message||'');tip.style.color='var(--secondary)';}
+        ws.close();return;
+      }
+      if(data.payload&&data.payload.result&&data.payload.result.text){
+        var txt=atob(data.payload.result.text);
+        var res=JSON.parse(txt);
+        if(res.eof===1||res.result){showScore(key,res);ws.close();}
+      }
+    }catch(e){}
+  };
+  ws.onerror=function(){if(tip){tip.textContent='⚠️ 连接评测服务失败，请检查网络';tip.style.color='var(--secondary)';}};
+}
+
+function showScore(key,res){
+  var tip=document.getElementById('rec-tip-'+key);
+  var sc=document.getElementById('score-'+key);
+  if(tip){tip.textContent='✅ 评分完成！';tip.style.color='var(--green)';}
+  if(!sc)return;
+  var r=res.result||res;
+  var overall=r.overall!==undefined?r.overall:'—';
+  var html='<div class="score-total">📊 总分：'+overall+'</div><div class="score-detail">';
+  if(r.pronunciation!==undefined)html+='<div class="score-item"><span>发音</span><b>'+r.pronunciation+'</b></div>';
+  if(r.fluency!==undefined)html+='<div class="score-item"><span>流利度</span><b>'+r.fluency+'</b></div>';
+  if(r.integrity!==undefined)html+='<div class="score-item"><span>完整度</span><b>'+r.integrity+'</b></div>';
+  if(r.rhythm!==undefined)html+='<div class="score-item"><span>韵律</span><b>'+r.rhythm+'</b></div>';
+  if(r.speed!==undefined)html+='<div class="score-item"><span>语速</span><b>'+r.speed+'</b></div>';
+  html+='</div>';
+  sc.innerHTML=html;sc.classList.add('show');
+}
+
 /* ══ 重置答题 ══ */
 function resetQuiz(lessonId){
   var container=document.getElementById('quiz-'+lessonId);
@@ -1235,7 +1782,7 @@ var obs=new IntersectionObserver(function(entries){
     if(e.isIntersecting)navLinks.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id);});
   });
 },{threshold:0.3,rootMargin:'-60px 0px 0px 0px'});
-['lesson-1','lesson-2','lesson-3','lesson-4','progress','grammar','goals'].forEach(function(id){var el=document.getElementById(id);if(el)obs.observe(el);});
+['lesson-1','lesson-2','lesson-3','lesson-4','lesson-5','progress','grammar','goals'].forEach(function(id){var el=document.getElementById(id);if(el)obs.observe(el);});
 </script>
 </body>
 </html>
