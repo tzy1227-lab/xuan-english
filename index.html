@@ -192,6 +192,7 @@
   <a class="jump-btn" onclick="expandLessonById('lesson-3');location.href='#lesson-3'">第3课</a>
   <a class="jump-btn" onclick="expandLessonById('lesson-4');location.href='#lesson-4'">第4课</a>
   <a class="jump-btn" onclick="expandLessonById('lesson-5');location.href='#lesson-5'">第5课</a>
+  <a class="jump-btn" onclick="expandLessonById('lesson-6');location.href='#lesson-6'">第6课</a>
   <a class="jump-btn" href="#progress">📊 进度</a>
   <a class="jump-btn" href="#grammar">📐 语法点</a>
   <a class="jump-btn" href="#goals">🎯 目标</a>
@@ -203,10 +204,10 @@
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
       <span style="font-weight:700;font-size:15px;">已完成课次</span>
-      <span style="font-weight:800;font-size:20px;color:var(--primary);">5 <span style="font-size:14px;color:var(--muted);font-weight:400;">/ 预计 30+ 课</span></span>
+      <span style="font-weight:800;font-size:20px;color:var(--primary);">6 <span style="font-size:14px;color:var(--muted);font-weight:400;">/ 预计 30+ 课</span></span>
     </div>
-    <div class="progress-bar-wrap"><div class="progress-bar" style="width:16.7%"></div></div>
-    <div class="progress-label"><span>课程开始 7.11</span><span>已上 5 课 🎉</span></div>
+    <div class="progress-bar-wrap"><div class="progress-bar" style="width:20%"></div></div>
+    <div class="progress-label"><span>课程开始 7.11</span><span>已上 6 课 🎉</span></div>
   </div>
 
   <div id="lessons" class="scroll-anchor section-title">📚 课次详情</div>
@@ -1249,14 +1250,239 @@
       </div>
     </div>
 
-  </div>
+    <!-- 第6课 -->
+    <div id="lesson-6" class="lesson-card scroll-anchor">
+      <div class="lesson-header done" onclick="toggleLesson(this)">
+        <div class="lesson-num">6</div>
+        <div class="lesson-meta"><h3>让步状语从句 &amp; 短语精讲</h3><p>7月27日 · 周日</p></div>
+        <div class="lesson-badge">✅ 已完成</div><div class="lesson-arrow">▶</div>
+      </div>
+      <div class="lesson-body">
 
-  <div id="grammar" class="scroll-anchor section-title">📐 已涉及语法点</div>
+        <div class="ls-block">
+          <div class="ls-title">📋 课堂内容</div>
+          <div class="tag-wrap">
+            <span class="tag tag-purple">no matter + 疑问词用法</span>
+            <span class="tag tag-green">whatever/whoever 辨析</span>
+            <span class="tag tag-green">leave an impression on 搭配</span>
+            <span class="tag tag-purple">no matter how 特殊用法</span>
+          </div>
+        </div>
+
+        <!-- 知识点 -->
+        <div class="ls-block">
+          <div class="ls-title">📖 复习要点 — no matter + 疑问词 &amp; 重点短语</div>
+
+          <div class="kp-card">
+            <div class="kp-header">① no matter + 疑问词 — 让步状语从句</div>
+            <div class="kp-body">
+              <p><strong>no matter + 疑问词</strong> 表示"无论……"，引导<strong>让步状语从句</strong>：</p>
+              <ul>
+                <li><strong>no matter what</strong> = whatever 无论什么</li>
+                <li><strong>no matter who</strong> = whoever 无论谁</li>
+                <li><strong>no matter how</strong> = however 无论如何</li>
+                <li><strong>no matter when</strong> = whenever 无论何时</li>
+                <li><strong>no matter where</strong> = wherever 无论哪里</li>
+                <li><strong>no matter which</strong> = whichever 无论哪个</li>
+              </ul>
+              <div class="kp-example">
+                ✅ <u>No matter what</u> happens, I'll be there.<br>
+                ✅ <u>No matter who</u> you are, you must follow the rules.<br>
+                ✅ <u>No matter how</u> hard it is, don't give up.
+              </div>
+              <div class="kp-tip">💡 口诀：no matter + 疑问词 = 无论……，引导让步状语从句，主句仍可独立成句。</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">② no matter what vs whatever — 关键辨析</div>
+            <div class="kp-body">
+              <p>两者都可以引导<strong>让步状语从句</strong>，可以互换。但<strong>只有 whatever/whoever/whichever 能引导名词性从句</strong>（主语从句/宾语从句）！</p>
+              <ul>
+                <li><strong>让步状语从句</strong>（两者均可）：<br>
+                  <u>No matter what</u> you say, I won't change my mind. = <u>Whatever</u> you say, I won't change my mind.</li>
+                <li><strong>名词性从句</strong>（只能用 whatever）：<br>
+                  <u>Whatever</u> you choose is fine with me.（主语从句）<br>
+                  ❌ <s>No matter what</s> you choose is fine with me.（错误！）</li>
+              </ul>
+              <div class="kp-tip">💡 判断法：去掉从句后，主句是否结构完整？完整→状语从句（两者均可）；不完整→名词性从句（只能用 whatever）。</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">③ no matter how + 形容词/副词 — 特殊用法</div>
+            <div class="kp-body">
+              <p><strong>no matter how</strong> 后面直接接<strong>形容词或副词</strong>（不接名词），表示"无论多么……"：</p>
+              <ul>
+                <li>No matter how <strong>hard</strong> you try...（无论你多努力）</li>
+                <li>No matter how <strong>difficult</strong> the problem is...（无论问题多难）</li>
+                <li>No matter how <strong>fast</strong> he runs...（无论他跑多快）</li>
+              </ul>
+              <div class="kp-example">
+                ✅ No matter how <u>busy</u> she is, she always calls her mom.<br>
+                ✅ No matter how <u>quickly</u> you work, quality comes first.
+              </div>
+              <div class="kp-tip">💡 no matter how + adj./adv. + 主语 + 谓语；注意 how 后面紧跟形容词/副词！</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">④ leave an impression on sb — 给某人留下印象</div>
+            <div class="kp-body">
+              <p><strong>leave an impression on sb</strong> = 给某人留下印象，注意介词用 <strong>on</strong>：</p>
+              <ul>
+                <li>leave a <strong>deep</strong> impression on sb — 给某人留下深刻印象</li>
+                <li>leave a <strong>good</strong> impression on sb — 给某人留下好印象</li>
+                <li>leave a <strong>lasting</strong> impression on sb — 给某人留下持久印象</li>
+              </ul>
+              <div class="kp-example">
+                ✅ Her speech left a deep <u>impression on</u> the audience.<br>
+                ❌ Her speech left a deep <s>impression to</s> the audience.<br>
+                ❌ Her speech left a deep <s>impression for</s> the audience.
+              </div>
+              <div class="kp-tip">💡 介词用 on！搭配：make an impression on sb / leave an impression on sb。</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 随堂练习 -->
+        <div class="ls-block">
+          <div class="ls-title">✏️ 随堂练习（共10题）</div>
+          <div class="quiz-container" id="quiz-l6">
+
+            <!-- Q1 选择 · no matter what -->
+            <div class="quiz-item" data-qid="l6q1" data-type="choice" data-answer="A">
+              <div class="quiz-q">Q1. ___ happens, I will always be your friend.</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l6q1" value="A"><span>A. No matter what</span></label>
+                <label class="quiz-choice"><input type="radio" name="l6q1" value="B"><span>B. No matter how</span></label>
+                <label class="quiz-choice"><input type="radio" name="l6q1" value="C"><span>C. No matter who</span></label>
+                <label class="quiz-choice"><input type="radio" name="l6q1" value="D"><span>D. No matter when</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l6q1"></div>
+            </div>
+
+            <!-- Q2 选择 · no matter how + adj -->
+            <div class="quiz-item" data-qid="l6q2" data-type="choice" data-answer="B">
+              <div class="quiz-q">Q2. ___ difficult the problem is, we should never give up.</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l6q2" value="A"><span>A. No matter what</span></label>
+                <label class="quiz-choice"><input type="radio" name="l6q2" value="B"><span>B. No matter how</span></label>
+                <label class="quiz-choice"><input type="radio" name="l6q2" value="C"><span>C. No matter which</span></label>
+                <label class="quiz-choice"><input type="radio" name="l6q2" value="D"><span>D. No matter who</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l6q2"></div>
+            </div>
+
+            <!-- Q3 选择 · no matter who -->
+            <div class="quiz-item" data-qid="l6q3" data-type="choice" data-answer="C">
+              <div class="quiz-q">Q3. ___ you ask, the answer will be the same.</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l6q3" value="A"><span>A. No matter what</span></label>
+                <label class="quiz-choice"><input type="radio" name="l6q3" value="B"><span>B. No matter where</span></label>
+                <label class="quiz-choice"><input type="radio" name="l6q3" value="C"><span>C. No matter who</span></label>
+                <label class="quiz-choice"><input type="radio" name="l6q3" value="D"><span>D. No matter how</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l6q3"></div>
+            </div>
+
+            <!-- Q4 选择 · whatever 名词性从句辨析 -->
+            <div class="quiz-item" data-qid="l6q4" data-type="choice" data-answer="B">
+              <div class="quiz-q">Q4. ___ you choose is fine with me.（主语从句）</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l6q4" value="A"><span>A. No matter what</span></label>
+                <label class="quiz-choice"><input type="radio" name="l6q4" value="B"><span>B. Whatever</span></label>
+                <label class="quiz-choice"><input type="radio" name="l6q4" value="C"><span>C. What ever</span></label>
+                <label class="quiz-choice"><input type="radio" name="l6q4" value="D"><span>D. No matter which</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l6q4"></div>
+            </div>
+
+            <!-- Q5 选择 · leave an impression on -->
+            <div class="quiz-item" data-qid="l6q5" data-type="choice" data-answer="B">
+              <div class="quiz-q">Q5. Her performance left a deep impression ___ the audience.</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l6q5" value="A"><span>A. to</span></label>
+                <label class="quiz-choice"><input type="radio" name="l6q5" value="B"><span>B. on</span></label>
+                <label class="quiz-choice"><input type="radio" name="l6q5" value="C"><span>C. for</span></label>
+                <label class="quiz-choice"><input type="radio" name="l6q5" value="D"><span>D. at</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l6q5"></div>
+            </div>
+
+            <!-- Q6 选择 · no matter where -->
+            <div class="quiz-item" data-qid="l6q6" data-type="choice" data-answer="C">
+              <div class="quiz-q">Q6. ___ you go, I will follow you.</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l6q6" value="A"><span>A. No matter what</span></label>
+                <label class="quiz-choice"><input type="radio" name="l6q6" value="B"><span>B. No matter when</span></label>
+                <label class="quiz-choice"><input type="radio" name="l6q6" value="C"><span>C. No matter where</span></label>
+                <label class="quiz-choice"><input type="radio" name="l6q6" value="D"><span>D. No matter who</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l6q6"></div>
+            </div>
+
+            <!-- Q7 选择 · no matter who you are -->
+            <div class="quiz-item" data-qid="l6q7" data-type="choice" data-answer="B">
+              <div class="quiz-q">Q7. You should follow the rules ___ you are.</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l6q7" value="A"><span>A. no matter what</span></label>
+                <label class="quiz-choice"><input type="radio" name="l6q7" value="B"><span>B. no matter who</span></label>
+                <label class="quiz-choice"><input type="radio" name="l6q7" value="C"><span>C. no matter where</span></label>
+                <label class="quiz-choice"><input type="radio" name="l6q7" value="D"><span>D. no matter how</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l6q7"></div>
+            </div>
+
+            <!-- Q8 选择 · no matter how + adv -->
+            <div class="quiz-item" data-qid="l6q8" data-type="choice" data-answer="B">
+              <div class="quiz-q">Q8. ___ fast you run, you can't catch up with him.</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l6q8" value="A"><span>A. No matter what</span></label>
+                <label class="quiz-choice"><input type="radio" name="l6q8" value="B"><span>B. No matter how</span></label>
+                <label class="quiz-choice"><input type="radio" name="l6q8" value="C"><span>C. No matter when</span></label>
+                <label class="quiz-choice"><input type="radio" name="l6q8" value="D"><span>D. No matter which</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l6q8"></div>
+            </div>
+
+            <!-- Q9 填空 · leave an impression on 介词 -->
+            <div class="quiz-item" data-qid="l6q9" data-type="fill" data-answer="on" data-accept="on">
+              <div class="quiz-q">Q9. 填入正确介词：<br>The teacher left a lasting impression ___ the students.</div>
+              <input class="quiz-fill" id="fill-l6q9" placeholder="请在此输入答案" autocomplete="off">
+              <div class="quiz-feedback" id="fb-l6q9"></div>
+            </div>
+
+            <!-- Q10 填空 · no matter how -->
+            <div class="quiz-item" data-qid="l6q10" data-type="fill" data-answer="No matter how" data-accept="No matter how|no matter how|No matter How">
+              <div class="quiz-q">Q10. 填入正确短语（无论多么）：<br>___ hard she tried, she couldn't solve the math problem.</div>
+              <input class="quiz-fill" id="fill-l6q10" placeholder="请在此输入答案" autocomplete="off">
+              <div class="quiz-feedback" id="fb-l6q10"></div>
+            </div>
+
+            <div style="margin-top:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+              <button class="quiz-submit-btn" id="submit-l6" onclick="submitQuiz('l6')">📝 提交答案</button>
+              <button class="quiz-reset-btn" id="reset-l6" onclick="resetQuiz('l6')" style="display:none;">🔄 重新作答</button>
+            </div>
+            <div class="quiz-status-msg" id="status-l6"></div>
+            <div class="history-wrap" id="history-l6">
+              <div class="history-title">📋 我的历史作答</div>
+              <div id="history-list-l6"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div> class="scroll-anchor section-title">📐 已涉及语法点</div>
   <div class="grammar-grid">
     <div class="grammar-card gp-prep"><div class="grammar-title">⚠️ 介词用法</div><div class="grammar-desc">in/on/at 时间地点介词；next/last/this/every 前无需介词。</div><span class="grammar-status gs-weak">需重点练习</span></div>
     <div class="grammar-card gp-clause"><div class="grammar-title">⚠️ 从句结构</div><div class="grammar-desc">定语从句关系词（that/which/who/whose）选择规则。</div><span class="grammar-status gs-weak">需重点练习</span></div>
     <div class="grammar-card gp-vocab"><div class="grammar-title">✅ 九上 Unit 1 词汇</div><div class="grammar-desc">完成跟读，每日打卡 20 词；掌握 classic/classical/judge 等易混词。</div><span class="grammar-status gs-done">进行中</span></div>
     <div class="grammar-card gp-intro"><div class="grammar-title">📋 现在完成时</div><div class="grammar-desc">recently/just/already/yet 等标志词；结构 have/has + 过去分词。</div><span class="grammar-status gs-done">已梳理</span></div>
+    <div class="grammar-card gp-clause"><div class="grammar-title">🆕 让步状语从句</div><div class="grammar-desc">no matter + 疑问词（what/who/how/when/where/which）用法；whatever/whoever 与 no matter what/who 辨析。</div><span class="grammar-status gs-done">已梳理</span></div>
   </div>
 
   <div id="goals" class="scroll-anchor section-title">🎯 暑期核心目标</div>
@@ -1275,7 +1501,7 @@
 
 <div class="footer">
   <p>本页面由老师课后更新 · 内容仅供本人及家长参考</p>
-  <p style="margin-top:6px;">最后更新：2025年7月23日</p>
+  <p style="margin-top:6px;">最后更新：2025年7月27日</p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>
@@ -1408,7 +1634,27 @@ var QUIZ_META = {
   l5q12:{label:'Q12',correct:'lag behind',accepts:['lag behind','lagbehind'],type:'fill',
     exp:{ok:'✅ 正确！lag behind = 落后，固定搭配。',ng:'❌ 错误。"落后" = lag behind（固定搭配）。'}},
   l5q13:{label:'Q13',correct:'A',accepts:['A'],type:'choice',
-    exp:{ok:'✅ 正确！turn out + that 从句，that 后接完整句子 he was right。',ng:'❌ 错误。turn out + that 从句，that 后接完整句子，正确答案 A。'}}
+    exp:{ok:'✅ 正确！turn out + that 从句，that 后接完整句子 he was right。',ng:'❌ 错误。turn out + that 从句，that 后接完整句子，正确答案 A。'}},
+  l6q1:{label:'Q1',correct:'A',accepts:['A'],type:'choice',
+    exp:{ok:'✅ 正确！happens 是"发生"，无论发生什么 = No matter what。',ng:'❌ 错误。happens = 发生，"无论发生什么"用 No matter what，正确答案 A。'}},
+  l6q2:{label:'Q2',correct:'B',accepts:['B'],type:'choice',
+    exp:{ok:'✅ 正确！difficult 是形容词，no matter how + 形容词 = 无论多么难。',ng:'❌ 错误。difficult 是形容词，需用 No matter how + adj.，正确答案 B。'}},
+  l6q3:{label:'Q3',correct:'C',accepts:['C'],type:'choice',
+    exp:{ok:'✅ 正确！you ask → 问谁，无论问谁 = No matter who。',ng:'❌ 错误。"无论你问谁" = No matter who，正确答案 C。'}},
+  l6q4:{label:'Q4',correct:'B',accepts:['B'],type:'choice',
+    exp:{ok:'✅ 正确！主语从句只能用 Whatever，不能用 No matter what。',ng:'❌ 错误。名词性从句（主语从句）只能用 Whatever，No matter what 只能引导让步状语从句，正确答案 B。'}},
+  l6q5:{label:'Q5',correct:'B',accepts:['B'],type:'choice',
+    exp:{ok:'✅ 正确！leave an impression on sb 是固定搭配，介词用 on。',ng:'❌ 错误。leave an impression on sb，介词固定用 on，正确答案 B。'}},
+  l6q6:{label:'Q6',correct:'C',accepts:['C'],type:'choice',
+    exp:{ok:'✅ 正确！you go 表示去哪里，无论去哪里 = No matter where。',ng:'❌ 错误。"无论你去哪里" = No matter where，正确答案 C。'}},
+  l6q7:{label:'Q7',correct:'B',accepts:['B'],type:'choice',
+    exp:{ok:'✅ 正确！you are 表示你是谁，无论你是谁 = no matter who。',ng:'❌ 错误。"无论你是谁" = no matter who，正确答案 B。'}},
+  l6q8:{label:'Q8',correct:'B',accepts:['B'],type:'choice',
+    exp:{ok:'✅ 正确！fast 是副词，no matter how + adv. = 无论跑多快。',ng:'❌ 错误。fast 是副词，no matter how + adv./adj.，正确答案 B。'}},
+  l6q9:{label:'Q9',correct:'on',accepts:['on'],type:'fill',
+    exp:{ok:'✅ 正确！leave an impression on sb，介词固定用 on。',ng:'❌ 错误。leave an impression on sb，介词用 on（不是 to/for/at）。'}},
+  l6q10:{label:'Q10',correct:'No matter how',accepts:['No matter how','no matter how','No matter How'],type:'fill',
+    exp:{ok:'✅ 正确！No matter how + 形容词/副词 = 无论多么……，hard 是副词。',ng:'❌ 错误。"无论多么努力" = No matter how hard，正确答案：No matter how。'}}
 };
 
 /* ══ 提交 ══ */
@@ -1496,7 +1742,7 @@ function renderHistory(lessonId,list){
 
 /* ══ 页面加载恢复 ══ */
 document.addEventListener('DOMContentLoaded',function(){
-  ['l2','l3','l4','l5'].forEach(function(lid){
+  ['l2','l3','l4','l5','l6'].forEach(function(lid){
     var list=JSON.parse(localStorage.getItem('my-records-'+lid)||'[]');
     if(list.length===0)return;
     var last=list[0];
@@ -1834,7 +2080,7 @@ var obs=new IntersectionObserver(function(entries){
     if(e.isIntersecting)navLinks.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id);});
   });
 },{threshold:0.3,rootMargin:'-60px 0px 0px 0px'});
-['lesson-1','lesson-2','lesson-3','lesson-4','lesson-5','progress','grammar','goals'].forEach(function(id){var el=document.getElementById(id);if(el)obs.observe(el);});
+['lesson-1','lesson-2','lesson-3','lesson-4','lesson-5','lesson-6','progress','grammar','goals'].forEach(function(id){var el=document.getElementById(id);if(el)obs.observe(el);});
 </script>
 </body>
 </html>

@@ -231,11 +231,31 @@ var QUIZ_META={
     l5q12:{label:'Q12 lag behind(加难度)',correct:'lag behind',accepts:['lag behind','lagbehind'],type:'fill'},
     l5q13:{label:'Q13 turn out that(辨析)',correct:'A',accepts:['A'],type:'choice',
       opts:{A:'It turned out that he was right.',B:'It turned out that he being right.',C:'It turned out he being right.',D:'It turned out to being right.'}}
+  },
+  l6:{
+    l6q1:{label:'Q1 no matter what',correct:'A',accepts:['A'],type:'choice',
+      opts:{A:'No matter what',B:'No matter how',C:'No matter who',D:'No matter when'}},
+    l6q2:{label:'Q2 no matter how+adj',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'No matter what',B:'No matter how',C:'No matter which',D:'No matter who'}},
+    l6q3:{label:'Q3 no matter who',correct:'C',accepts:['C'],type:'choice',
+      opts:{A:'No matter what',B:'No matter where',C:'No matter who',D:'No matter how'}},
+    l6q4:{label:'Q4 whatever主语从句(辨析)',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'No matter what',B:'Whatever',C:'What ever',D:'No matter which'}},
+    l6q5:{label:'Q5 leave an impression on',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'to',B:'on',C:'for',D:'at'}},
+    l6q6:{label:'Q6 no matter where',correct:'C',accepts:['C'],type:'choice',
+      opts:{A:'No matter what',B:'No matter when',C:'No matter where',D:'No matter who'}},
+    l6q7:{label:'Q7 no matter who you are',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'no matter what',B:'no matter who',C:'no matter where',D:'no matter how'}},
+    l6q8:{label:'Q8 no matter how+adv',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'No matter what',B:'No matter how',C:'No matter when',D:'No matter which'}},
+    l6q9:{label:'Q9 介词填空:impression on',correct:'on',accepts:['on'],type:'fill'},
+    l6q10:{label:'Q10 no matter how填空',correct:'No matter how',accepts:['No matter how','no matter how','No matter How'],type:'fill'}
   }
 };
 
 function getLessonMeta(lid){return QUIZ_META[lid]||{};}
-function lessonName(lid){var m={l2:'第2课 · 词汇课',l3:'第3课 · 句子成分课',l4:'第4课 · 多义词辨析&从句进阶',l5:'第5课 · 单词测试&影子跟读',l6:'第6课'};return m[lid]||lid;}
+function lessonName(lid){var m={l2:'第2课 · 词汇课',l3:'第3课 · 句子成分课',l4:'第4课 · 多义词辨析&从句进阶',l5:'第5课 · 单词测试&影子跟读',l6:'第6课 · 让步状语从句&短语精讲'};return m[lid]||lid;}
 
 /* ══ 登录 ══ */
 function doLogin(){
