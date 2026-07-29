@@ -251,11 +251,39 @@ var QUIZ_META={
       opts:{A:'No matter what',B:'No matter how',C:'No matter when',D:'No matter which'}},
     l6q9:{label:'Q9 介词填空:impression on',correct:'on',accepts:['on'],type:'fill'},
     l6q10:{label:'Q10 no matter how填空',correct:'No matter how',accepts:['No matter how','no matter how','No matter How'],type:'fill'}
+  },
+  l7:{
+    l7q1:{label:'Q1 intellectual拼写',correct:'intellectual',accepts:['intellectual','Intellectual'],type:'fill'},
+    l7q2:{label:'Q2 show off',correct:'C',accepts:['C'],type:'choice',
+      opts:{A:'shows up',B:'shows of',C:'shows off',D:'show out'}},
+    l7q3:{label:'Q3 the classics',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'the classic',B:'the classics',C:'classics',D:'a classic'}},
+    l7q4:{label:'Q4 fiction不可数',correct:'A',accepts:['A'],type:'choice',
+      opts:{A:'Fiction is uncountable.',B:'We can say a fiction.',C:'Fictions are always true stories.',D:'Fiction means non-fiction.'}},
+    l7q5:{label:'Q5 light read',correct:'light read',accepts:['light read','light Read','Light read'],type:'fill'},
+    l7q6:{label:'Q6 retailers',correct:'retailers',accepts:['retailers','Retailers'],type:'fill'},
+    l7q7:{label:'Q7 highbrow',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'popular and easy to understand',B:'deep and serious',C:'cheap and low quality',D:'funny and entertaining'}},
+    l7q8:{label:'Q8 shift',correct:'C',accepts:['C'],type:'choice',
+      opts:{A:'change',B:'move',C:'shift',D:'turn'}},
+    l7q9:{label:'Q9 hooked on',correct:'A',accepts:['A'],type:'choice',
+      opts:{A:'hooked on',B:'hooked with',C:'hooked in',D:'hooked at'}},
+    l7q10:{label:'Q10 advent of',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'adventure of',B:'the advent of',C:'arrive of',D:'advent for'}},
+    l7q11:{label:'Q11 artwork拼写',correct:'artwork',accepts:['artwork','artworks','Artwork','Artworks'],type:'fill'},
+    l7q12:{label:'Q12 material可数/不可数',correct:'C',accepts:['C'],type:'choice',
+      opts:{A:'She gave me some reading materials.',B:'I need a reading material for my essay.',C:'We need more building materials for the project.',D:'The building material are very expensive.'}},
+    l7q13:{label:'Q13 attitude介词',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'with',B:'toward',C:'for',D:'at'}},
+    l7q14:{label:'Q14 pay off用法',correct:'A',accepts:['A'],type:'choice',
+      opts:{A:'His hard work finally paid off.',B:'His hard work finally pay off.',C:'His hard work finally paid of.',D:'His hard work finally paying off.'}},
+    l7q15:{label:'Q15 quit+doing辨析',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'quit to smoke',B:'quit smoking',C:'quit smoke',D:'gave up to smoke'}}
   }
 };
 
 function getLessonMeta(lid){return QUIZ_META[lid]||{};}
-function lessonName(lid){var m={l2:'第2课 · 词汇课',l3:'第3课 · 句子成分课',l4:'第4课 · 多义词辨析&从句进阶',l5:'第5课 · 单词测试&影子跟读',l6:'第6课 · 让步状语从句&短语精讲'};return m[lid]||lid;}
+function lessonName(lid){var m={l2:'第2课 · 词汇课',l3:'第3课 · 句子成分课',l4:'第4课 · 多义词辨析&从句进阶',l5:'第5课 · 单词测试&影子跟读',l6:'第6课 · 让步状语从句&短语精讲',l7:'第7课 · 词汇拓展&阅读类型'};return m[lid]||lid;}
 
 /* ══ 登录 ══ */
 function doLogin(){

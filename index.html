@@ -80,6 +80,7 @@
     .tag{border-radius:8px;padding:5px 12px;font-size:13px;font-weight:500}
     .tag-purple{background:var(--primary-light);color:var(--primary)}
     .tag-green{background:#E8F8F0;color:#2E8B57}
+    .tag-orange{background:#FFF3E0;color:#E65100}
     .weak-box{background:#FFF0F5;border-left:4px solid var(--secondary);border-radius:0 10px 10px 0;padding:10px 14px;font-size:13px;color:#8B2252}
     .highlight-box{background:linear-gradient(135deg,#FFF9E0,#FFF3CC);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;padding:10px 14px;font-size:13px;color:#7A6000}
     /* 知识点卡片 */
@@ -193,6 +194,7 @@
   <a class="jump-btn" onclick="expandLessonById('lesson-4');location.href='#lesson-4'">第4课</a>
   <a class="jump-btn" onclick="expandLessonById('lesson-5');location.href='#lesson-5'">第5课</a>
   <a class="jump-btn" onclick="expandLessonById('lesson-6');location.href='#lesson-6'">第6课</a>
+  <a class="jump-btn" onclick="expandLessonById('lesson-7');location.href='#lesson-7'">第7课</a>
   <a class="jump-btn" href="#progress">📊 进度</a>
   <a class="jump-btn" href="#grammar">📐 语法点</a>
   <a class="jump-btn" href="#goals">🎯 目标</a>
@@ -204,10 +206,10 @@
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
       <span style="font-weight:700;font-size:15px;">已完成课次</span>
-      <span style="font-weight:800;font-size:20px;color:var(--primary);">6 <span style="font-size:14px;color:var(--muted);font-weight:400;">/ 预计 30+ 课</span></span>
+      <span style="font-weight:800;font-size:20px;color:var(--primary);">7 <span style="font-size:14px;color:var(--muted);font-weight:400;">/ 预计 30+ 课</span></span>
     </div>
-    <div class="progress-bar-wrap"><div class="progress-bar" style="width:20%"></div></div>
-    <div class="progress-label"><span>课程开始 7.11</span><span>已上 6 课 🎉</span></div>
+    <div class="progress-bar-wrap"><div class="progress-bar" style="width:23.3%"></div></div>
+    <div class="progress-label"><span>课程开始 7.11</span><span>已上 7 课 🎉</span></div>
   </div>
 
   <div id="lessons" class="scroll-anchor section-title">📚 课次详情</div>
@@ -1344,8 +1346,6 @@
             </div>
           </div>
 
-        </div>
-
         <!-- 随堂练习 -->
         <div class="ls-block">
           <div class="ls-title">✏️ 随堂练习（共10题）</div>
@@ -1476,7 +1476,431 @@
       </div>
     </div>
 
-  </div> class="scroll-anchor section-title">📐 已涉及语法点</div>
+  </div>
+
+    <!-- 第7课 -->
+    <div id="lesson-7" class="lesson-card scroll-anchor">
+      <div class="lesson-header done" onclick="toggleLesson(this)">
+        <div class="lesson-num">7</div>
+        <div class="lesson-meta"><h3>词汇拓展 &amp; 阅读类型</h3><p>7月28日 · 周一</p></div>
+        <div class="lesson-badge">✅ 已完成</div><div class="lesson-arrow">▶</div>
+      </div>
+      <div class="lesson-body">
+
+        <div class="ls-block">
+          <div class="ls-title">📋 课堂内容</div>
+          <div class="tag-wrap">
+            <span class="tag tag-purple">intellectual 知识分子</span>
+            <span class="tag tag-green">show off 炫耀</span>
+            <span class="tag tag-green">the classics 经典作品</span>
+            <span class="tag tag-purple">romantic fiction 言情小说</span>
+            <span class="tag tag-orange">light / heavy read</span>
+            <span class="tag tag-orange">retailers 零售商</span>
+            <span class="tag tag-green">highbrow 阳春白雪</span>
+            <span class="tag tag-purple">shift 转变</span>
+            <span class="tag tag-green">hooked 上瘾</span>
+            <span class="tag tag-orange">advent 出现</span>
+            <span class="tag tag-orange">artwork 艺术作品</span>
+            <span class="tag tag-orange">material 材料</span>
+            <span class="tag tag-orange">attitude 态度</span>
+            <span class="tag tag-green">pay off 回报</span>
+            <span class="tag tag-green">quit 放弃</span>
+          </div>
+        </div>
+
+        <!-- 知识点 -->
+        <div class="ls-block">
+          <div class="ls-title">📖 复习要点 — 词汇拓展 &amp; 阅读类型</div>
+
+          <div class="kp-card">
+            <div class="kp-header">① intellectual — 聪明的 / 有学识的</div>
+            <div class="kp-body">
+              <p><strong>intellectual</strong> 主要作形容词，表示"聪明的、有学识的"：</p>
+              <ul>
+                <li><strong>作形容词</strong>：聪明的 / 有学识的（强调学识和思辨）<br>She is very <strong>intellectual</strong>.（她很聪明/有学识。）</li>
+                <li><strong>intellectual property</strong> 知识产权<br><strong>intellectual ability</strong> 智力</li>
+                <li>也可作名词：知识分子（可数）</li>
+              </ul>
+              <div class="kp-tip">💡 intelligent = 聪明的（强调智商）；intellectual = 聪明的/有学识的（强调学识和思辨），比 intelligent 更偏学术。</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">② show off — 炫耀 / 卖弄</div>
+            <div class="kp-body">
+              <p><strong>show off</strong> = 炫耀、卖弄，含贬义：</p>
+              <ul>
+                <li>He always <strong>shows off</strong> his new phone.（他总爱炫耀新手机。）</li>
+                <li>She <strong>showed off</strong> her painting skills.（她卖弄画技。）</li>
+                <li><strong>show-off</strong>（名词）= 爱炫耀的人</li>
+              </ul>
+              <div class="kp-example">
+                ✅ Stop <u>showing off</u>!（别炫了！）<br>
+                ❌ He likes to <s>show of</s> his car.（拼写：off 不是 of）
+              </div>
+              <div class="kp-tip">💡 show off = 炫耀（贬义）；show up = 出现/露面（完全不同！）</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">③ the classics — 经典作品</div>
+            <div class="kp-body">
+              <p><strong>the classics</strong> = 经典文学作品（注意加 the 和 s）：</p>
+              <ul>
+                <li>I enjoy reading <strong>the classics</strong>.（我喜欢读经典文学。）</li>
+                <li>Shakespeare's works are <strong>classics</strong>.（莎士比亚的作品是经典。）</li>
+              </ul>
+              <div class="kp-tip">💡 the classics 指经典名著；classic（单数）= 一部经典作品或"经典的"形容词。</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">④ romantic fiction — 言情小说</div>
+            <div class="kp-body">
+              <p><strong>romantic fiction</strong> = 言情小说 / 爱情小说：</p>
+              <ul>
+                <li><strong>fiction</strong> = 小说（不可数），统称虚构文学</li>
+                <li><strong>romantic fiction</strong> 言情小说</li>
+                <li><strong>science fiction</strong> (sci-fi) 科幻小说</li>
+                <li><strong>historical fiction</strong> 历史小说</li>
+              </ul>
+              <div class="kp-example">
+                ✅ She prefers <u>romantic fiction</u> to <u>science fiction</u>.<br>
+                ✅ <u>Fiction</u> doesn't always mean love stories.
+              </div>
+              <div class="kp-tip">💡 fiction 不可数！不能说 a fiction，应说 a novel / a story。</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">⑤ light read / heavy read — 轻松读物 / 沉重读物</div>
+            <div class="kp-body">
+              <p><strong>light read</strong> = 轻松读物；<strong>heavy read</strong> = 沉重读物：</p>
+              <ul>
+                <li>This novel is a <strong>light read</strong>.（这本小说读起来轻松。）</li>
+                <li>The philosophy book is a <strong>heavy read</strong>.（那本哲学书很费脑。）</li>
+              </ul>
+              <div class="kp-tip">💡 read 在这里作名词 = 读物/阅读体验。a good read = 一本好书（口语常用）。</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">⑥ retailers — 零售商</div>
+            <div class="kp-body">
+              <p><strong>retailer</strong> = 零售商（可数），<strong>retail</strong> = 零售（名词/动词）：</p>
+              <ul>
+                <li>Online <strong>retailers</strong> are growing fast.（线上零售商增长迅速。）</li>
+                <li><strong>retail price</strong> 零售价</li>
+                <li><strong>wholesale</strong> = 批发（与 retail 相对）</li>
+              </ul>
+              <div class="kp-tip">💡 retail 零售 → retailer 零售商；wholesale 批发 → wholesaler 批发商。</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">⑦ highbrow — 阳春白雪 / 曲高和寡的</div>
+            <div class="kp-body">
+              <p><strong>highbrow</strong> = 阳春白雪的 / 高深严肃的（常含贬义，"装高深"）：</p>
+              <ul>
+                <li>a <strong>highbrow</strong> magazine 阳春白雪的杂志</li>
+                <li><strong>highbrow</strong> culture 精英文化</li>
+                <li>反义词：<strong>lowbrow</strong> = 通俗的 / 大众的</li>
+              </ul>
+              <div class="kp-tip">💡 highbrow 原指"高额头"（被认为聪明），现多带贬义讽刺。</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">⑧ shift — 转变 / 改变</div>
+            <div class="kp-body">
+              <p><strong>shift</strong> = 转变 / 改变（动词/名词），比 change 更强调方向性：</p>
+              <ul>
+                <li>Public opinion has <strong>shifted</strong>.（舆论已转变。）</li>
+                <li>a <strong>shift</strong> in policy 政策转变</li>
+                <li><strong>shift</strong> from A to B 从 A 转向 B</li>
+                <li><strong>night shift</strong> 夜班（名词另一义）</li>
+              </ul>
+              <div class="kp-tip">💡 shift 强调"方向/重心的转移"；change 更泛用。注意拼写：shift 不双写 f。</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">⑨ hooked — 上瘾 / 入迷</div>
+            <div class="kp-body">
+              <p><strong>hooked</strong> = 上瘾的 / 入迷的，搭配 <strong>hooked on</strong> sth：</p>
+              <ul>
+                <li>She's <strong>hooked on</strong> this TV series.（她迷上了这部剧。）</li>
+                <li>He got <strong>hooked on</strong> coffee.（他对咖啡上瘾了。）</li>
+                <li><strong>hook</strong>（动词）= 钩住；<strong>hook up</strong> = 连接/搭上</li>
+              </ul>
+              <div class="kp-example">
+                ✅ I'm <u>hooked on</u> reading detective novels.<br>
+                ❌ I'm <s>hooked with</s> reading.（介词用 on，不用 with）
+              </div>
+              <div class="kp-tip">💡 hooked on = 迷上/上瘾；be hooked = 被钩住（字面义）。</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">⑩ advent — 出现 / 到来</div>
+            <div class="kp-body">
+              <p><strong>advent</strong> = 出现 / 到来（正式用语），搭配 <strong>the advent of</strong>：</p>
+              <ul>
+                <li><strong>the advent of</strong> the Internet 互联网的出现</li>
+                <li><strong>the advent of</strong> AI 人工智能的到来</li>
+                <li>Before <strong>the advent of</strong> smartphones... 在智能手机出现之前……</li>
+              </ul>
+              <div class="kp-example">
+                ✅ Life changed after <u>the advent of</u> social media.
+              </div>
+              <div class="kp-tip">💡 advent 正式用语，常与 the 连用：the advent of sth。adventure（冒险）是另一个词！</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">⑪ artwork — 艺术作品</div>
+            <div class="kp-body">
+              <p><strong>artwork</strong> = 艺术作品（可数名词），由 art + work 合成：</p>
+              <ul>
+                <li>a piece of artwork 一件艺术作品</li>
+                <li>The museum has many famous <strong>artworks</strong>.</li>
+              </ul>
+              <div class="kp-tip">💡 artwork 强调具体的"艺术作品"；art 泛指"艺术"这一概念。</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">⑫ material — 材料</div>
+            <div class="kp-body">
+              <p><strong>material</strong> = 材料 / 素材，既可数又不可数：</p>
+              <ul>
+                <li><strong>building materials</strong> 建筑材料（可数，复数加 s）</li>
+                <li><strong>reading material</strong> 阅读素材（不可数，不加 s）</li>
+              </ul>
+              <div class="kp-tip">💡 指具体"材料/原料"时可数；指"素材/资料"时通常不可数。</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">⑬ attitude — 态度</div>
+            <div class="kp-body">
+              <p><strong>attitude</strong> = 态度，搭配 <strong>attitude to / toward</strong> sb/sth：</p>
+              <ul>
+                <li>She has a <strong>positive attitude toward</strong> learning.</li>
+                <li>❌ <s>attitude with</s> → 介词用 to / toward</li>
+              </ul>
+              <div class="kp-tip">💡 介词用 to 或 toward，不用 with/for/at！</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">⑭ pay off — 回报</div>
+            <div class="kp-body">
+              <p><strong>pay off</strong> = 取得回报 / 还清，过去式 <strong>paid off</strong>：</p>
+              <ul>
+                <li><strong>Hard work pays off.</strong> 努力终有回报。</li>
+                <li>My efforts finally <strong>paid off</strong>.</li>
+              </ul>
+              <div class="kp-tip">💡 pay off 不及物"取得回报"；及物 pay off + debt"还清债务"。</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">⑮ quit — 放弃</div>
+            <div class="kp-body">
+              <p><strong>quit</strong> = 放弃 / 戒掉，过去式 quit 或 quitted：</p>
+              <ul>
+                <li><strong>quit doing sth</strong> 放弃/停止做某事</li>
+                <li>He <strong>quit</strong> smoking last year.</li>
+                <li>❌ <s>quit to play</s> → quit 后接 doing，不接 to do</li>
+              </ul>
+              <div class="kp-tip">💡 quit + doing sth，类似 stop doing。</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 随堂练习 -->
+        <div class="ls-block">
+          <div class="ls-title">✏️ 随堂练习（共15题）</div>
+          <div class="quiz-container" id="quiz-l7">
+
+            <!-- Q1 填空 · intellectual 拼写 -->
+            <div class="quiz-item" data-qid="l7q1" data-type="fill" data-answer="intellectual" data-accept="intellectual|Intellectual">
+              <div class="quiz-q">Q1. 看中文写英文：聪明的（强调学识和思辨）<br>She is very ___.</div>
+              <input class="quiz-fill" id="fill-l7q1" placeholder="请在此输入答案" autocomplete="off">
+              <div class="quiz-feedback" id="fb-l7q1"></div>
+            </div>
+
+            <!-- Q2 选择 · show off -->
+            <div class="quiz-item" data-qid="l7q2" data-type="choice" data-answer="C">
+              <div class="quiz-q">Q2. He always ___ his new car.（他总爱炫耀新车。）</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l7q2" value="A"><span>A. shows up</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q2" value="B"><span>B. shows of</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q2" value="C"><span>C. shows off</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q2" value="D"><span>D. show out</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l7q2"></div>
+            </div>
+
+            <!-- Q3 选择 · the classics -->
+            <div class="quiz-item" data-qid="l7q3" data-type="choice" data-answer="B">
+              <div class="quiz-q">Q3. I enjoy reading ___.（我喜欢读经典文学。）</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l7q3" value="A"><span>A. the classic</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q3" value="B"><span>B. the classics</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q3" value="C"><span>C. classics</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q3" value="D"><span>D. a classic</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l7q3"></div>
+            </div>
+
+            <!-- Q4 选择 · fiction 不可数 -->
+            <div class="quiz-item" data-qid="l7q4" data-type="choice" data-answer="A">
+              <div class="quiz-q">Q4. Which is correct about "fiction"?</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l7q4" value="A"><span>A. Fiction is uncountable.</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q4" value="B"><span>B. We can say "a fiction".</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q4" value="C"><span>C. Fictions are always true stories.</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q4" value="D"><span>D. Fiction means non-fiction.</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l7q4"></div>
+            </div>
+
+            <!-- Q5 填空 · light read -->
+            <div class="quiz-item" data-qid="l7q5" data-type="fill" data-answer="light read" data-accept="light read|light Read|Light read">
+              <div class="quiz-q">Q5. 填入正确短语（轻松读物）：<br>This novel is a ___.</div>
+              <input class="quiz-fill" id="fill-l7q5" placeholder="请在此输入答案" autocomplete="off">
+              <div class="quiz-feedback" id="fb-l7q5"></div>
+            </div>
+
+            <!-- Q6 填空 · retailers -->
+            <div class="quiz-item" data-qid="l7q6" data-type="fill" data-answer="retailers" data-accept="retailers|Retailers">
+              <div class="quiz-q">Q6. 看中文写英文：零售商（复数）<br>Online ___ are growing fast.</div>
+              <input class="quiz-fill" id="fill-l7q6" placeholder="请在此输入答案" autocomplete="off">
+              <div class="quiz-feedback" id="fb-l7q6"></div>
+            </div>
+
+            <!-- Q7 选择 · highbrow -->
+            <div class="quiz-item" data-qid="l7q7" data-type="choice" data-answer="B">
+              <div class="quiz-q">Q7. "Highbrow" culture means ___.</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l7q7" value="A"><span>A. popular and easy to understand</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q7" value="B"><span>B. deep and serious</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q7" value="C"><span>C. cheap and low quality</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q7" value="D"><span>D. funny and entertaining</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l7q7"></div>
+            </div>
+
+            <!-- Q8 选择 · shift -->
+            <div class="quiz-item" data-qid="l7q8" data-type="choice" data-answer="C">
+              <div class="quiz-q">Q8. There has been a ___ in public opinion.</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l7q8" value="A"><span>A. change（泛指变化）</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q8" value="B"><span>B. move（移动）</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q8" value="C"><span>C. shift（强调方向性转变）</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q8" value="D"><span>D. turn（转弯）</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l7q8"></div>
+            </div>
+
+            <!-- Q9 选择 · hooked on -->
+            <div class="quiz-item" data-qid="l7q9" data-type="choice" data-answer="A">
+              <div class="quiz-q">Q9. She's ___ this TV series.（她迷上了这部剧。）</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l7q9" value="A"><span>A. hooked on</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q9" value="B"><span>B. hooked with</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q9" value="C"><span>C. hooked in</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q9" value="D"><span>D. hooked at</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l7q9"></div>
+            </div>
+
+            <!-- Q10 选择 · advent of -->
+            <div class="quiz-item" data-qid="l7q10" data-type="choice" data-answer="B">
+              <div class="quiz-q">Q10. Life changed after ___ the Internet.</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l7q10" value="A"><span>A. adventure of</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q10" value="B"><span>B. the advent of</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q10" value="C"><span>C. arrive of</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q10" value="D"><span>D. advent for</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l7q10"></div>
+            </div>
+
+            <!-- Q11 填空 · artwork（从L6迁移） -->
+            <div class="quiz-item" data-qid="l7q11" data-type="fill" data-answer="artwork" data-accept="artwork|artworks|Artwork|Artworks">
+              <div class="quiz-q">Q11. 看中文写英文：艺术作品<br>The museum displays many famous ___.</div>
+              <input class="quiz-fill" id="fill-l7q11" placeholder="请在此输入答案" autocomplete="off">
+              <div class="quiz-feedback" id="fb-l7q11"></div>
+            </div>
+
+            <!-- Q12 选择 · material（从L6迁移） -->
+            <div class="quiz-item" data-qid="l7q12" data-type="choice" data-answer="C">
+              <div class="quiz-q">Q12. Which sentence is correct?</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l7q12" value="A"><span>A. She gave me some reading materials.</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q12" value="B"><span>B. I need a reading material for my essay.</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q12" value="C"><span>C. We need more building materials for the project.</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q12" value="D"><span>D. The building material are very expensive.</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l7q12"></div>
+            </div>
+
+            <!-- Q13 选择 · attitude（从L6迁移） -->
+            <div class="quiz-item" data-qid="l7q13" data-type="choice" data-answer="B">
+              <div class="quiz-q">Q13. She has a positive attitude ___ her studies.</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l7q13" value="A"><span>A. with</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q13" value="B"><span>B. toward</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q13" value="C"><span>C. for</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q13" value="D"><span>D. at</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l7q13"></div>
+            </div>
+
+            <!-- Q14 选择 · pay off（从L6迁移） -->
+            <div class="quiz-item" data-qid="l7q14" data-type="choice" data-answer="A">
+              <div class="quiz-q">Q14. Which sentence uses "pay off" correctly?</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l7q14" value="A"><span>A. His hard work finally paid off.</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q14" value="B"><span>B. His hard work finally pay off.</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q14" value="C"><span>C. His hard work finally paid of.</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q14" value="D"><span>D. His hard work finally paying off.</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l7q14"></div>
+            </div>
+
+            <!-- Q15 选择 · quit（从L6迁移） -->
+            <div class="quiz-item" data-qid="l7q15" data-type="choice" data-answer="B">
+              <div class="quiz-q">Q15. He ___ last year.（他去年戒烟了。）</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l7q15" value="A"><span>A. quit to smoke</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q15" value="B"><span>B. quit smoking</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q15" value="C"><span>C. quit smoke</span></label>
+                <label class="quiz-choice"><input type="radio" name="l7q15" value="D"><span>D. gave up to smoke</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l7q15"></div>
+            </div>
+
+            <div style="margin-top:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+              <button class="quiz-submit-btn" id="submit-l7" onclick="submitQuiz('l7')">📝 提交答案</button>
+              <button class="quiz-reset-btn" id="reset-l7" onclick="resetQuiz('l7')" style="display:none;">🔄 重新作答</button>
+            </div>
+            <div class="quiz-status-msg" id="status-l7"></div>
+            <div class="history-wrap" id="history-l7">
+              <div class="history-title">📋 我的历史作答</div>
+              <div id="history-list-l7"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  <div id="grammar" class="scroll-anchor section-title">📐 已涉及语法点</div>
   <div class="grammar-grid">
     <div class="grammar-card gp-prep"><div class="grammar-title">⚠️ 介词用法</div><div class="grammar-desc">in/on/at 时间地点介词；next/last/this/every 前无需介词。</div><span class="grammar-status gs-weak">需重点练习</span></div>
     <div class="grammar-card gp-clause"><div class="grammar-title">⚠️ 从句结构</div><div class="grammar-desc">定语从句关系词（that/which/who/whose）选择规则。</div><span class="grammar-status gs-weak">需重点练习</span></div>
@@ -1501,7 +1925,7 @@
 
 <div class="footer">
   <p>本页面由老师课后更新 · 内容仅供本人及家长参考</p>
-  <p style="margin-top:6px;">最后更新：2025年7月27日</p>
+  <p style="margin-top:6px;">最后更新：2026年7月28日</p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>
@@ -1654,7 +2078,37 @@ var QUIZ_META = {
   l6q9:{label:'Q9',correct:'on',accepts:['on'],type:'fill',
     exp:{ok:'✅ 正确！leave an impression on sb，介词固定用 on。',ng:'❌ 错误。leave an impression on sb，介词用 on（不是 to/for/at）。'}},
   l6q10:{label:'Q10',correct:'No matter how',accepts:['No matter how','no matter how','No matter How'],type:'fill',
-    exp:{ok:'✅ 正确！No matter how + 形容词/副词 = 无论多么……，hard 是副词。',ng:'❌ 错误。"无论多么努力" = No matter how hard，正确答案：No matter how。'}}
+    exp:{ok:'✅ 正确！No matter how + 形容词/副词 = 无论多么……，hard 是副词。',ng:'❌ 错误。"无论多么努力" = No matter how hard，正确答案：No matter how。'}},
+  l7q1:{label:'Q1',correct:'intellectual',accepts:['intellectual','Intellectual'],type:'fill',
+    exp:{ok:'✅ 正确！intellectual = 聪明的/有学识的（强调学识和思辨）。',ng:'❌ 错误。聪明的（学识型）= intellectual，注意拼写。'}},
+  l7q2:{label:'Q2',correct:'C',accepts:['C'],type:'choice',
+    exp:{ok:'✅ 正确！show off = 炫耀；show up = 出现/露面。',ng:'❌ 错误。炫耀 = show off，show up 意思是"出现/露面"，正确答案 C。'}},
+  l7q3:{label:'Q3',correct:'B',accepts:['B'],type:'choice',
+    exp:{ok:'✅ 正确！the classics = 经典作品，需加 the 和 s。',ng:'❌ 错误。经典文学作品 = the classics（加 the 和复数 s），正确答案 B。'}},
+  l7q4:{label:'Q4',correct:'A',accepts:['A'],type:'choice',
+    exp:{ok:'✅ 正确！fiction 是不可数名词，不能说 a fiction。',ng:'❌ 错误。fiction 不可数，不能加 a，也不是真实故事，正确答案 A。'}},
+  l7q5:{label:'Q5',correct:'light read',accepts:['light read','light Read','Light read'],type:'fill',
+    exp:{ok:'✅ 正确！light read = 轻松读物，read 作名词。',ng:'❌ 错误。轻松读物 = light read，正确答案：light read。'}},
+  l7q6:{label:'Q6',correct:'retailers',accepts:['retailers','Retailers'],type:'fill',
+    exp:{ok:'✅ 正确！retailers = 零售商（复数）。',ng:'❌ 错误。零售商 = retailers，注意复数加 s。'}},
+  l7q7:{label:'Q7',correct:'B',accepts:['B'],type:'choice',
+    exp:{ok:'✅ 正确！highbrow = 高深严肃的 / 阳春白雪的。',ng:'❌ 错误。highbrow 意为"高深严肃的"，不是通俗或搞笑的，正确答案 B。'}},
+  l7q8:{label:'Q8',correct:'C',accepts:['C'],type:'choice',
+    exp:{ok:'✅ 正确！shift 强调方向性转变，比 change 更精准。',ng:'❌ 错误。舆论转变用 shift（强调方向性），正确答案 C。'}},
+  l7q9:{label:'Q9',correct:'A',accepts:['A'],type:'choice',
+    exp:{ok:'✅ 正确！hooked on = 迷上/上瘾，介词用 on。',ng:'❌ 错误。hooked 搭配 on，不用 with/in/at，正确答案 A。'}},
+  l7q10:{label:'Q10',correct:'B',accepts:['B'],type:'choice',
+    exp:{ok:'✅ 正确！the advent of = ……的出现/到来，正式搭配。',ng:'❌ 错误。"……的出现" = the advent of，不是 adventure/arrive，正确答案 B。'}},
+  l7q11:{label:'Q11',correct:'artwork',accepts:['artwork','artworks','Artwork','Artworks'],type:'fill',
+    exp:{ok:'✅ 正确！artwork = 艺术作品，art + work 合成词。',ng:'❌ 错误。艺术作品 = artwork，注意拼写。'}},
+  l7q12:{label:'Q12',correct:'C',accepts:['C'],type:'choice',
+    exp:{ok:'✅ 正确！building materials 建筑材料（可数加 s），C 是最标准用法。',ng:'❌ 错误。building materials 可数加 s；reading material 通常不可数，正确答案 C。'}},
+  l7q13:{label:'Q13',correct:'B',accepts:['B'],type:'choice',
+    exp:{ok:'✅ 正确！attitude toward sb/sth 是固定搭配。',ng:'❌ 错误。attitude 搭配 toward / to，不用 with/for/at，正确答案 B。'}},
+  l7q14:{label:'Q14',correct:'A',accepts:['A'],type:'choice',
+    exp:{ok:'✅ 正确！paid off 是 pay off 的过去式。',ng:'❌ 错误。pay off 过去式 paid off，正确答案 A。'}},
+  l7q15:{label:'Q15',correct:'B',accepts:['B'],type:'choice',
+    exp:{ok:'✅ 正确！quit + doing = 放弃做某事，quit smoking = 戒烟。',ng:'❌ 错误。quit 后接动名词 doing，不接原形或不定式，正确答案 B。'}}
 };
 
 /* ══ 提交 ══ */
@@ -1742,7 +2196,7 @@ function renderHistory(lessonId,list){
 
 /* ══ 页面加载恢复 ══ */
 document.addEventListener('DOMContentLoaded',function(){
-  ['l2','l3','l4','l5','l6'].forEach(function(lid){
+  ['l2','l3','l4','l5','l6','l7'].forEach(function(lid){
     var list=JSON.parse(localStorage.getItem('my-records-'+lid)||'[]');
     if(list.length===0)return;
     var last=list[0];
@@ -2080,7 +2534,7 @@ var obs=new IntersectionObserver(function(entries){
     if(e.isIntersecting)navLinks.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id);});
   });
 },{threshold:0.3,rootMargin:'-60px 0px 0px 0px'});
-['lesson-1','lesson-2','lesson-3','lesson-4','lesson-5','lesson-6','progress','grammar','goals'].forEach(function(id){var el=document.getElementById(id);if(el)obs.observe(el);});
+['lesson-1','lesson-2','lesson-3','lesson-4','lesson-5','lesson-6','lesson-7','progress','grammar','goals'].forEach(function(id){var el=document.getElementById(id);if(el)obs.observe(el);});
 </script>
 </body>
 </html>
