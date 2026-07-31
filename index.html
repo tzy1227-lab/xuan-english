@@ -195,6 +195,7 @@
   <a class="jump-btn" onclick="expandLessonById('lesson-5');location.href='#lesson-5'">第5课</a>
   <a class="jump-btn" onclick="expandLessonById('lesson-6');location.href='#lesson-6'">第6课</a>
   <a class="jump-btn" onclick="expandLessonById('lesson-7');location.href='#lesson-7'">第7课</a>
+  <a class="jump-btn" onclick="expandLessonById('lesson-8');location.href='#lesson-8'">第8课</a>
   <a class="jump-btn" href="#progress">📊 进度</a>
   <a class="jump-btn" href="#grammar">📐 语法点</a>
   <a class="jump-btn" href="#goals">🎯 目标</a>
@@ -206,10 +207,10 @@
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
       <span style="font-weight:700;font-size:15px;">已完成课次</span>
-      <span style="font-weight:800;font-size:20px;color:var(--primary);">7 <span style="font-size:14px;color:var(--muted);font-weight:400;">/ 预计 30+ 课</span></span>
+      <span style="font-weight:800;font-size:20px;color:var(--primary);">8 <span style="font-size:14px;color:var(--muted);font-weight:400;">/ 预计 30+ 课</span></span>
     </div>
-    <div class="progress-bar-wrap"><div class="progress-bar" style="width:23.3%"></div></div>
-    <div class="progress-label"><span>课程开始 7.11</span><span>已上 7 课 🎉</span></div>
+    <div class="progress-bar-wrap"><div class="progress-bar" style="width:26.7%"></div></div>
+    <div class="progress-label"><span>课程开始 7.11</span><span>已上 8 课 🎉</span></div>
   </div>
 
   <div id="lessons" class="scroll-anchor section-title">📚 课次详情</div>
@@ -1900,6 +1901,104 @@
       </div>
     </div>
 
+    <!-- 第8课 -->
+    <div id="lesson-8" class="lesson-card scroll-anchor">
+      <div class="lesson-header done" onclick="toggleLesson(this)">
+        <div class="lesson-num">8</div>
+        <div class="lesson-meta"><h3>作文讲解 &amp; 语法纠错</h3><p>7月29日 · 周二</p></div>
+        <div class="lesson-badge">✅ 已完成</div><div class="lesson-arrow">▶</div>
+      </div>
+      <div class="lesson-body">
+
+        <div class="ls-block">
+          <div class="ls-title">📋 课堂内容</div>
+          <div class="tag-wrap">
+            <span class="tag tag-purple">定语从句纠错</span>
+            <span class="tag tag-green">make a study plan</span>
+            <span class="tag tag-green">benefits and disadvantages</span>
+            <span class="tag tag-purple">As for AI</span>
+            <span class="tag tag-orange">have a good experience doing</span>
+          </div>
+        </div>
+
+        <!-- 知识点 -->
+        <div class="ls-block">
+          <div class="ls-title">📖 复习要点 — 作文常见语法错误 &amp; 固定搭配</div>
+
+          <div class="kp-card">
+            <div class="kp-header">① 定语从句常见错误</div>
+            <div class="kp-body">
+              <p>作文中定语从句最易出错的地方：</p>
+              <ul>
+                <li>❌ 缺少关系词：<s>I visited the museum was very famous.</s><br>✅ I visited the museum <strong>which/that</strong> was very famous.</li>
+                <li>❌ 关系词重复：<s>The book that I read it was interesting.</s><br>✅ The book that I read was interesting.（that 已代替 it，不能共存）</li>
+                <li>❌ 介词错误：<s>The plan which we talked is good.</s><br>✅ The plan <strong>about which</strong> we talked is good. / The plan we talked <strong>about</strong> is good.</li>
+              </ul>
+              <div class="kp-tip">💡 关系词在从句中必须充当成分（主语/宾语/定语），不能与从句内其他成分重复。</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">② make a study plan — 制定学习计划</div>
+            <div class="kp-body">
+              <p><strong>make a study plan</strong> = 制定学习计划，注意搭配：</p>
+              <ul>
+                <li>✅ We should <strong>make a study plan</strong> before the exam.</li>
+                <li>❌ <s>do a study plan</s> → 用 make 不用 do</li>
+                <li>同类搭配：<strong>make a plan for</strong> sth / <strong>plan to do</strong> sth</li>
+              </ul>
+              <div class="kp-tip">💡 make a plan 是固定搭配，类似 make a decision / make a choice。</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">③ benefits and disadvantages — 优缺点</div>
+            <div class="kp-body">
+              <p><strong>benefits and disadvantages</strong> = 优点与缺点（作文常用）：</p>
+              <ul>
+                <li><strong>benefits</strong> = 优点 / 好处（= advantages / pros）</li>
+                <li><strong>disadvantages</strong> = 缺点 / 弊端（= cons / drawbacks）</li>
+                <li>✅ AI has both <strong>benefits and disadvantages</strong>.</li>
+              </ul>
+              <div class="kp-tip">💡 写作中讨论利弊的万能表达：Every coin has two sides. / However, it also has some disadvantages.</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">④ As for AI — 至于 / 关于 AI</div>
+            <div class="kp-body">
+              <p><strong>As for</strong> + 名词 = 至于…… / 关于……（话题转换用语）：</p>
+              <ul>
+                <li><strong>As for AI</strong>, it can help students learn better.</li>
+                <li><strong>As for</strong> the cost, it's quite affordable.</li>
+                <li>❌ <s>About for AI</s> / <s>As to AI</s> → 用 As for</li>
+              </ul>
+              <div class="kp-tip">💡 As for 常用于段落开头，引出新话题；语气比 about 更正式。</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">⑤ have a good experience doing sth — 做某事有好的体验</div>
+            <div class="kp-body">
+              <p><strong>have a good experience doing sth</strong> = 做某事有好的体验：</p>
+              <ul>
+                <li>I <strong>had a good experience learning</strong> English online.</li>
+                <li>She <strong>had a great experience traveling</strong> abroad.</li>
+                <li>❌ <s>have a good experience to do</s> → doing 不接 to do</li>
+              </ul>
+              <div class="kp-example">
+                ✅ I had a good experience <u>studying</u> with AI tools.<br>
+                ❌ I had a good experience <s>to study</s> with AI tools.
+              </div>
+              <div class="kp-tip">💡 类似结构：have difficulty doing / have fun doing / have trouble doing，都接动名词。</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
   <div id="grammar" class="scroll-anchor section-title">📐 已涉及语法点</div>
   <div class="grammar-grid">
     <div class="grammar-card gp-prep"><div class="grammar-title">⚠️ 介词用法</div><div class="grammar-desc">in/on/at 时间地点介词；next/last/this/every 前无需介词。</div><span class="grammar-status gs-weak">需重点练习</span></div>
@@ -1925,7 +2024,7 @@
 
 <div class="footer">
   <p>本页面由老师课后更新 · 内容仅供本人及家长参考</p>
-  <p style="margin-top:6px;">最后更新：2026年7月28日</p>
+  <p style="margin-top:6px;">最后更新：2026年7月29日</p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>
@@ -2196,7 +2295,7 @@ function renderHistory(lessonId,list){
 
 /* ══ 页面加载恢复 ══ */
 document.addEventListener('DOMContentLoaded',function(){
-  ['l2','l3','l4','l5','l6','l7'].forEach(function(lid){
+  ['l2','l3','l4','l5','l6','l7','l8'].forEach(function(lid){
     var list=JSON.parse(localStorage.getItem('my-records-'+lid)||'[]');
     if(list.length===0)return;
     var last=list[0];
@@ -2534,7 +2633,7 @@ var obs=new IntersectionObserver(function(entries){
     if(e.isIntersecting)navLinks.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id);});
   });
 },{threshold:0.3,rootMargin:'-60px 0px 0px 0px'});
-['lesson-1','lesson-2','lesson-3','lesson-4','lesson-5','lesson-6','lesson-7','progress','grammar','goals'].forEach(function(id){var el=document.getElementById(id);if(el)obs.observe(el);});
+['lesson-1','lesson-2','lesson-3','lesson-4','lesson-5','lesson-6','lesson-7','lesson-8','progress','grammar','goals'].forEach(function(id){var el=document.getElementById(id);if(el)obs.observe(el);});
 </script>
 </body>
 </html>
