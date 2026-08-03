@@ -448,10 +448,15 @@
               <div class="quiz-feedback" id="fb-l10q6"></div>
             </div>
 
-            <!-- Q7 填空 · displace -->
-            <div class="quiz-item" data-qid="l10q7" data-type="fill" data-answer="displaced" data-accept="displaced|Displaced">
-              <div class="quiz-q">Q7. 看中文写英文：流离失所的<br>___ people need help and shelter.</div>
-              <input class="quiz-fill" id="fill-l10q7" placeholder="请在此输入答案" autocomplete="off">
+            <!-- Q7 选择 · displace 动词用法 -->
+            <div class="quiz-item" data-qid="l10q7" data-type="choice" data-answer="A">
+              <div class="quiz-q">Q7. The war ___ millions of people from their homes.（战争使数百万人流离失所。）</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l10q7" value="A"><span>A. displaced</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q7" value="B"><span>B. was displaced</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q7" value="C"><span>C. displaced to</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q7" value="D"><span>D. displacing</span></label>
+              </div>
               <div class="quiz-feedback" id="fb-l10q7"></div>
             </div>
 
@@ -2972,8 +2977,8 @@ var QUIZ_META = {
     exp:{ok:'✅ 正确！be satisfied with = 对……满意，介词用 with。',ng:'❌ 错误。be satisfied with sth（介词用 with 不用 to），正确答案 C。'}},
   l10q6:{label:'Q6',correct:'A',accepts:['A'],type:'choice',
     exp:{ok:'✅ 正确！satisfying = 令人满意的（修饰物/结果），主语是 result。',ng:'❌ 错误。结果令人满意用 satisfying（-ing 形容物），satisfied 形容人，正确答案 A。'}},
-  l10q7:{label:'Q7',correct:'displaced',accepts:['displaced','Displaced'],type:'fill',
-    exp:{ok:'✅ 正确！displaced people = 流离失所的人，displaced 过去分词作形容词。',ng:'❌ 错误。"流离失所的" = displaced，正确答案：displaced。'}},
+  l10q7:{label:'Q7',correct:'A',accepts:['A'],type:'choice',
+    exp:{ok:'✅ 正确！displace 是及物动词，主动语态：The war displaced millions of people。',ng:'❌ 错误。displace 是及物动词，直接加宾语，用主动语态过去式 displaced，不加介词 to，正确答案 A。'}},
   l10q8:{label:'Q8',correct:'B',accepts:['B'],type:'choice',
     exp:{ok:'✅ 正确！go to prison（零冠词）= 去坐牢，当犯人。',ng:'❌ 错误。坐牢用 go to prison（不加 the），正确答案 B。'}},
   l10q9:{label:'Q9',correct:'A',accepts:['A'],type:'choice',
