@@ -279,11 +279,67 @@ var QUIZ_META={
       opts:{A:'His hard work finally paid off.',B:'His hard work finally pay off.',C:'His hard work finally paid of.',D:'His hard work finally paying off.'}},
     l7q15:{label:'Q15 quit+doing辨析',correct:'B',accepts:['B'],type:'choice',
       opts:{A:'quit to smoke',B:'quit smoking',C:'quit smoke',D:'gave up to smoke'}}
+  },
+  l9:{
+    l9q1:{label:'Q1 astronomer拼写',correct:'astronomer',accepts:['astronomer','Astronomer'],type:'fill'},
+    l9q2:{label:'Q2 eclipse词义',correct:'C',accepts:['C'],type:'choice',
+      opts:{A:'地震',B:'彗星',C:'日食；月食',D:'极光'}},
+    l9q3:{label:'Q3 multiplication拼写',correct:'multiplication',accepts:['multiplication','Multiplication'],type:'fill'},
+    l9q4:{label:'Q4 old-fashioned',correct:'A',accepts:['A'],type:'choice',
+      opts:{A:'old-fashioned',B:'modern',C:'clear',D:'simple'}},
+    l9q5:{label:'Q5 fitting词义',correct:'A',accepts:['A'],type:'choice',
+      opts:{A:'It is appropriate / proper that...',B:'It is strange that...',C:'It is impossible that...',D:'It is lucky that...'}},
+    l9q6:{label:'Q6 on her own',correct:'D',accepts:['D'],type:'choice',
+      opts:{A:'She studied with her friends.',B:'She studied at a school.',C:'She studied only at night.',D:'She studied by herself / independently.'}},
+    l9q7:{label:'Q7 lunar eclipse',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'The Moon blocks the Sun.',B:'The Earth moves between the Sun and the Moon.',C:'The Sun disappears.',D:'The Moon falls to Earth.'}},
+    l9q8:{label:'Q8 be made to do',correct:'C',accepts:['C'],type:'choice',
+      opts:{A:'She was made study hard.',B:'She was made studying hard.',C:'She was made to study hard.',D:'She was made to studying hard.'}},
+    l9q9:{label:'Q9 同位语从句',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'定语从句',B:'同位语从句',C:'宾语从句',D:'主语从句'}},
+    l9q10:{label:'Q10 eclipse拼写',correct:'eclipse',accepts:['eclipse','Eclipse'],type:'fill'},
+    l9q11:{label:'Q11 阅读理解',correct:'A',accepts:['A'],type:'choice',
+      opts:{A:'her father',B:'her mother',C:'her grandmother',D:'her teacher'}},
+    l9q12:{label:'Q12 阅读理解',correct:'C',accepts:['C'],type:'choice',
+      opts:{A:'a telescope and a map',B:'a book and a pen',C:'a round table, a lamp, and a round mirror',D:'a computer and a screen'}},
+    l9q13:{label:'Q13 阅读理解',correct:'D',accepts:['D'],type:'choice',
+      opts:{A:'Mars',B:'the Moon',C:'Mercury',D:'Venus'}},
+    l9q14:{label:'Q14 can also be语序',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'Daughters also can be heroic.',B:'Daughters can also be heroic.',C:'Daughters can be also heroic.',D:'Also daughters can be heroic.'}},
+    l9q15:{label:'Q15 fitting拼写',correct:'fitting',accepts:['fitting','Fitting'],type:'fill'}
+  },
+  l10:{
+    l10q1:{label:'Q1 firm拼写',correct:'firm',accepts:['firm','Firm'],type:'fill'},
+    l10q2:{label:'Q2 ignore用法',correct:'A',accepts:['A'],type:'choice',
+      opts:{A:'ignored',B:'ignored to',C:'ignored at',D:'ignoring'}},
+    l10q3:{label:'Q3 application拼写',correct:'application',accepts:['application','Application'],type:'fill'},
+    l10q4:{label:'Q4 apply for',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'applied to',B:'applied for',C:'applied with',D:'applied on'}},
+    l10q5:{label:'Q5 be satisfied with',correct:'C',accepts:['C'],type:'choice',
+      opts:{A:'satisfied to',B:'satisfied with the',C:'satisfied with',D:'satisfying with'}},
+    l10q6:{label:'Q6 satisfying vs satisfied',correct:'A',accepts:['A'],type:'choice',
+      opts:{A:'satisfying',B:'satisfied',C:'satisfy',D:'satisfaction'}},
+    l10q7:{label:'Q7 displaced拼写',correct:'displaced',accepts:['displaced','Displaced'],type:'fill'},
+    l10q8:{label:'Q8 go to prison',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'went to the prison',B:'went to prison',C:'went to a prison',D:'went prison'}},
+    l10q9:{label:'Q9 go to the prison',correct:'A',accepts:['A'],type:'choice',
+      opts:{A:'went to the prison',B:'went to prison',C:'went to prisons',D:'went prison'}},
+    l10q10:{label:'Q10 go to hospital',correct:'C',accepts:['C'],type:'choice',
+      opts:{A:'go to the hospital',B:'go to a hospital',C:'go to hospital',D:'go hospital'}},
+    l10q11:{label:'Q11 hardly词义',correct:'D',accepts:['D'],type:'choice',
+      opts:{A:'我很了解她',B:'我努力认识她',C:'我完全不认识她',D:'我几乎不认识她'}},
+    l10q12:{label:'Q12 hardly...when',correct:'B',accepts:['B'],type:'choice',
+      opts:{A:'hard / when',B:'hardly / when',C:'hardly / than',D:'hardly / then'}},
+    l10q13:{label:'Q13 balance拼写',correct:'balance',accepts:['balance','Balance'],type:'fill'},
+    l10q14:{label:'Q14 between...and',correct:'C',accepts:['C'],type:'choice',
+      opts:{A:'between / and',B:'between / or',C:'between / and',D:'from / to'}},
+    l10q15:{label:'Q15 ignore及物',correct:'A',accepts:['A'],type:'choice',
+      opts:{A:'He ignored my advice.',B:'He ignored to my advice.',C:'He ignored at my advice.',D:'He ignored for my advice.'}}
   }
 };
 
 function getLessonMeta(lid){return QUIZ_META[lid]||{};}
-function lessonName(lid){var m={l2:'第2课 · 词汇课',l3:'第3课 · 句子成分课',l4:'第4课 · 多义词辨析&从句进阶',l5:'第5课 · 单词测试&影子跟读',l6:'第6课 · 让步状语从句&短语精讲',l7:'第7课 · 词汇拓展&阅读类型',l8:'第8课 · 作文讲解&语法纠错'};return m[lid]||lid;}
+function lessonName(lid){var m={l2:'第2课 · 词汇课',l3:'第3课 · 句子成分课',l4:'第4课 · 多义词辨析&从句进阶',l5:'第5课 · 单词测试&影子跟读',l6:'第6课 · 让步状语从句&短语精讲',l7:'第7课 · 词汇拓展&阅读类型',l8:'第8课 · 作文讲解&语法纠错',l9:'第9课 · 阅读精读 · Wang Zhenyi',l10:'第10课 · 词汇拓展 & 冠词辨析'};return m[lid]||lid;}
 
 /* ══ 登录 ══ */
 function doLogin(){
@@ -397,6 +453,42 @@ function renderRecords(rows){
     html+='</div>';
   });
   document.getElementById('records-wrap').innerHTML=html;
+  loadSpeakScores();
+}
+
+/* ══ 加载朗读评分 ══ */
+function loadSpeakScores(){
+  sbFetch('/rest/v1/speak_submissions?select=*&order=submitted_at.desc')
+  .then(function(r){return r.json();})
+  .then(function(rows){
+    if(!rows||rows.length===0)return;
+    var wrap=document.getElementById('records-wrap');
+    var html='<div class="lesson-section" style="margin-top:32px;">';
+    html+='<div class="lesson-label">🎙️ 朗读评分记录<span class="cnt">（共 '+rows.length+' 条）</span></div>';
+    rows.forEach(function(row,idx){
+      var pct=row.overall_score||0;
+      var spClass=pct>=80?'sp-hi':pct>=60?'sp-mid':'sp-lo';
+      var segNum=(row.segment_idx!==undefined)?(parseInt(row.segment_idx,10)+1):'?';
+      html+='<div class="sub-card">';
+      html+='<div class="sub-card-header">';
+      html+='<div class="sub-idx">'+(idx+1)+'</div>';
+      html+='<span class="sub-name">'+escHtml(row.student_name||'学生')+'</span>';
+      html+='<span class="sub-time">'+fmtTime(row.submitted_at)+'</span>';
+      html+='<span class="score-pill '+spClass+'">'+escHtml(row.lesson_id||'')+' · 段'+segNum+' · '+pct+'分</span>';
+      html+='</div>';
+      html+='<div class="sub-card-body">';
+      html+='<div class="q-row"><span class="q-label">参考文本</span><span class="q-ans" style="font-size:12px;color:var(--muted);">'+escHtml((row.ref_text||'').substring(0,80))+'…</span></div>';
+      if(row.pronunciation!==undefined&&row.pronunciation!=='')html+='<div class="q-row ok"><span class="q-label">发音</span><span class="q-ans correct">'+row.pronunciation+'</span></div>';
+      if(row.fluency!==undefined&&row.fluency!=='')html+='<div class="q-row ok"><span class="q-label">流利度</span><span class="q-ans correct">'+row.fluency+'</span></div>';
+      if(row.integrity!==undefined&&row.integrity!=='')html+='<div class="q-row ok"><span class="q-label">完整度</span><span class="q-ans correct">'+row.integrity+'</span></div>';
+      if(row.rhythm!==undefined&&row.rhythm!=='')html+='<div class="q-row ok"><span class="q-label">韵律</span><span class="q-ans correct">'+row.rhythm+'</span></div>';
+      if(row.speed!==undefined&&row.speed!=='')html+='<div class="q-row ok"><span class="q-label">语速</span><span class="q-ans correct">'+row.speed+'</span></div>';
+      html+='</div></div>';
+    });
+    html+='</div>';
+    wrap.insertAdjacentHTML('beforeend',html);
+  })
+  .catch(function(e){console.error('朗读评分加载失败',e);});
 }
 
 function calcCorrect(ans,meta){

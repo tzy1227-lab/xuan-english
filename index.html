@@ -188,7 +188,8 @@
 
 <nav class="jump-nav">
   <a class="jump-btn highlight" href="#lessons">📚 直达课次详情</a>
-  <a class="jump-btn" onclick="expandLessonById('lesson-9');location.href='#lesson-9'">第9课 🆕</a>
+  <a class="jump-btn" onclick="expandLessonById('lesson-10');location.href='#lesson-10'">第10课 🆕</a>
+  <a class="jump-btn" onclick="expandLessonById('lesson-9');location.href='#lesson-9'">第9课</a>
   <a class="jump-btn" onclick="expandLessonById('lesson-8');location.href='#lesson-8'">第8课</a>
   <a class="jump-btn" onclick="expandLessonById('lesson-7');location.href='#lesson-7'">第7课</a>
   <a class="jump-btn" onclick="expandLessonById('lesson-6');location.href='#lesson-6'">第6课</a>
@@ -208,14 +209,357 @@
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
       <span style="font-weight:700;font-size:15px;">已完成课次</span>
-      <span style="font-weight:800;font-size:20px;color:var(--primary);">9 <span style="font-size:14px;color:var(--muted);font-weight:400;">/ 预计 30+ 课</span></span>
+      <span style="font-weight:800;font-size:20px;color:var(--primary);">10 <span style="font-size:14px;color:var(--muted);font-weight:400;">/ 预计 30+ 课</span></span>
     </div>
-    <div class="progress-bar-wrap"><div class="progress-bar" style="width:30%"></div></div>
-    <div class="progress-label"><span>课程开始 7.11</span><span>已上 9 课 🎉</span></div>
+    <div class="progress-bar-wrap"><div class="progress-bar" style="width:33.3%"></div></div>
+    <div class="progress-label"><span>课程开始 7.11</span><span>已上 10 课 🎉</span></div>
   </div>
 
   <div id="lessons" class="scroll-anchor section-title">📚 课次详情</div>
   <div class="lesson-grid">
+
+    <!-- 第10课 -->
+    <div id="lesson-10" class="lesson-card scroll-anchor">
+      <div class="lesson-header done" onclick="toggleLesson(this)">
+        <div class="lesson-num">10</div>
+        <div class="lesson-meta"><h3>词汇拓展 &amp; 冠词辨析</h3><p>8月3日 · 周日</p></div>
+        <div class="lesson-badge">✅ 已完成</div><div class="lesson-arrow">▶</div>
+      </div>
+      <div class="lesson-body">
+
+        <div class="ls-block">
+          <div class="ls-title">📋 课堂内容</div>
+          <div class="tag-wrap">
+            <span class="tag tag-purple">核心词汇精讲</span>
+            <span class="tag tag-green">go to prison/hospital 冠词辨析</span>
+            <span class="tag tag-green">hardly 用法</span>
+            <span class="tag tag-orange">balance 固定搭配</span>
+          </div>
+        </div>
+
+        <!-- 知识点 -->
+        <div class="ls-block">
+          <div class="ls-title">📖 复习要点 — 词汇 · 句型 · 语法</div>
+
+          <div class="kp-card">
+            <div class="kp-header">① firm — 坚定的；公司</div>
+            <div class="kp-body">
+              <p><strong>firm</strong> /fɜːm/ adj. 坚定的；稳固的 / n. 公司</p>
+              <ul>
+                <li><strong>firm belief</strong> = 坚定的信念；<strong>stand firm</strong> = 立场坚定</li>
+                <li><strong>a law firm</strong> = 律师事务所；<strong>a firm of consultants</strong> = 咨询公司</li>
+                <li>✅ She has a <strong>firm</strong> belief in education.</li>
+                <li>✅ He works for a large <strong>firm</strong>.</li>
+              </ul>
+              <div class="kp-tip">💡 firm 兼作形容词（坚定的）和名词（公司），注意根据上下文判断词性。</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">② ignore — 忽视；不理睬</div>
+            <div class="kp-body">
+              <p><strong>ignore</strong> /ɪɡˈnɔː(r)/ v. 忽视；不理睬</p>
+              <ul>
+                <li><strong>ignore sb/sth</strong> = 不理睬某人/某事</li>
+                <li>✅ He <strong>ignored</strong> my advice and failed.</li>
+                <li>❌ <s>ignore to my advice</s> → ignore 是及物动词，直接加宾语，不需要介词</li>
+              </ul>
+              <div class="kp-tip">💡 ignore = 故意不理睬；比较：be ignorant of = 对……无知（形容词短语）。</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">③ application / apply — 申请；应用</div>
+            <div class="kp-body">
+              <p><strong>apply</strong> /əˈplaɪ/ v. 申请；应用 → <strong>application</strong> /ˌæplɪˈkeɪʃn/ n. 申请；申请表；应用</p>
+              <ul>
+                <li><strong>apply for</strong> sth = 申请某物（工作、职位等）</li>
+                <li><strong>apply to</strong> sb/sth = 向……申请 / 适用于</li>
+                <li><strong>fill in an application form</strong> = 填写申请表</li>
+                <li>✅ She <strong>applied for</strong> a scholarship.</li>
+                <li>✅ Please fill in the <strong>application</strong> form.</li>
+              </ul>
+              <div class="kp-tip">💡 apply for + 名词（申请什么）；apply to + 人/机构（向谁申请）。</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">④ satisfy / be satisfied with — 满足；对……满意</div>
+            <div class="kp-body">
+              <p><strong>satisfy</strong> /ˈsætɪsfaɪ/ v. 满足；使满意</p>
+              <ul>
+                <li><strong>be satisfied with</strong> sth = 对……感到满意</li>
+                <li><strong>satisfied</strong> (adj.) = 感到满意的；<strong>satisfying</strong> = 令人满意的</li>
+                <li><strong>satisfaction</strong> (n.) = 满意；满足</li>
+                <li>✅ I am <strong>satisfied with</strong> my test results.</li>
+                <li>✅ The result is <strong>satisfying</strong>.</li>
+              </ul>
+              <div class="kp-example">
+                ✅ She is <u>satisfied with</u> her progress.<br>
+                ❌ She is <s>satisfied to</s> her progress. → 介词用 with
+              </div>
+              <div class="kp-tip">💡 be satisfied with = be pleased with = be happy with（同义替换）。</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">⑤ displace — 取代； displaced 被迫离开家园</div>
+            <div class="kp-body">
+              <p><strong>displace</strong> /dɪsˈpleɪs/ v. 取代；迫使离开</p>
+              <ul>
+                <li><strong>displaced people</strong> = 流离失所的人（= refugees）</li>
+                <li><strong>displace</strong> sb = 取代某人的位置</li>
+                <li>✅ The flood <strong>displaced</strong> thousands of families.</li>
+                <li>✅ <strong>Displaced</strong> people need help and shelter.</li>
+              </ul>
+              <div class="kp-tip">💡 dis- = 离开 + place = 放置 → 从原位移走 → 取代/迫使离开。</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">⑥ go to prison vs go to the prison</div>
+            <div class="kp-body">
+              <p>零冠词 vs 加 the，意思完全不同：</p>
+              <ul>
+                <li><strong>go to prison</strong> = 去坐牢（进去当犯人）</li>
+                <li><strong>go to the prison</strong> = 去监狱（探监/办事，不是当犯人）</li>
+                <li>✅ He committed a crime and <strong>went to prison</strong>.</li>
+                <li>✅ She <strong>went to the prison</strong> to visit her brother.</li>
+              </ul>
+              <div class="kp-tip">💡 规律：表示"去……做该场所固有的事"用零冠词；表示"去某个具体地点办事"加 the。</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">⑦ go to hospital vs go to the hospital</div>
+            <div class="kp-body">
+              <p>同样遵循零冠词规律：</p>
+              <ul>
+                <li><strong>go to hospital</strong> = 去看病（当病人住院）</li>
+                <li><strong>go to the hospital</strong> = 去医院（探病/办事，不是看病）</li>
+                <li>✅ He is sick and needs to <strong>go to hospital</strong>.</li>
+                <li>✅ I <strong>went to the hospital</strong> to visit my friend.</li>
+              </ul>
+              <div class="kp-example">
+                go to school = 上学（当学生）<br>
+                go to the school = 去学校（办事/接孩子）<br>
+                go to church = 做礼拜<br>
+                go to bed = 去睡觉
+              </div>
+              <div class="kp-tip">💡 口诀：go to + 地点（无 the）= 做该处该做的事；go to the + 地点 = 去那个地方。</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">⑧ hardly — 几乎不</div>
+            <div class="kp-body">
+              <p><strong>hardly</strong> /ˈhɑːdli/ adv. 几乎不（本身含否定意义）</p>
+              <ul>
+                <li><strong>hardly</strong> = almost not，不是"努力地"（hard 才是"努力地"）</li>
+                <li>✅ I <strong>hardly</strong> know her.（我几乎不认识她。）</li>
+                <li>✅ She has <strong>hardly</strong> any money left.</li>
+                <li><strong>hardly... when...</strong> = 一……就……（刚……就……）</li>
+                <li>✅ I had <strong>hardly</strong> sat down <strong>when</strong> the phone rang.</li>
+              </ul>
+              <div class="kp-tip">💡 hardly 虽以 -ly 结尾，但不是 hard 的副词形式！hard 本身就是副词"努力地"，hardly = "几乎不"。</div>
+            </div>
+          </div>
+
+          <div class="kp-card">
+            <div class="kp-header">⑨ balance / keep a balance between...</div>
+            <div class="kp-body">
+              <p><strong>balance</strong> /ˈbæləns/ n. 平衡 v. 使平衡</p>
+              <ul>
+                <li><strong>keep a balance between A and B</strong> = 在A和B之间保持平衡</li>
+                <li><strong>strike a balance</strong> = 找到平衡点</li>
+                <li><strong>lose one's balance</strong> = 失去平衡</li>
+                <li>✅ It's important to <strong>keep a balance between</strong> work and rest.</li>
+              </ul>
+              <div class="kp-tip">💡 between 后面接 and 连接两个并列对象：between A and B。</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 随堂练习 -->
+        <div class="ls-block">
+          <div class="ls-title">✏️ 随堂练习（共15题）</div>
+          <div class="quiz-container" id="quiz-l10">
+
+            <!-- Q1 填空 · firm -->
+            <div class="quiz-item" data-qid="l10q1" data-type="fill" data-answer="firm" data-accept="firm|Firm">
+              <div class="quiz-q">Q1. 看中文写英文：坚定的（形容词）<br>She has a ___ belief in education.</div>
+              <input class="quiz-fill" id="fill-l10q1" placeholder="请在此输入答案" autocomplete="off">
+              <div class="quiz-feedback" id="fb-l10q1"></div>
+            </div>
+
+            <!-- Q2 选择 · ignore 用法 -->
+            <div class="quiz-item" data-qid="l10q2" data-type="choice" data-answer="A">
+              <div class="quiz-q">Q2. He ___ my advice and failed.（他无视了我的建议。）</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l10q2" value="A"><span>A. ignored</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q2" value="B"><span>B. ignored to</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q2" value="C"><span>C. ignored at</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q2" value="D"><span>D. ignoring</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l10q2"></div>
+            </div>
+
+            <!-- Q3 填空 · application -->
+            <div class="quiz-item" data-qid="l10q3" data-type="fill" data-answer="application" data-accept="application|Application">
+              <div class="quiz-q">Q3. 看中文写英文：申请（名词）<br>Please fill in the ___ form.</div>
+              <input class="quiz-fill" id="fill-l10q3" placeholder="请在此输入答案" autocomplete="off">
+              <div class="quiz-feedback" id="fb-l10q3"></div>
+            </div>
+
+            <!-- Q4 选择 · apply for -->
+            <div class="quiz-item" data-qid="l10q4" data-type="choice" data-answer="B">
+              <div class="quiz-q">Q4. She ___ a scholarship last month.（她上个月申请了奖学金。）</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l10q4" value="A"><span>A. applied to</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q4" value="B"><span>B. applied for</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q4" value="C"><span>C. applied with</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q4" value="D"><span>D. applied on</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l10q4"></div>
+            </div>
+
+            <!-- Q5 选择 · be satisfied with -->
+            <div class="quiz-item" data-qid="l10q5" data-type="choice" data-answer="C">
+              <div class="quiz-q">Q5. I am ___ my test results.（我对考试成绩满意。）</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l10q5" value="A"><span>A. satisfied to</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q5" value="B"><span>B. satisfied with the</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q5" value="C"><span>C. satisfied with</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q5" value="D"><span>D. satisfying with</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l10q5"></div>
+            </div>
+
+            <!-- Q6 选择 · satisfied vs satisfying -->
+            <div class="quiz-item" data-qid="l10q6" data-type="choice" data-answer="A">
+              <div class="quiz-q">Q6. The result is ___.（结果令人满意。）</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l10q6" value="A"><span>A. satisfying</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q6" value="B"><span>B. satisfied</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q6" value="C"><span>C. satisfy</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q6" value="D"><span>D. satisfaction</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l10q6"></div>
+            </div>
+
+            <!-- Q7 填空 · displace -->
+            <div class="quiz-item" data-qid="l10q7" data-type="fill" data-answer="displaced" data-accept="displaced|Displaced">
+              <div class="quiz-q">Q7. 看中文写英文：流离失所的<br>___ people need help and shelter.</div>
+              <input class="quiz-fill" id="fill-l10q7" placeholder="请在此输入答案" autocomplete="off">
+              <div class="quiz-feedback" id="fb-l10q7"></div>
+            </div>
+
+            <!-- Q8 选择 · go to prison vs the prison -->
+            <div class="quiz-item" data-qid="l10q8" data-type="choice" data-answer="B">
+              <div class="quiz-q">Q8. He committed a crime and ___.（他犯了罪，去坐牢了。）</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l10q8" value="A"><span>A. went to the prison</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q8" value="B"><span>B. went to prison</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q8" value="C"><span>C. went to a prison</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q8" value="D"><span>D. went prison</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l10q8"></div>
+            </div>
+
+            <!-- Q9 选择 · go to the prison 探监 -->
+            <div class="quiz-item" data-qid="l10q9" data-type="choice" data-answer="A">
+              <div class="quiz-q">Q9. She ___ to visit her brother.（她去监狱探望弟弟。）</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l10q9" value="A"><span>A. went to the prison</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q9" value="B"><span>B. went to prison</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q9" value="C"><span>C. went to prisons</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q9" value="D"><span>D. went prison</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l10q9"></div>
+            </div>
+
+            <!-- Q10 选择 · go to hospital vs the hospital -->
+            <div class="quiz-item" data-qid="l10q10" data-type="choice" data-answer="C">
+              <div class="quiz-q">Q10. He is sick and needs to ___.（他病了，需要去看病。）</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l10q10" value="A"><span>A. go to the hospital</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q10" value="B"><span>B. go to a hospital</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q10" value="C"><span>C. go to hospital</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q10" value="D"><span>D. go hospital</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l10q10"></div>
+            </div>
+
+            <!-- Q11 选择 · hardly 词义 -->
+            <div class="quiz-item" data-qid="l10q11" data-type="choice" data-answer="D">
+              <div class="quiz-q">Q11. "I hardly know her." 的意思是？</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l10q11" value="A"><span>A. 我很了解她</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q11" value="B"><span>B. 我努力认识她</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q11" value="C"><span>C. 我完全不认识她</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q11" value="D"><span>D. 我几乎不认识她</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l10q11"></div>
+            </div>
+
+            <!-- Q12 选择 · hardly...when -->
+            <div class="quiz-item" data-qid="l10q12" data-type="choice" data-answer="B">
+              <div class="quiz-q">Q12. I had ___ sat down ___ the phone rang.（我刚坐下电话就响了。）</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l10q12" value="A"><span>A. hard / when</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q12" value="B"><span>B. hardly / when</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q12" value="C"><span>C. hardly / than</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q12" value="D"><span>D. hardly / then</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l10q12"></div>
+            </div>
+
+            <!-- Q13 填空 · balance -->
+            <div class="quiz-item" data-qid="l10q13" data-type="fill" data-answer="balance" data-accept="balance|Balance">
+              <div class="quiz-q">Q13. 看中文写英文：平衡（名词）<br>It's important to keep a ___ between work and rest.</div>
+              <input class="quiz-fill" id="fill-l10q13" placeholder="请在此输入答案" autocomplete="off">
+              <div class="quiz-feedback" id="fb-l10q13"></div>
+            </div>
+
+            <!-- Q14 选择 · keep a balance between -->
+            <div class="quiz-item" data-qid="l10q14" data-type="choice" data-answer="C">
+              <div class="quiz-q">Q14. 完成句子：保持学习和休息的平衡<br>We should keep a balance ___ study ___ rest.</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l10q14" value="A"><span>A. between / and</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q14" value="B"><span>B. between / or</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q14" value="C"><span>C. between / and</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q14" value="D"><span>D. from / to</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l10q14"></div>
+            </div>
+
+            <!-- Q15 选择 · ignore vs be ignorant of -->
+            <div class="quiz-item" data-qid="l10q15" data-type="choice" data-answer="A">
+              <div class="quiz-q">Q15. Which sentence is correct?</div>
+              <div class="quiz-choices">
+                <label class="quiz-choice"><input type="radio" name="l10q15" value="A"><span>A. He ignored my advice.</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q15" value="B"><span>B. He ignored to my advice.</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q15" value="C"><span>C. He ignored at my advice.</span></label>
+                <label class="quiz-choice"><input type="radio" name="l10q15" value="D"><span>D. He ignored for my advice.</span></label>
+              </div>
+              <div class="quiz-feedback" id="fb-l10q15"></div>
+            </div>
+
+            <div style="margin-top:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+              <button class="quiz-submit-btn" id="submit-l10" onclick="submitQuiz('l10')">📝 提交答案</button>
+              <button class="quiz-reset-btn" id="reset-l10" onclick="resetQuiz('l10')" style="display:none;">🔄 重新作答</button>
+            </div>
+            <div class="quiz-status-msg" id="status-l10"></div>
+            <div class="history-wrap" id="history-l10">
+              <div class="history-title">📋 我的历史作答</div>
+              <div id="history-list-l10"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
 
     <!-- 第9课 -->
     <div id="lesson-9" class="lesson-card scroll-anchor">
@@ -2382,6 +2726,8 @@
     <div class="grammar-card gp-clause"><div class="grammar-title">🆕 让步状语从句</div><div class="grammar-desc">no matter + 疑问词（what/who/how/when/where/which）用法；whatever/whoever 与 no matter what/who 辨析。</div><span class="grammar-status gs-done">已梳理</span></div>
     <div class="grammar-card gp-clause"><div class="grammar-title">🆕 同位语从句</div><div class="grammar-desc">a sign/fact/idea that... 结构，that 不作成分，只起连接作用解释名词内容。</div><span class="grammar-status gs-done">已梳理</span></div>
     <div class="grammar-card gp-vocab"><div class="grammar-title">🆕 被动语态 be made to do</div><div class="grammar-desc">主动 make sb do（省 to）→ 被动 sb be made to do（加 to）。</div><span class="grammar-status gs-done">已梳理</span></div>
+    <div class="grammar-card gp-prep"><div class="grammar-title">🆕 零冠词 vs 加 the</div><div class="grammar-desc">go to prison/hospital/school/bed（做该处该做的事）vs go to the prison/hospital（去那个地方办事）。</div><span class="grammar-status gs-done">已梳理</span></div>
+    <div class="grammar-card gp-vocab"><div class="grammar-title">🆕 hardly 几乎不</div><div class="grammar-desc">hardly = almost not（含否定意义）；hardly...when... = 一……就……；注意 hard ≠ hardly。</div><span class="grammar-status gs-done">已梳理</span></div>
   </div>
 
   <div id="goals" class="scroll-anchor section-title">🎯 暑期核心目标</div>
@@ -2400,7 +2746,7 @@
 
 <div class="footer">
   <p>本页面由老师课后更新 · 内容仅供本人及家长参考</p>
-  <p style="margin-top:6px;">最后更新：2026年7月31日</p>
+  <p style="margin-top:6px;">最后更新：2026年8月3日</p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>
@@ -2613,7 +2959,37 @@ var QUIZ_META = {
   l9q14:{label:'Q14',correct:'B',accepts:['B'],type:'choice',
     exp:{ok:'✅ 正确！also 放在情态动词 can 和实义动词 be 之间：can also be。',ng:'❌ 错误。also 位于情态动词和实义动词之间：can also be，正确答案 B。'}},
   l9q15:{label:'Q15',correct:'fitting',accepts:['fitting','Fitting'],type:'fill',
-    exp:{ok:'✅ 正确！fitting = 恰当的，It is fitting that = ……是恰当的。',ng:'❌ 错误。"恰当的" = fitting，正确答案：fitting。'}}
+    exp:{ok:'✅ 正确！fitting = 恰当的，It is fitting that = ……是恰当的。',ng:'❌ 错误。"恰当的" = fitting，正确答案：fitting。'}},
+  l10q1:{label:'Q1',correct:'firm',accepts:['firm','Firm'],type:'fill',
+    exp:{ok:'✅ 正确！firm = 坚定的，firm belief = 坚定的信念。',ng:'❌ 错误。"坚定的" = firm，正确答案：firm。'}},
+  l10q2:{label:'Q2',correct:'A',accepts:['A'],type:'choice',
+    exp:{ok:'✅ 正确！ignore 是及物动词，直接加宾语，不加介词。',ng:'❌ 错误。ignore 直接加宾语（及物动词），不加 to/at，正确答案 A: ignored。'}},
+  l10q3:{label:'Q3',correct:'application',accepts:['application','Application'],type:'fill',
+    exp:{ok:'✅ 正确！application = 申请（名词），application form = 申请表。',ng:'❌ 错误。"申请"（名词）= application，正确答案：application。'}},
+  l10q4:{label:'Q4',correct:'B',accepts:['B'],type:'choice',
+    exp:{ok:'✅ 正确！apply for sth = 申请某物，apply for a scholarship。',ng:'❌ 错误。申请什么用 apply for，正确答案 B: applied for。'}},
+  l10q5:{label:'Q5',correct:'C',accepts:['C'],type:'choice',
+    exp:{ok:'✅ 正确！be satisfied with = 对……满意，介词用 with。',ng:'❌ 错误。be satisfied with sth（介词用 with 不用 to），正确答案 C。'}},
+  l10q6:{label:'Q6',correct:'A',accepts:['A'],type:'choice',
+    exp:{ok:'✅ 正确！satisfying = 令人满意的（修饰物/结果），主语是 result。',ng:'❌ 错误。结果令人满意用 satisfying（-ing 形容物），satisfied 形容人，正确答案 A。'}},
+  l10q7:{label:'Q7',correct:'displaced',accepts:['displaced','Displaced'],type:'fill',
+    exp:{ok:'✅ 正确！displaced people = 流离失所的人，displaced 过去分词作形容词。',ng:'❌ 错误。"流离失所的" = displaced，正确答案：displaced。'}},
+  l10q8:{label:'Q8',correct:'B',accepts:['B'],type:'choice',
+    exp:{ok:'✅ 正确！go to prison（零冠词）= 去坐牢，当犯人。',ng:'❌ 错误。坐牢用 go to prison（不加 the），正确答案 B。'}},
+  l10q9:{label:'Q9',correct:'A',accepts:['A'],type:'choice',
+    exp:{ok:'✅ 正确！go to the prison = 去监狱探望/办事，不是当犯人。',ng:'❌ 错误。探监用 go to the prison（加 the），正确答案 A。'}},
+  l10q10:{label:'Q10',correct:'C',accepts:['C'],type:'choice',
+    exp:{ok:'✅ 正确！go to hospital（零冠词）= 去看病，当病人。',ng:'❌ 错误。看病用 go to hospital（不加 the），正确答案 C。'}},
+  l10q11:{label:'Q11',correct:'D',accepts:['D'],type:'choice',
+    exp:{ok:'✅ 正确！hardly = 几乎不，I hardly know her = 我几乎不认识她。',ng:'❌ 错误。hardly = 几乎不（不是"努力地"），正确答案 D。'}},
+  l10q12:{label:'Q12',correct:'B',accepts:['B'],type:'choice',
+    exp:{ok:'✅ 正确！hardly...when... = 一……就……，固定搭配。',ng:'❌ 错误。hardly...when... 是固定句型（不用 than/then），正确答案 B。'}},
+  l10q13:{label:'Q13',correct:'balance',accepts:['balance','Balance'],type:'fill',
+    exp:{ok:'✅ 正确！balance = 平衡，keep a balance = 保持平衡。',ng:'❌ 错误。"平衡" = balance，正确答案：balance。'}},
+  l10q14:{label:'Q14',correct:'C',accepts:['C'],type:'choice',
+    exp:{ok:'✅ 正确！keep a balance between A and B，用 between...and...。',ng:'❌ 错误。between 后接 and 连接两个对象：between A and B，正确答案 C。'}},
+  l10q15:{label:'Q15',correct:'A',accepts:['A'],type:'choice',
+    exp:{ok:'✅ 正确！ignore 是及物动词，直接加宾语 my advice，不加介词。',ng:'❌ 错误。ignore 直接加宾语（及物动词），不加 to/at/for，正确答案 A。'}}
 };
 
 /* ══ 提交 ══ */
@@ -2701,7 +3077,7 @@ function renderHistory(lessonId,list){
 
 /* ══ 页面加载恢复 ══ */
 document.addEventListener('DOMContentLoaded',function(){
-  ['l2','l3','l4','l5','l6','l7','l8','l9'].forEach(function(lid){
+  ['l2','l3','l4','l5','l6','l7','l8','l9','l10'].forEach(function(lid){
     var list=JSON.parse(localStorage.getItem('my-records-'+lid)||'[]');
     if(list.length===0)return;
     var last=list[0];
@@ -3225,7 +3601,7 @@ var obs=new IntersectionObserver(function(entries){
     if(e.isIntersecting)navLinks.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id);});
   });
 },{threshold:0.3,rootMargin:'-60px 0px 0px 0px'});
-['lesson-9','lesson-8','lesson-7','lesson-6','lesson-5','lesson-4','lesson-3','lesson-2','lesson-1','progress','grammar','goals'].forEach(function(id){var el=document.getElementById(id);if(el)obs.observe(el);});
+['lesson-10','lesson-9','lesson-8','lesson-7','lesson-6','lesson-5','lesson-4','lesson-3','lesson-2','lesson-1','progress','grammar','goals'].forEach(function(id){var el=document.getElementById(id);if(el)obs.observe(el);});
 
 /* ══ 课次倒序排列 ══ */
 (function(){
